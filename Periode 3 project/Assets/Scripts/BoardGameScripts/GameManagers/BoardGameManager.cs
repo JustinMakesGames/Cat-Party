@@ -10,9 +10,6 @@ public class BoardGameManager : MonoBehaviour
     
     private void Awake()
     {
-        foreach (PlayerHandler player in players)
-        {
-            players.Add(player);
-        }
+        
     }
 }
