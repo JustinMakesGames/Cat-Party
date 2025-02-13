@@ -11,6 +11,6 @@ public class MinigamePrint : MonoBehaviour
         {
             print("Wow this player is a high jumper");
         }
-
+        
     }
 }

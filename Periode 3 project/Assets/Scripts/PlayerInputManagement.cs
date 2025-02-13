@@ -1,20 +1,37 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+[Serializable]
+public struct InputID
+{
+    public InputDevice inputDevice;
+    public int id;
+
+    public InputID(InputDevice inputDevice, int id) 
+    {
+        this.inputDevice = inputDevice;
+        this.id = id;
+    }
+}
 public class PlayerInputManagement : MonoBehaviour
 {
     public static PlayerInputManagement Instance;
+    [SerializeField] private List<GameObject> menuPlayers;
     [SerializeField] private Transform playerFolder;
+    [SerializeField] private Transform spawnFolder;
     private int playerAmount = 0;
+    public List<InputID> inputDevices = new List<InputID>();
 
-    public List<PlayerInput> playerInputs;
-    public List<InputDevice> inputDevices = new List<InputDevice>();
+    private bool _canConnectNewPlayers;
 
     private void Awake()
     {
+        _canConnectNewPlayers = true;
         if (Instance == null) 
         {
             Instance = this;
@@ -22,51 +39,85 @@ public class PlayerInputManagement : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(playerFolder.gameObject);
+
+        SceneManager.sceneLoaded += DisableConnectingPlayers;
     }
 
-    private void Start()
+    private void DisableConnectingPlayers(Scene scene, LoadSceneMode loadMode) 
     {
-        
+        _canConnectNewPlayers = false;
     }
 
-    private void Update()
+    public void EnableConnectingPlayers() 
     {
-        if (Input.GetKeyDown(KeyCode.E)) 
-        {
-            SceneManager.LoadScene("Marijn");
-        }
+        _canConnectNewPlayers = true;
     }
+    public void HandleSceneSwitch() 
+    {
+        playerFolder = GameObject.FindGameObjectWithTag("PlayerFolder").transform;
+    }
+    
+
+    
 
 
     public void PlayerJoins(PlayerInput playerInput) 
     {
-        if (SceneManager.GetActiveScene().name != "Justin") return;
-        if (playerInput.transform.parent != playerFolder) 
+        if (SceneManager.GetActiveScene().name == "Menu") 
         {
+            MenuJoin(playerInput);
+        }
+
+        else if (SceneManager.GetActiveScene().name == "BoardGame") 
+        {
+            BoardGameJoin(playerInput);
+        } 
+        
+        
+    }
+
+    private void MenuJoin(PlayerInput playerInput) 
+    {
+        if (!playerInput.transform.CompareTag("Player")) 
+        {
+            inputDevices.Add(ReturnInputDevice(playerInput.devices[0]));
+            Instantiate(menuPlayers[GetRightID()], spawnFolder.GetChild(GetRightID()).position, Quaternion.identity, playerFolder);       
             Destroy(playerInput.gameObject);
-            playerFolder.GetChild(playerAmount).GetComponent<PlayerInput>().enabled = true;
-            
-            playerAmount++;
-            
         }
 
         else 
         {
-            playerInputs.Add(playerInput);
-            inputDevices.Add(playerInput.devices[0]);
+            
+            playerAmount++;
+
         }
-        
+    }
+    private void BoardGameJoin(PlayerInput playerInput) 
+    {
+        if (!_canConnectNewPlayers) return;
+        if (playerInput.transform.parent != playerFolder) 
+        {
+            print("This code was played");
+            Destroy(playerInput.gameObject);
+            playerFolder.GetChild(playerAmount).GetComponent<PlayerInput>().enabled = true;         
+        }
+
+        else 
+        {
+            
+            inputDevices.Add(ReturnInputDevice(playerInput.devices[0]));
+            playerAmount++;
+        }
     }
 
     public void PlayerLeaves(PlayerInput playerInput) 
     {
-        if (playerInput.transform.parent != playerFolder) return;
+        if (!playerInput.transform.CompareTag("Player")) return;
         playerAmount--;
         print(playerInput.transform.name + " leaves the game");
 
         print("valid: " + playerInput.user.valid);
-        playerInputs.Remove(playerInput);
-        DisablePlayerInput(playerInput);
+        StartCoroutine(DisablePlayerInput(playerInput));
 
     }
 
@@ -75,6 +126,33 @@ public class PlayerInputManagement : MonoBehaviour
         yield return null;
         playerInput.enabled = false;
 
+    }
+
+    private InputID ReturnInputDevice(InputDevice inputDevice) 
+    {
+        int rightID = 0;
+        for (int i = 0; i < inputDevices.Count; i++) 
+        {
+            if (inputDevices[i].id != i) 
+            {
+                rightID = i;
+                break;
+            }
+
+            else 
+            {
+                rightID = inputDevices.Count;
+            }
+        }
+        InputID newInput = new InputID(inputDevice, rightID);
+
+        print("The id is: " + newInput.id);
+        return newInput;
+    }
+
+    private int GetRightID() 
+    {
+        return inputDevices[inputDevices.Count - 1].id;
     }
      
 }
