@@ -108,7 +108,8 @@ public class BoardGameManager : MonoBehaviour
         state = BoardStates.TurnOfAPlayer;
         blackScreen.GetComponent<Animator>().SetTrigger("PlayAnimation");
         await Task.Delay(300);
-        _playerIndex++;
+
+        _playerIndex = _playerIndex == 3 ? 0 : _playerIndex + 1;
         players[_playerIndex].handler.StartTurn();
     }
 }

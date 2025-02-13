@@ -23,7 +23,8 @@ public class HandleWalking : MonoBehaviour
             int nextSpace = CalculateNextSpace(currentSpace);
             Vector3 nextPosition = ReturnPosition(nextSpace);
             await WalkTowardsTile(nextPosition);
-            currentSpace++;
+
+            currentSpace = nextSpace == 0 ? 0 : currentSpace + 1; 
             diceRoll--;
             text.text = diceRoll.ToString();
         }
@@ -34,6 +35,7 @@ public class HandleWalking : MonoBehaviour
 
     private int CalculateNextSpace(int currentSpace)
     {
+        if (currentSpace >= pathFolder.childCount - 1) return 0;
         return currentSpace + 1;
     }
 

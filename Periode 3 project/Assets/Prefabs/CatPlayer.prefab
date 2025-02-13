@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathFolder: {fileID: 0}
-  walkSpeed: 10
+  walkSpeed: 30
 --- !u!1 &7304087298153778138
 GameObject:
   m_ObjectHideFlags: 0

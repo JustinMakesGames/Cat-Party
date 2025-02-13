@@ -31,6 +31,7 @@ public class TextListScript : MonoBehaviour
 
     public async Task ShowPrompts(List<string> textPrompts)
     {
+        gameText.transform.parent.gameObject.SetActive(true);
         for (int i = 0; i < textPrompts.Count; i++)
         {
             _hasPressedButton = false;
@@ -38,15 +39,16 @@ public class TextListScript : MonoBehaviour
             await Delay(() => _hasPressedButton);
 
         }
-        gameText.text = "";
+        gameText.transform.parent.gameObject.SetActive(false);
     }
 
     public async Task ShowPrompt(string textPrompt)
     {
+        gameText.transform.parent.gameObject.SetActive(true);
         _hasPressedButton = false;
         gameText.text = textPrompt;
         await Delay(() => _hasPressedButton);
-        gameText.text = "";
+        gameText.transform.parent.gameObject.SetActive(false);
     }
 
     private async Task Delay(System.Func<bool> condition)

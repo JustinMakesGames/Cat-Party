@@ -11,10 +11,14 @@ public class AssignPlayersScript : MonoBehaviour
         PlayerInputManagement.Instance.HandleSceneSwitch();
         for (int i = 0; i < PlayerInputManagement.Instance.inputDevices.Count; i++) 
         {
+            PlayerInput playerInput = rightPlayerInput[PlayerInputManagement.Instance.inputDevices[i].id];
 
-            rightPlayerInput[PlayerInputManagement.Instance.inputDevices[i].id].enabled = true;
-            rightPlayerInput[PlayerInputManagement.Instance.inputDevices[i].id].
-                SwitchCurrentControlScheme(PlayerInputManagement.Instance.inputDevices[i].inputDevice);
+            playerInput.enabled = true;
+            if (playerInput.user.valid)
+            {
+                playerInput.user.UnpairDevices();
+            }
+            playerInput.SwitchCurrentControlScheme(PlayerInputManagement.Instance.inputDevices[i].inputDevice);
             
         }
         PlayerInputManagement.Instance.EnableConnectingPlayers();
