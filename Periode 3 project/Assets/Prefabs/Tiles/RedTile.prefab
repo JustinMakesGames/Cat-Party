@@ -121,5 +121,6 @@ MonoBehaviour:
   coinPrefab: {fileID: 4043509892859552629, guid: 4be99fdf3fc00514283a69cf2eaa09dd,
     type: 3}
   coinAmount: -3
-  textCoinAmount: {fileID: 0}
+  coinCollectCanvas: {fileID: 4320603552333688458, guid: 2121730a24e327d4b944a4e68c99de3f,
+    type: 3}
   spaceKind: 0

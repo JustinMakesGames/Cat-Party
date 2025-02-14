@@ -106,10 +106,21 @@ public class BoardGameManager : MonoBehaviour
     public async void StartNewTurn()
     {
         state = BoardStates.TurnOfAPlayer;
-        blackScreen.GetComponent<Animator>().SetTrigger("PlayAnimation");
+        blackScreen.GetComponent<Animator>().SetTrigger("FadeInOut");
         await Task.Delay(300);
 
-        _playerIndex = _playerIndex == 3 ? 0 : _playerIndex + 1;
-        players[_playerIndex].handler.StartTurn();
+        if (_playerIndex == -1)
+        {
+            _playerIndex = -1;
+            StartCoroutine(MinigameManager.Instance.HandleMinigameTime());
+        }
+
+        else
+        {
+            _playerIndex++;
+            players[_playerIndex].handler.StartTurn();
+        }
+        
+        
     }
 }

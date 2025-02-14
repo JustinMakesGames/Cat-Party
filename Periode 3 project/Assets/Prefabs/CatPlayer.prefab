@@ -1412,6 +1412,7 @@ MonoBehaviour:
   woolAmount: 0
   currentSpace: -1
   isPlayer: 0
+  color: {r: 0, g: 0, b: 0, a: 1}
   chooseCanvas: {fileID: 3642103789222774330}
   introScreen: {fileID: 7400159768865880327}
   dice: {fileID: 2269301285119951115, guid: 7221c411c4d37584b9efad84dafa941f, type: 3}

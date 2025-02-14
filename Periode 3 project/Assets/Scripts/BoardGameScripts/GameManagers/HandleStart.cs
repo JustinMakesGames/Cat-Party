@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HandleStart : MonoBehaviour
 {
@@ -12,6 +15,7 @@ public class HandleStart : MonoBehaviour
     [SerializeField] private List<string> textPrompts;
     [SerializeField] private GameObject dice;
     [SerializeField] private GameObject numberOutcome;
+    [SerializeField] private Transform playerUIFolder;
     private bool _hasPressedButton;
     private List<Transform> _players = new List<Transform>();
     private List<int> _allPossibleNumbers = new List<int>() 
@@ -19,6 +23,7 @@ public class HandleStart : MonoBehaviour
         1, 2, 3, 4, 5, 6
     };
     private int rolledDicesAmount;
+
 
     private void Awake()
     {
@@ -70,8 +75,11 @@ public class HandleStart : MonoBehaviour
 
         await TextListScript.Instance.ShowPrompts(TextListScript.Instance.textStrings[1].strings);
 
+        
         BoardGameManager.Instance.StartNewTurn();
     }
+
+    
     private void HandleDiceRoll()
     {
         foreach (Transform p in _players)
@@ -107,7 +115,23 @@ public class HandleStart : MonoBehaviour
         {
             BoardGameManager.Instance.MakeTheTurnOrder();
             _players = BoardGameManager.Instance.playerTransforms;
+            AssignPlayerOrderUI();
             TellPlayerOrder();
+        }
+    }
+
+    private void AssignPlayerOrderUI()
+    {
+        for (int i = 0; i < _players.Count; i++)
+        {
+            Image image = playerUIFolder.GetChild(i).GetComponent<Image>();
+            image.gameObject.SetActive(true);
+            Color color = _players[i].GetComponent<PlayerHandler>().color;
+            image.color = color;
+
+            _players[i].GetComponent<PlayerHandler>().yarnText = image.transform.GetChild(0).GetComponent<TMP_Text>();
+            _players[i].GetComponent<PlayerHandler>().coinText = image.transform.GetChild(1).GetComponent<TMP_Text>();
+            
         }
     }
 

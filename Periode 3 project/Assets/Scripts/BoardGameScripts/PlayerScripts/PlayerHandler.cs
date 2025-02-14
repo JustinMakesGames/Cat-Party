@@ -16,11 +16,15 @@ public class PlayerHandler : MonoBehaviour
     public int woolAmount;
     public int currentSpace;
     public bool isPlayer;
-
+    public Color color;
+    public TMP_Text yarnText, coinText;
     [SerializeField] private GameObject chooseCanvas;
     [SerializeField] private GameObject introScreen;
     [SerializeField] private GameObject dice;
     [SerializeField] private GameObject outcomeCanvas;
+    
+
+    
     private GameObject _outcomeCanvasClone;
     private GameObject _diceClone;
     private Transform _cam;
@@ -121,6 +125,16 @@ public class PlayerHandler : MonoBehaviour
             _canHitDice = false;
             CheckIfPlayerOrCPU();
         }
+    }
+
+    public void ChangeCoinValue (int coinValue)
+    {
+        coinAmount += coinValue;  
+        
+        if (coinAmount < 0) coinAmount = 0;
+        coinText.text = "x" + coinAmount.ToString();
+
+        
     }
     
 

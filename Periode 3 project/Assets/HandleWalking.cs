@@ -50,7 +50,6 @@ public class HandleWalking : MonoBehaviour
     {
         while (Vector3.Distance(transform.position, endDestination) > 0.0001f)
         {
-            print("This is being played right now");
             transform.position = Vector3.MoveTowards(transform.position, endDestination, walkSpeed * Time.deltaTime);
             await Task.Yield();
         }

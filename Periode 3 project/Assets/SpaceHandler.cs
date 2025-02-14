@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Runtime.Serialization.Json;
 using System.Threading.Tasks;
 using UnityEngine;
+using TMPro;
 
 public class SpaceHandler : MonoBehaviour
 {
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private int coinAmount;
-    [SerializeField] private GameObject textCoinAmount;
+    [SerializeField] private GameObject coinCollectCanvas;
     public enum SpaceKind
     {
         Normal,
@@ -34,9 +35,11 @@ public class SpaceHandler : MonoBehaviour
             
         }
 
-        
+        GameObject cloneCanvas = Instantiate(coinCollectCanvas, player.GetChild(0).position, Quaternion.identity);
 
-        player.GetComponent<PlayerHandler>().coinAmount += coinAmount;
+        cloneCanvas.GetComponentInChildren<TMP_Text>().text = coinAmount >= 0 ? "+" + coinAmount.ToString() : coinAmount.ToString();
+        player.GetComponent<PlayerHandler>().ChangeCoinValue(coinAmount);
         await Task.Delay(1000);
+        Destroy(cloneCanvas);
     }
 }

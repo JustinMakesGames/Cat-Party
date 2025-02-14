@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerFolder
   - PathFolder
+  - Arrow
   layers:
   - Default
   - TransparentFX
