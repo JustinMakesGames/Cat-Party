@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class HandleWalking : MonoBehaviour
 {
@@ -11,9 +12,14 @@ public class HandleWalking : MonoBehaviour
     [SerializeField] private float walkSpeed;
     private bool isDoneWalking;
 
+
     private void Awake()
     {
         pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform;
+    }
+    private void Start()
+    {
+        SceneManager.sceneLoaded += AssignPathFolder;
     }
     public async Task<int> StartHandlingWalking(int diceRoll, int currentSpace, TMP_Text text)
     {
@@ -25,8 +31,19 @@ public class HandleWalking : MonoBehaviour
             await WalkTowardsTile(nextPosition);
 
             currentSpace = nextSpace == 0 ? 0 : currentSpace + 1; 
-            diceRoll--;
-            text.text = diceRoll.ToString();
+
+            if (pathFolder.GetChild(currentSpace).GetComponent<SpaceHandler>().isYarnPlace)
+            {
+                originalDiceRoll++;
+                await GetComponent<HandleReachingYarn>().HandleReachingYarnSpace(pathFolder.GetChild(currentSpace).GetComponent<SpaceHandler>());
+            }
+
+            else
+            {
+                diceRoll--;
+                text.text = diceRoll.ToString();
+            }
+            
         }
         Destroy(text.gameObject);
 
@@ -52,6 +69,14 @@ public class HandleWalking : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, endDestination, walkSpeed * Time.deltaTime);
             await Task.Yield();
+        }
+    }
+
+    private void AssignPathFolder(Scene scene, LoadSceneMode mode)
+    {
+        if (SceneManager.GetActiveScene().name == "BoardGame")
+        {
+            pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform;
         }
     }
 }

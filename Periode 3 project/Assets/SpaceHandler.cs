@@ -7,13 +7,15 @@ using TMPro;
 
 public class SpaceHandler : MonoBehaviour
 {
+    public bool isYarnPlace;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private int coinAmount;
     [SerializeField] private GameObject coinCollectCanvas;
     public enum SpaceKind
     {
         Normal,
-        Special
+        Special,
+        YarnPlace
     }
 
     public SpaceKind spaceKind;
@@ -25,12 +27,17 @@ public class SpaceHandler : MonoBehaviour
         return false;
     }
 
-    public async virtual Task HandleLandedPlayer(Transform player)
+    public void SetSpaceAsYarnSpace()
+    {
+        isYarnPlace = true;
+    }
+
+    public virtual IEnumerator HandleLandedPlayer(Transform player)
     {
         for (int i = 0; i < 3; i++)
         {
             GameObject coinClone = Instantiate(coinPrefab, player.position, Quaternion.identity);
-            await Task.Delay(300);
+            yield return new WaitForSeconds(0.3f);
             Destroy(coinClone);
             
         }
@@ -39,7 +46,7 @@ public class SpaceHandler : MonoBehaviour
 
         cloneCanvas.GetComponentInChildren<TMP_Text>().text = coinAmount >= 0 ? "+" + coinAmount.ToString() : coinAmount.ToString();
         player.GetComponent<PlayerHandler>().ChangeCoinValue(coinAmount);
-        await Task.Delay(1000);
+        yield return new WaitForSeconds(1);
         Destroy(cloneCanvas);
     }
 }

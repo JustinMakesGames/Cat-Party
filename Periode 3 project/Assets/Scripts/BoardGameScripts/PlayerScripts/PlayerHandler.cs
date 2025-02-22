@@ -13,7 +13,7 @@ public class PlayerHandler : MonoBehaviour
 {
     public Transform pathFolder;
     public int coinAmount;
-    public int woolAmount;
+    public int yarnAmount;
     public int currentSpace;
     public bool isPlayer;
     public Color color;
@@ -32,15 +32,37 @@ public class PlayerHandler : MonoBehaviour
     private MultiplayerEventSystem _eventSystem;
 
     private bool _canHitDice;
+
+    public bool canClickThroughText;
+
     private void Awake()
     {
         _cam = Camera.main.transform;
         _animator = GetComponentInChildren<Animator>();
         pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform;
         _eventSystem = GetComponentInChildren<MultiplayerEventSystem>();
+
+
+    }
+    public void ClickThroughText(InputAction.CallbackContext context)
+    {
+        if (context.performed && canClickThroughText)
+        {
+            TextListScript.Instance.SetButtonTrue();
+            canClickThroughText = false;
+        }
     }
 
-    public async void StartTurn()
+    public void CanClickThroughText()
+    {
+        canClickThroughText = true;
+    }
+    private void Start()
+    {
+        SceneManager.sceneLoaded += AssignPlayerHandlerToMinigame;
+    }
+
+    public IEnumerator StartTurn()
     {
         _cam.position = transform.GetChild(1).position;
         _cam.parent = transform;
@@ -49,7 +71,7 @@ public class PlayerHandler : MonoBehaviour
             isPlayer = true;
         }
 
-        await Task.Delay(1000);
+        yield return new WaitForSeconds(1);
         introScreen.SetActive(true);
     }
 
@@ -95,18 +117,18 @@ public class PlayerHandler : MonoBehaviour
 
         await Task.Delay(2000);
         currentSpace = await GetComponent<HandleWalking>().StartHandlingWalking(randomValue, currentSpace, _outcomeCanvasClone.GetComponentInChildren<TMP_Text>());
-        HandleOutCome();
+        StartCoroutine(HandleOutCome());
 
     }
 
-    private async void HandleOutCome()
+    private IEnumerator HandleOutCome()
     {
 
-        await Task.Delay(1000);
+        yield return new WaitForSeconds(1);
 
-        await pathFolder.GetChild(currentSpace).GetComponent<SpaceHandler>().HandleLandedPlayer(transform);
+        yield return StartCoroutine(pathFolder.GetChild(currentSpace).GetComponent<SpaceHandler>().HandleLandedPlayer(transform));
 
-        BoardGameManager.Instance.StartNewTurn();
+        StartCoroutine(BoardGameManager.Instance.StartNewTurn());
     }
     public void PlayerHitDiceBlock(InputAction.CallbackContext context)
     {
@@ -136,8 +158,30 @@ public class PlayerHandler : MonoBehaviour
 
         
     }
-    
 
+    public void ChangeYarnValue(int yarnValue)
+    {
+        yarnAmount += yarnValue;
 
-    
+        if (yarnAmount < 0) yarnAmount = 0;
+
+        yarnText.text = "x" + yarnAmount.ToString();
+    }
+
+    private void AssignPlayerHandlerToMinigame(Scene scene, LoadSceneMode mode)
+    {
+        if (SceneManager.GetActiveScene().name == "MinigameTest")
+        {
+            print("Played in " + transform.name);
+            Transform minigamePlayerFolder = GameObject.FindGameObjectWithTag("MinigamePlayerFolder").transform;
+
+            minigamePlayerFolder.GetChild(transform.GetSiblingIndex()).GetComponent<MinigamePlayerHandler>().playerHandler = this;
+        }
+
+        if (SceneManager.GetActiveScene().name == "BoardGame")
+        {
+            _cam = Camera.main.transform;
+            pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform;
+        }
+    }
 }

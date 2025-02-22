@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -37,12 +38,21 @@ public class PlayerInputManagement : MonoBehaviour
             Instance = this;
         }
 
+        else
+        {
+            Destroy(gameObject);
+        }
+
         DontDestroyOnLoad(gameObject);
         DontDestroyOnLoad(playerFolder.gameObject);
 
-        SceneManager.sceneLoaded += DisableConnectingPlayers;
+        
     }
 
+    private void Start()
+    {
+        SceneManager.sceneLoaded += DisableConnectingPlayers;
+    }
     private void DisableConnectingPlayers(Scene scene, LoadSceneMode loadMode) 
     {
         _canConnectNewPlayers = false;
@@ -111,12 +121,7 @@ public class PlayerInputManagement : MonoBehaviour
     }
 
     public void PlayerLeaves(PlayerInput playerInput) 
-    {
-        if (!playerInput.transform.CompareTag("Player")) return;
-        playerAmount--;
-        print(playerInput.transform.name + " leaves the game");
-
-        print("valid: " + playerInput.user.valid);
+    {    
         StartCoroutine(DisablePlayerInput(playerInput));
 
     }
@@ -124,6 +129,11 @@ public class PlayerInputManagement : MonoBehaviour
     private IEnumerator DisablePlayerInput(PlayerInput playerInput) 
     {
         yield return null;
+        if (playerInput == null || !playerInput.transform.CompareTag("Player")) yield break;
+        playerAmount--;
+        print(playerInput.transform.name + " leaves the game");
+
+        print("valid: " + playerInput.user.valid);
         playerInput.enabled = false;
 
     }

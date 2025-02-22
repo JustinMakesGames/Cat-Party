@@ -3,14 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class MinigameManager : MonoBehaviour
 {
     public static MinigameManager Instance;
+
+    public PlayerHandler winningPlayerHandler;
+    public string previousScene;
+    [SerializeField] private Transform players;
+    [SerializeField] private Transform minigamePlayers;
     [SerializeField] private List<string> allMinigameScenes = new List<string>();
     [SerializeField] private GameObject minigameText;
     [SerializeField] private GameObject minigameScreen;
     [SerializeField] private Animator blackScreenAnimator;
+
+    private Transform minigameCanvas;
+    private GameObject minigamePanel;
+    private Animator whiteScreenAnimator;
+    private TMP_Text winnerText;
+
+    private bool hasComeFromMinigame;
 
     private void Awake()
     {
@@ -18,6 +31,55 @@ public class MinigameManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        
+        print("Subscribed");
+    }
+
+    private void Start()
+    {
+        SceneManager.sceneLoaded += HandleSceneSwitch;
+    }
+
+    private void Update()
+    {
+        print("This is played in: " + transform.name);
+    }
+
+    private void HandleSceneSwitch(Scene scene, LoadSceneMode mode)
+    {
+        
+        if (SceneManager.GetActiveScene().name == "MinigameTest")
+        {
+            print($"hi noob in {transform.name}");
+            minigamePlayers = GameObject.FindGameObjectWithTag("MinigamePlayerFolder").transform;
+            blackScreenAnimator.SetTrigger("FadeOut");
+
+            foreach (Transform playerHandler in minigamePlayers)
+            {
+                print("YEs");
+                playerHandler.GetComponent<MinigamePlayerHandler>().SetMinigamePlayerOn();
+            }
+
+            minigameCanvas = GameObject.FindGameObjectWithTag("MinigameCanvas").transform;
+
+            minigamePanel = minigameCanvas.GetChild(0).gameObject;
+            whiteScreenAnimator = minigameCanvas.GetComponentInChildren<Animator>();
+            winnerText = minigameCanvas.GetChild(2).GetComponent<TMP_Text>();
+
+        }
+
+        if (SceneManager.GetActiveScene().name == "BoardGame" && previousScene == "MinigameTest")
+        {
+            blackScreenAnimator.SetTrigger("FadeOut");
+            BoardGameManager.Instance.HandleReturnToBoardGame(winningPlayerHandler);
+        }
+        
     }
     public IEnumerator HandleMinigameTime()
     {
@@ -54,15 +116,47 @@ public class MinigameManager : MonoBehaviour
         allImages[randomChosenMinigame].SetActive(true);
 
         yield return new WaitForSeconds(2);
-
-        StartCoroutine(PlayThisMinigame(allMinigameScenes[0]));
+        foreach (GameObject image in allImages)
+        {
+            print(image.transform.name);
+            image.SetActive(true);
+        }
+        minigameScreen.SetActive(false);
+        StartCoroutine(SceneSwithToMinigame(allMinigameScenes[0]));
 
     }
 
-    private IEnumerator PlayThisMinigame(string scene)
+    private IEnumerator SceneSwithToMinigame(string scene)
     {
         blackScreenAnimator.SetTrigger("FadeIn");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
+        
         SceneManager.LoadScene(scene);
+    }
+
+    public IEnumerator StartMinigame()
+    {
+        whiteScreenAnimator.SetTrigger("FadeInOut");
+        yield return new WaitForSeconds(0.2f);
+        minigamePanel.SetActive(false);
+        GameObject.FindGameObjectWithTag("MinigameManager").GetComponent<IMinigameManager>().BeginMinigame();
+    }
+
+    public void EndMinigame(PlayerHandler playerHandler)
+    {
+        winningPlayerHandler = playerHandler;
+        StartCoroutine(ShowPlayerWonText(winningPlayerHandler));
+    }
+
+    private IEnumerator ShowPlayerWonText(PlayerHandler playerHandler)
+    {
+        winnerText.gameObject.SetActive(true);
+        winnerText.text = $"{playerHandler.name} WON!";
+        yield return new WaitForSeconds(5);
+        blackScreenAnimator.SetTrigger("FadeIn");
+        yield return new WaitForSeconds(2);
+        previousScene = SceneManager.GetActiveScene().name;
+        SceneManager.LoadScene("BoardGame");
+
     }
 }

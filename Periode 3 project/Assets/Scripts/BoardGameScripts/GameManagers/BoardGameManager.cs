@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class PlayerStats
@@ -17,8 +18,8 @@ public class PlayerStats
 
     public int WoolAmount
     {
-        get => handler.woolAmount;
-        set => handler.woolAmount = value;
+        get => handler.yarnAmount;
+        set => handler.yarnAmount = value;
     }
 
     public int CurrentPlacement
@@ -47,6 +48,7 @@ public class BoardGameManager : MonoBehaviour
     public BoardStates state;
     [SerializeField] private Transform playerFolder;
     [SerializeField] private GameObject blackScreen;
+    [SerializeField] private GameObject canvasObject;
     
     public List<Transform> playerTransforms = new List<Transform>();
     public List<PlayerStats> players = new List<PlayerStats>();
@@ -60,7 +62,13 @@ public class BoardGameManager : MonoBehaviour
         {
             Instance = this;
         }
+
+        else
+        {
+            Destroy(gameObject);
+        }
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(canvasObject);
         AssignPlayers();
     }
     
@@ -99,17 +107,22 @@ public class BoardGameManager : MonoBehaviour
 
     private void Start()
     {
+        print("Played the start of the boardgamemanager");
         GetComponent<HandleStart>().HandleTheStart(); 
                  
     }
 
-    public async void StartNewTurn()
+    public IEnumerator StartNewTurn()
     {
         state = BoardStates.TurnOfAPlayer;
         blackScreen.GetComponent<Animator>().SetTrigger("FadeInOut");
-        await Task.Delay(300);
 
-        if (_playerIndex == -1)
+        Camera.main.transform.parent = null;
+        SceneManager.MoveGameObjectToScene(Camera.main.gameObject, SceneManager.GetActiveScene());
+
+        yield return new WaitForSeconds(0.3f);
+
+        if (_playerIndex == 3)
         {
             _playerIndex = -1;
             StartCoroutine(MinigameManager.Instance.HandleMinigameTime());
@@ -118,9 +131,16 @@ public class BoardGameManager : MonoBehaviour
         else
         {
             _playerIndex++;
-            players[_playerIndex].handler.StartTurn();
+            StartCoroutine(players[_playerIndex].handler.StartTurn());
         }
         
         
     }
+
+    public void HandleReturnToBoardGame(PlayerHandler winnerPlayerHandler)
+    {
+        BoardPlacementManager.Instance.ShowBoardPlacement(winnerPlayerHandler);
+    }
+
+    
 }

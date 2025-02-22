@@ -11,13 +11,9 @@ public class PlayerHandleStart : MonoBehaviour
     private bool _isPlayer;
 
     public int rolledNumber;
-    public void ClickThroughText(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            TextListScript.Instance.SetButtonTrue();
-        }
-    }
+   
+
+    
 
     public void FirstDiceRollPlayer(InputAction.CallbackContext context)
     {

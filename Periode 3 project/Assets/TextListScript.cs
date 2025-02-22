@@ -16,7 +16,10 @@ public class TextListScript : MonoBehaviour
 {
     public static TextListScript Instance;
     public List<TextStrings> textStrings = new List<TextStrings>();
+    [SerializeField] private Transform playerFolder;
     [SerializeField] private TMP_Text gameText;
+
+    private List<PlayerHandler> _playerHandlers = new List<PlayerHandler>();
     private bool _hasPressedButton;
 
     private void Awake()
@@ -26,36 +29,156 @@ public class TextListScript : MonoBehaviour
             Instance = this;
         }
 
+        for (int i = 0; i < playerFolder.childCount; i++)
+        {
+            _playerHandlers.Add(playerFolder.GetChild(i).GetComponent<PlayerHandler>());
+        }
         
     }
 
-    public async Task ShowPrompts(List<string> textPrompts)
+    public IEnumerator ShowPrompts(List<string> textPrompts)
     {
         gameText.transform.parent.gameObject.SetActive(true);
         for (int i = 0; i < textPrompts.Count; i++)
         {
+            foreach (PlayerHandler handler in _playerHandlers)
+            {
+                handler.canClickThroughText = true;
+            }
             _hasPressedButton = false;
             gameText.text = textPrompts[i];
-            await Delay(() => _hasPressedButton);
+            yield return StartCoroutine(Delay(() => _hasPressedButton));
+
+            foreach (PlayerHandler handler in _playerHandlers)
+            {
+                handler.canClickThroughText = false;
+            }
 
         }
         gameText.transform.parent.gameObject.SetActive(false);
     }
 
-    public async Task ShowPrompt(string textPrompt)
+    public IEnumerator ShowPrompts(List<string> textPrompts, bool continuesAutomatically)
     {
         gameText.transform.parent.gameObject.SetActive(true);
-        _hasPressedButton = false;
-        gameText.text = textPrompt;
-        await Delay(() => _hasPressedButton);
+
+        if (continuesAutomatically)
+        {
+            for (int i = 0; i < textPrompts.Count; i++)
+            {
+
+                _hasPressedButton = false;
+                gameText.text = textPrompts[i];
+                yield return new WaitForSeconds(2);
+
+            }
+        }
+
+        else
+        {
+            for (int i = 0; i < textPrompts.Count; i++)
+            {
+                foreach (PlayerHandler handler in _playerHandlers)
+                {
+                    handler.canClickThroughText = true;
+                }
+                _hasPressedButton = false;
+                gameText.text = textPrompts[i];
+                yield return StartCoroutine(Delay(() => _hasPressedButton));
+
+                foreach (PlayerHandler handler in _playerHandlers)
+                {
+                    handler.canClickThroughText = false;
+                }
+
+            }
+        }
+
         gameText.transform.parent.gameObject.SetActive(false);
     }
 
-    private async Task Delay(System.Func<bool> condition)
+    public IEnumerator ShowPrompts(List<string> textPrompts, PlayerHandler specificPlayer)
+    {
+        gameText.transform.parent.gameObject.SetActive(true);
+
+        for (int i = 0; i < textPrompts.Count; i++)
+        {
+            specificPlayer.canClickThroughText = true;
+            _hasPressedButton = false;
+            gameText.text = textPrompts[i];
+            yield return StartCoroutine(Delay(() => _hasPressedButton));
+            specificPlayer.canClickThroughText = false;
+
+        }
+
+
+        gameText.transform.parent.gameObject.SetActive(false);
+    }
+
+    public IEnumerator ShowPrompt(string textPrompt)
+    {
+        gameText.transform.parent.gameObject.SetActive(true);
+
+        foreach (PlayerHandler handler in _playerHandlers)
+        {
+            handler.canClickThroughText = true;
+        }
+        _hasPressedButton = false;
+        gameText.text = textPrompt;
+        yield return StartCoroutine(Delay(() => _hasPressedButton));
+
+        foreach (PlayerHandler handler in _playerHandlers)
+        {
+            handler.canClickThroughText = false;
+        }
+        gameText.transform.parent.gameObject.SetActive(false);
+    }
+
+    public IEnumerator ShowPrompt(string textPrompt, bool continuesAutomatically)
+    {
+        gameText.transform.parent.gameObject.SetActive(true);
+
+        if (continuesAutomatically)
+        {
+            _hasPressedButton = false;
+            gameText.text = textPrompt;
+            yield return new WaitForSeconds(2);
+        }
+
+        else
+        {
+            foreach (PlayerHandler handler in _playerHandlers)
+            {
+                handler.canClickThroughText = true;
+            }
+            _hasPressedButton = false;
+            gameText.text = textPrompt;
+            yield return StartCoroutine(Delay(() => _hasPressedButton));
+
+            foreach (PlayerHandler handler in _playerHandlers)
+            {
+                handler.canClickThroughText = false;
+            }
+        }
+
+        gameText.transform.parent.gameObject.SetActive(false);
+    }
+
+    public IEnumerator ShowPrompt(string textPrompt, PlayerHandler specificPlayer)
+    {
+        gameText.transform.parent.gameObject.SetActive(true);
+        specificPlayer.canClickThroughText = true;
+        _hasPressedButton = false;
+        gameText.text = textPrompt;
+        yield return StartCoroutine(Delay(() => _hasPressedButton));
+        specificPlayer.canClickThroughText = false;
+        gameText.transform.parent.gameObject.SetActive(false);
+    }
+    private IEnumerator Delay(System.Func<bool> condition)
     {
         while (!condition())
         {
-            await Task.Yield();
+            yield return null;
         }
     }
 

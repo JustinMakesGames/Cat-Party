@@ -1,11 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,7 +31,7 @@ public class HandleStart : MonoBehaviour
     public void HandleTheStart()
     {
         AssignPlayers();
-        ShowText();
+        StartCoroutine(ShowText());
     }
 
     private void AssignPlayers()
@@ -43,22 +39,22 @@ public class HandleStart : MonoBehaviour
         _players = BoardGameManager.Instance.playerTransforms;
     }
 
-    private async void ShowText()
+    private IEnumerator ShowText()
     {
-        await TextListScript.Instance.ShowPrompts(TextListScript.Instance.textStrings[0].strings);
+        yield return StartCoroutine(TextListScript.Instance.ShowPrompts(TextListScript.Instance.textStrings[0].strings));
         HandleDiceRoll();
     }
 
-    private async void TellPlayerOrder()
+    private IEnumerator TellPlayerOrder()
     {
-        await Task.Delay(1400);
+        yield return new WaitForSeconds(1.4f);
 
         foreach (var player in _players)
         {
             Destroy(player.GetChild(0).gameObject);
         }
 
-        await Task.Delay(100);
+        yield return new WaitForSeconds(0.1f);
         Vector3 originalCameraPosition = Camera.main.transform.position;
         List<string> numbers = new List<string>() {
             "first", "second", "third", "fourth"
@@ -68,15 +64,15 @@ public class HandleStart : MonoBehaviour
         {
             string prompt = _players[i].name + " goes " + numbers[i] + ".";
             Camera.main.transform.position = _players[i].GetChild(1).position;
-            await TextListScript.Instance.ShowPrompt(prompt);
+            yield return StartCoroutine(TextListScript.Instance.ShowPrompt(prompt));
         }
 
         Camera.main.transform.position = originalCameraPosition;
 
-        await TextListScript.Instance.ShowPrompts(TextListScript.Instance.textStrings[1].strings);
+        yield return StartCoroutine(TextListScript.Instance.ShowPrompts(TextListScript.Instance.textStrings[1].strings));
 
-        
-        BoardGameManager.Instance.StartNewTurn();
+        yield return StartCoroutine(YarnPlacement.Instance.StartShowingYarnPlacement());
+        StartCoroutine(BoardGameManager.Instance.StartNewTurn());
     }
 
     
@@ -116,7 +112,7 @@ public class HandleStart : MonoBehaviour
             BoardGameManager.Instance.MakeTheTurnOrder();
             _players = BoardGameManager.Instance.playerTransforms;
             AssignPlayerOrderUI();
-            TellPlayerOrder();
+            StartCoroutine(TellPlayerOrder());
         }
     }
 

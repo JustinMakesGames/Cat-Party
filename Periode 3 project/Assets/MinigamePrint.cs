@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class MinigamePrint : MonoBehaviour
 {
+
     public void HasJumped(InputAction.CallbackContext context) 
     {
         if (context.performed) 
