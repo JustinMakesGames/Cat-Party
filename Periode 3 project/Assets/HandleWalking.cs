@@ -9,6 +9,7 @@ public class HandleWalking : MonoBehaviour
 {
     public Transform pathFolder;
 
+    public int currentlyOnThisSpace;
     [SerializeField] private float walkSpeed;
     private bool isDoneWalking;
 
@@ -23,19 +24,25 @@ public class HandleWalking : MonoBehaviour
     }
     public async Task<int> StartHandlingWalking(int diceRoll, int currentSpace, TMP_Text text)
     {
+        currentlyOnThisSpace = currentSpace;
         int originalDiceRoll = diceRoll;
         for (int i = 0; i < originalDiceRoll; i++)
         {
-            int nextSpace = CalculateNextSpace(currentSpace);
+            
+            int nextSpace = CalculateNextSpace(currentlyOnThisSpace);
             Vector3 nextPosition = ReturnPosition(nextSpace);
             await WalkTowardsTile(nextPosition);
 
-            currentSpace = nextSpace == 0 ? 0 : currentSpace + 1; 
-
-            if (pathFolder.GetChild(currentSpace).GetComponent<SpaceHandler>().isYarnPlace)
+            currentlyOnThisSpace = nextSpace == 0 ? 0 : currentlyOnThisSpace + 1;
+            if (pathFolder.GetChild(currentlyOnThisSpace).GetComponent<SpaceHandler>().spaceKind == SpaceHandler.SpaceKind.Special)
             {
                 originalDiceRoll++;
-                await GetComponent<HandleReachingYarn>().HandleReachingYarnSpace(pathFolder.GetChild(currentSpace).GetComponent<SpaceHandler>());
+                await pathFolder.GetChild(currentlyOnThisSpace).GetComponent<SpaceHandler>().HandleAsyncLandedPlayer(transform, currentlyOnThisSpace);
+            }
+            else if (pathFolder.GetChild(currentlyOnThisSpace).GetComponent<SpaceHandler>().isYarnPlace)
+            {
+                originalDiceRoll++;
+                await GetComponent<HandleReachingYarn>().HandleReachingYarnSpace(pathFolder.GetChild(currentlyOnThisSpace).GetComponent<SpaceHandler>());
             }
 
             else
@@ -47,7 +54,7 @@ public class HandleWalking : MonoBehaviour
         }
         Destroy(text.gameObject);
 
-        return currentSpace;
+        return currentlyOnThisSpace;
     }
 
     private int CalculateNextSpace(int currentSpace)

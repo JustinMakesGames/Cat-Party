@@ -49,4 +49,11 @@ public class SpaceHandler : MonoBehaviour
         yield return new WaitForSeconds(1);
         Destroy(cloneCanvas);
     }
+
+    public virtual async Task HandleAsyncLandedPlayer(Transform player, int currentIndex)
+    {
+        await Task.Yield();
+    }
+
+    
 }
