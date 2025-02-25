@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class MinigamePlayerHandler : MonoBehaviour
 {
     public PlayerHandler playerHandler;
-    private bool _isStartingMinigame;
+    public bool isStartingMinigame;
 
     public void SetPlayerHandler(PlayerHandler handler)
     {
@@ -15,13 +15,13 @@ public class MinigamePlayerHandler : MonoBehaviour
     public void SetMinigamePlayerOn()
     {
         print("Sets it on in " + transform.name);
-        _isStartingMinigame = true;
+        isStartingMinigame = true;
     }
     public void StartMinigame(InputAction.CallbackContext context)
     {
-        if (context.performed &&  _isStartingMinigame)
+        if (context.performed &&  isStartingMinigame)
         {
-            _isStartingMinigame = false;
+            isStartingMinigame = false;
             StartCoroutine(MinigameManager.Instance.StartMinigame());
 
         }

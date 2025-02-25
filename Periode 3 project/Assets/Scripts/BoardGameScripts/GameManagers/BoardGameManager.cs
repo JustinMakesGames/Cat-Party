@@ -112,6 +112,14 @@ public class BoardGameManager : MonoBehaviour
                  
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            SceneManager.LoadScene("MinigameTest");
+        }
+    }
+
     public IEnumerator StartNewTurn()
     {
         state = BoardStates.TurnOfAPlayer;

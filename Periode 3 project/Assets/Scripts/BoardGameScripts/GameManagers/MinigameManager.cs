@@ -22,6 +22,7 @@ public class MinigameManager : MonoBehaviour
     private GameObject minigamePanel;
     private Animator whiteScreenAnimator;
     private TMP_Text winnerText;
+    private TMP_Text startText;
 
     private bool hasComeFromMinigame;
 
@@ -46,10 +47,7 @@ public class MinigameManager : MonoBehaviour
         SceneManager.sceneLoaded += HandleSceneSwitch;
     }
 
-    private void Update()
-    {
-        print("This is played in: " + transform.name);
-    }
+   
 
     private void HandleSceneSwitch(Scene scene, LoadSceneMode mode)
     {
@@ -71,6 +69,7 @@ public class MinigameManager : MonoBehaviour
             minigamePanel = minigameCanvas.GetChild(0).gameObject;
             whiteScreenAnimator = minigameCanvas.GetComponentInChildren<Animator>();
             winnerText = minigameCanvas.GetChild(2).GetComponent<TMP_Text>();
+            startText = minigameCanvas.GetChild(3).GetComponent<TMP_Text>();
 
         }
 
@@ -136,9 +135,18 @@ public class MinigameManager : MonoBehaviour
 
     public IEnumerator StartMinigame()
     {
+        foreach (Transform player in minigamePlayers)
+        {
+            player.GetComponent<MinigamePlayerHandler>().isStartingMinigame = false;
+        }
         whiteScreenAnimator.SetTrigger("FadeInOut");
         yield return new WaitForSeconds(0.2f);
         minigamePanel.SetActive(false);
+
+        yield return new WaitForSeconds(1);
+        startText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        startText.gameObject.SetActive(false);
         GameObject.FindGameObjectWithTag("MinigameManager").GetComponent<IMinigameManager>().BeginMinigame();
     }
 
@@ -150,7 +158,11 @@ public class MinigameManager : MonoBehaviour
 
     private IEnumerator ShowPlayerWonText(PlayerHandler playerHandler)
     {
+        
         winnerText.gameObject.SetActive(true);
+        winnerText.text = "FINISH!";
+
+        yield return new WaitForSeconds(1);
         winnerText.text = $"{playerHandler.name} WON!";
         yield return new WaitForSeconds(5);
         blackScreenAnimator.SetTrigger("FadeIn");
