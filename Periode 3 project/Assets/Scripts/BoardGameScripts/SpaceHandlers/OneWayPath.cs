@@ -18,4 +18,14 @@ public class OneWayPath : SpaceHandler
         player.GetComponent<HandleWalking>().pathFolder = pathFolder;
         player.GetComponent<HandleWalking>().currentlyOnThisSpace = rightIndex;
     }
+
+    public Transform GetRightPathFolder()
+    {
+        return pathFolder;
+    }
+
+    public int GetIndex()
+    {
+        return rightIndex;
+    }
 }

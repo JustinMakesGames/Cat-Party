@@ -10,7 +10,7 @@ public class YarnPlacement : MonoBehaviour
     [SerializeField] private float cameraSpeed;
     [SerializeField] private Vector3 cameraSpaceOffset;
     [SerializeField] private GameObject yarnSpaceRenderer;
-    [SerializeField] private Transform spaceFolder;
+    [SerializeField] private List<Transform> spaceFolders;
     private SpaceHandler yarnSpace;
     private List<SpaceHandler> _spaceHandlers = new List<SpaceHandler>();
 
@@ -26,14 +26,18 @@ public class YarnPlacement : MonoBehaviour
             Destroy(gameObject);
         }
 
-        for (int i = 0; i < spaceFolder.childCount; i++)
+        for (int s = 0; s < spaceFolders.Count; s++)
         {
-            if (spaceFolder.GetChild(i).GetComponent<SpaceHandler>().spaceKind == SpaceHandler.SpaceKind.YarnPlace)
+            for (int i = 0; i < spaceFolders[s].childCount; i++)
             {
-                _spaceHandlers.Add(spaceFolder.GetChild(i).GetComponent<SpaceHandler>());
+                if (spaceFolders[s].GetChild(i).GetComponent<SpaceHandler>().spaceKind == SpaceHandler.SpaceKind.YarnPlace)
+                {
+                    _spaceHandlers.Add(spaceFolders[s].GetChild(i).GetComponent<SpaceHandler>());
+                }
+
             }
-            
         }
+        
     }
 
     public IEnumerator StartShowingYarnPlacement()

@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class PillarsManager : MonoBehaviour, IMinigameManager
 {
+    public static PillarsManager Instance;
     public List<Transform> alivePlayers = new List<Transform>();
+    public GameObject speedBoosterClone;
     [SerializeField] private Transform playerFolder;
     [SerializeField] private Transform platformFolder;
     [SerializeField] private Renderer signRenderer;
     [SerializeField] private float timeDown;
     [SerializeField] private float firstWait, secondWait, thirdWait;
     [SerializeField] private float shakeAmount;
-
+    [SerializeField] private GameObject speedBoostPrefab;
+    [SerializeField] private Transform arena;
     private float _firstInitialTime, _secondInitialTime, _thirdInitialTime;
-
     private Transform _rightPillar;
     private List<PlayerHandler> playerHandlers = new List<PlayerHandler>();
     private List<Transform> platforms = new List<Transform>();
@@ -25,6 +27,14 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
 
     private bool _hasFinishedMinigame;
 
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
     private void Start()
     {
         _firstInitialTime = firstWait;
@@ -40,6 +50,7 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
         }
 
         StartCoroutine(ChoosePillar());
+        StartCoroutine(SpawnSpeedBoosters());
     }
 
     private IEnumerator ChoosePillar()
@@ -64,6 +75,40 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
 
     }
 
+    private IEnumerator SpawnSpeedBoosters()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(2);
+
+            if (speedBoosterClone == null) 
+            {
+                yield return new WaitForSeconds(2);
+                ChoosePlaceToSpawn();
+            }
+            yield return null;
+        }
+        
+    }
+
+    private void ChoosePlaceToSpawn()
+    {
+        Vector3 position = SearchPosition();
+
+        speedBoosterClone = Instantiate(speedBoostPrefab, position, Quaternion.identity);
+
+    }
+
+    private Vector3 SearchPosition()
+    {
+        Bounds bounds = arena.GetComponentInChildren<Collider>().bounds;
+        Vector3 destination = new Vector3(Random.Range(bounds.min.x + 2, bounds.max.x - 2),
+            transform.position.y,
+            Random.Range(bounds.min.z + 2, bounds.max.z - 2));
+
+        return destination;
+    }
+
     private void Update()
     {
         LetPillarsShake();
@@ -72,7 +117,7 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
     {
         int randomPillar = Random.Range(0, platforms.Count);
         _rightPillar = platforms[randomPillar];
-        signRenderer.material.color = _rightPillar.GetComponent<Renderer>().material.color;
+        signRenderer.material.color = _rightPillar.GetComponentInChildren<Renderer>().material.color;
     }
 
     private void TurnCPUSMovementOn()

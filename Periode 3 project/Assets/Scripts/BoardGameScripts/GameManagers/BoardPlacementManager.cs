@@ -29,6 +29,8 @@ public class BoardPlacementManager : MonoBehaviour
     [SerializeField] private Transform playerUIFolder;
     private List<PlayerHandler> _playerHandlers = new List<PlayerHandler>();
     private List<PlayerUIStats> _playerUIStats = new List<PlayerUIStats>();
+
+    
     
 
     private void Awake()

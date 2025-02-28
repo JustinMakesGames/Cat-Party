@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using TMPro;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 [System.Serializable]
 public class PlayerStats
@@ -49,13 +51,20 @@ public class BoardGameManager : MonoBehaviour
     [SerializeField] private Transform playerFolder;
     [SerializeField] private GameObject blackScreen;
     [SerializeField] private GameObject canvasObject;
+    [SerializeField] private TMP_Text roundText, maxRoundText;
+    [SerializeField] private float animationDuration;
+    [SerializeField] private int maxTurnAmount;
+    [SerializeField] private Transform camPosition;
     
     public List<Transform> playerTransforms = new List<Transform>();
     public List<PlayerStats> players = new List<PlayerStats>();
 
     private int _playerIndex = -1;
     private bool _gameHasStarted;
-    
+
+
+    private int _turnAmount;
+
     private void Awake()
     {
         if (Instance == null)
@@ -122,11 +131,20 @@ public class BoardGameManager : MonoBehaviour
 
     public IEnumerator StartNewTurn()
     {
+        Camera.main.transform.parent = null;
+        SceneManager.MoveGameObjectToScene(Camera.main.gameObject, SceneManager.GetActiveScene());
+        if (_playerIndex == -1)
+        {
+            blackScreen.GetComponent<Animator>().SetTrigger("FadeInOut");
+            yield return new WaitForSeconds(0.2f);
+            Camera.main.transform.position = camPosition.position;
+            yield return StartCoroutine(ShowNextTurn());
+        }
+        
         state = BoardStates.TurnOfAPlayer;
         blackScreen.GetComponent<Animator>().SetTrigger("FadeInOut");
 
-        Camera.main.transform.parent = null;
-        SceneManager.MoveGameObjectToScene(Camera.main.gameObject, SceneManager.GetActiveScene());
+        
 
         yield return new WaitForSeconds(0.3f);
 
@@ -143,6 +161,34 @@ public class BoardGameManager : MonoBehaviour
         }
         
         
+    }
+
+    private IEnumerator ShowNextTurn()
+    {
+        roundText.gameObject.SetActive(true);
+        maxRoundText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        UpdateNumber();
+        yield return new WaitForSeconds(2);
+        roundText.gameObject.SetActive(false);
+        maxRoundText.gameObject.SetActive(false);
+    }
+
+    private void UpdateNumber()
+    {
+        TMP_Text oldText = Instantiate(roundText, roundText.transform.parent);
+        oldText.text = _turnAmount.ToString();
+
+        oldText.rectTransform.DOAnchorPosY(roundText.rectTransform.anchoredPosition.y - 50, animationDuration);
+        oldText.DOFade(0, animationDuration).OnComplete(() => Destroy(oldText.gameObject));
+
+        _turnAmount++;
+        roundText.text = _turnAmount.ToString();
+        roundText.rectTransform.anchoredPosition += new Vector2(0, 50);
+        roundText.alpha = 0;
+
+        roundText.DOFade(1, animationDuration);
+        roundText.rectTransform.DOAnchorPosY(roundText.rectTransform.anchoredPosition.y - 50, animationDuration);
     }
 
     public void HandleReturnToBoardGame(PlayerHandler winnerPlayerHandler)

@@ -10,6 +10,7 @@ TagManager:
   - MinigameCanvas
   - MinigameManager
   - MinigamePlayerFolder
+  - MainCameraPosition
   layers:
   - Default
   - TransparentFX

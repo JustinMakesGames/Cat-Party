@@ -68,7 +68,8 @@ public class BrancingPathHandler : SpaceHandler
 
     private void GivePlayerControl()
     {
-        _landedPlayer.GetComponent<HandleBrancingPathPlayer>().SetArrowsOn(arrows, this);
+        _landedPlayer.GetComponent<HandleBrancingPathPlayer>().SetArrowsOn
+            (arrows, this, pathFolders[0].pathFolder, pathFolders[1].pathFolder, _landedPlayer.GetComponent<HandleWalking>().currentlyOnThisSpace);
     }
 
     public void PlayerSelectsArrow(Transform rightArrow)
@@ -100,7 +101,6 @@ public class BrancingPathHandler : SpaceHandler
         }
 
         arrows.Clear();
-
-        
+   
     }
 }
