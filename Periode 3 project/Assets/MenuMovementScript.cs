@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class MenuMovementScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class MenuMovementScript : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        SceneManager.sceneLoaded += SceneSwitchHandling;
     }
     public void OnMovement(InputAction.CallbackContext context) 
     {
@@ -22,5 +24,20 @@ public class MenuMovementScript : MonoBehaviour
     private void FixedUpdate()
     {
         _rb.velocity = _dir * speed * Time.deltaTime;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= SceneSwitchHandling;
+    }
+    private void SceneSwitchHandling(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(DeleteObject());
+    }
+
+    private IEnumerator DeleteObject()
+    {
+        yield return null;
+        Destroy(gameObject);
     }
 }
