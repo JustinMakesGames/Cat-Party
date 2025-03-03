@@ -71,7 +71,7 @@ public class PlayerShopHandling : MonoBehaviour
 
     public void MoveSelectedItem(InputAction.CallbackContext context)
     {
-        if (context.started && context.ReadValue<Vector2>().x > 0)
+        if (context.started && _isShopping && context.ReadValue<Vector2>().x > 0)
         {
             selectedItem.localScale = new Vector3(0.05f, 0.05f, 0.05f);
             int selectedIndex = selectedItem.GetSiblingIndex();
@@ -84,7 +84,7 @@ public class PlayerShopHandling : MonoBehaviour
             selectedItem = selectedItem.parent.GetChild(selectedIndex + 1);
         }
 
-        if (context.started && context.ReadValue<Vector2>().x < 0)
+        if (context.started && _isShopping && context.ReadValue<Vector2>().x < 0)
         {
             selectedItem.localScale = new Vector3(0.05f, 0.05f, 0.05f);
             int selectedIndex = selectedItem.GetSiblingIndex();
