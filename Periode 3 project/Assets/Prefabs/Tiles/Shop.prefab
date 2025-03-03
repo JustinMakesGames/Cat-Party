@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8113731913378437118}
   - component: {fileID: 6305123760818896939}
   - component: {fileID: 3637313345945249633}
-  - component: {fileID: 6118745414578030887}
+  - component: {fileID: 4745938539481740032}
   m_Layer: 0
   m_Name: Shop
   m_TagString: Untagged
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6118745414578030887
+--- !u!114 &4745938539481740032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,16 +116,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8683963477578613641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34916448dc2c0a4488bbe2c965c6a4e0, type: 3}
+  m_Script: {fileID: 11500000, guid: 68faf3792c69cea4aab021bf0d2fd8e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isYarnPlace: 0
-  coinPrefab: {fileID: 4043509892859552629, guid: 15cece9534e7ce74b9a68c38f4bc73b1,
-    type: 3}
-  coinAmount: 3
-  coinCollectCanvas: {fileID: 4320603552333688458, guid: 2121730a24e327d4b944a4e68c99de3f,
-    type: 3}
-  spaceKind: 0
+  coinPrefab: {fileID: 0}
+  coinAmount: 0
+  coinCollectCanvas: {fileID: 0}
+  spaceKind: 1
 --- !u!1001 &6542165252186776885
 PrefabInstance:
   m_ObjectHideFlags: 0
