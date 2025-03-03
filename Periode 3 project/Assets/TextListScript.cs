@@ -27,8 +27,13 @@ public class TextListScript : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
+        else
+        {
+            Destroy(gameObject);
+        }
         for (int i = 0; i < playerFolder.childCount; i++)
         {
             _playerHandlers.Add(playerFolder.GetChild(i).GetComponent<PlayerHandler>());
@@ -38,6 +43,7 @@ public class TextListScript : MonoBehaviour
 
     public IEnumerator ShowPrompts(List<string> textPrompts)
     {
+        print(textPrompts[0]);
         gameText.transform.parent.gameObject.SetActive(true);
         for (int i = 0; i < textPrompts.Count; i++)
         {

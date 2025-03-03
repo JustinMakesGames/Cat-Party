@@ -18,10 +18,6 @@ public class HandleWalking : MonoBehaviour
     {
         pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform;
     }
-    private void Start()
-    {
-        SceneManager.sceneLoaded += AssignPathFolder;
-    }
     public async Task<int> StartHandlingWalking(int diceRoll, int currentSpace, TMP_Text text)
     {
         currentlyOnThisSpace = currentSpace;
@@ -76,14 +72,6 @@ public class HandleWalking : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, endDestination, walkSpeed * Time.deltaTime);
             await Task.Yield();
-        }
-    }
-
-    private void AssignPathFolder(Scene scene, LoadSceneMode mode)
-    {
-        if (SceneManager.GetActiveScene().name == "BoardGame")
-        {
-            pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform;
         }
     }
 }

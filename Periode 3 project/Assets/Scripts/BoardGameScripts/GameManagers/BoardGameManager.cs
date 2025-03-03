@@ -63,7 +63,7 @@ public class BoardGameManager : MonoBehaviour
     private bool _gameHasStarted;
 
 
-    private int _turnAmount;
+    private int _turnAmount = 1;
 
     private void Awake()
     {
@@ -133,8 +133,15 @@ public class BoardGameManager : MonoBehaviour
     {
         Camera.main.transform.parent = null;
         SceneManager.MoveGameObjectToScene(Camera.main.gameObject, SceneManager.GetActiveScene());
+
+        if (_turnAmount >= maxTurnAmount)
+        {
+            StartCoroutine(GetComponent<WinManager>().EndGame());
+            yield break;
+        } 
         if (_playerIndex == -1)
         {
+            
             blackScreen.GetComponent<Animator>().SetTrigger("FadeInOut");
             yield return new WaitForSeconds(0.2f);
             Camera.main.transform.position = camPosition.position;
@@ -150,6 +157,7 @@ public class BoardGameManager : MonoBehaviour
 
         if (_playerIndex == 3)
         {
+            _turnAmount++;
             _playerIndex = -1;
             StartCoroutine(MinigameManager.Instance.HandleMinigameTime());
         }
@@ -176,13 +184,12 @@ public class BoardGameManager : MonoBehaviour
 
     private void UpdateNumber()
     {
+        int oldTurnAmount = _turnAmount - 1;
         TMP_Text oldText = Instantiate(roundText, roundText.transform.parent);
-        oldText.text = _turnAmount.ToString();
+        oldText.text = oldTurnAmount.ToString();
 
         oldText.rectTransform.DOAnchorPosY(roundText.rectTransform.anchoredPosition.y - 50, animationDuration);
         oldText.DOFade(0, animationDuration).OnComplete(() => Destroy(oldText.gameObject));
-
-        _turnAmount++;
         roundText.text = _turnAmount.ToString();
         roundText.rectTransform.anchoredPosition += new Vector2(0, 50);
         roundText.alpha = 0;

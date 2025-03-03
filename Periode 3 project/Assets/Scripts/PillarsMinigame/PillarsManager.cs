@@ -16,6 +16,9 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
     [SerializeField] private float shakeAmount;
     [SerializeField] private GameObject speedBoostPrefab;
     [SerializeField] private Transform arena;
+
+    [SerializeField] private float platformSpeed;
+    [SerializeField] private float platformWait;
     private float _firstInitialTime, _secondInitialTime, _thirdInitialTime;
     private Transform _rightPillar;
     private List<PlayerHandler> playerHandlers = new List<PlayerHandler>();
@@ -117,7 +120,7 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
     {
         int randomPillar = Random.Range(0, platforms.Count);
         _rightPillar = platforms[randomPillar];
-        signRenderer.material.color = _rightPillar.GetComponentInChildren<Renderer>().material.color;
+        signRenderer.material.color = _rightPillar.GetComponent<PlatformColor>().platformColor;
     }
 
     private void TurnCPUSMovementOn()
@@ -175,14 +178,14 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
     {
         float timer = 0;
 
-        while (timer < 0.5f)
+        while (timer < platformWait)
         {
             timer += Time.deltaTime;
 
             for (int i = 0; i < platforms.Count; i++)
             {
                 if (platforms[i] == _rightPillar) continue;
-                platforms[i].Translate(Vector3.down * 20 * Time.deltaTime);
+                platforms[i].Translate(Vector3.down * platformSpeed * Time.deltaTime);
             }
 
             yield return null;
@@ -193,14 +196,14 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
     {
         float timer = 0;
 
-        while (timer < 0.5f)
+        while (timer < platformWait)
         {
             timer += Time.deltaTime;
 
             for (int i = 0; i < platforms.Count; i++)
             {
                 if (platforms[i] == _rightPillar) continue;
-                platforms[i].Translate(Vector3.up * 20 * Time.deltaTime);
+                platforms[i].Translate(Vector3.up * platformSpeed * Time.deltaTime);
             }
 
             yield return null;
