@@ -11,7 +11,7 @@ public class SceneManaging : MonoBehaviour
 
         foreach (GameObject obj in FindObjectsOfType<GameObject>())
         {
-            if (obj.scene.name == "DontDestroyOnLoad")
+            if (obj.scene.name == "DontDestroyOnLoad" && obj.transform.parent == null)
             {
                 SceneManager.MoveGameObjectToScene(obj, newScene);
             }

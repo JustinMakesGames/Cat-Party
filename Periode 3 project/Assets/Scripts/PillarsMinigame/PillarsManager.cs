@@ -156,7 +156,7 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
                 if (platforms[i] == _rightPillar) continue;
                 Vector3 shakeOffset = new Vector3(
                 Random.Range(-shakeAmount, shakeAmount),
-                platforms[i].position.y,
+                0,
                 Random.Range(-shakeAmount, shakeAmount)
                 );
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
 public class WinManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class WinManager : MonoBehaviour
     [SerializeField] private Animator blackScreenAnimator;
     [SerializeField] private Transform resultsScreen;
     [SerializeField] private GameObject uiOrder;
+    [SerializeField] private GameObject menuScreen;
 
     private List<Transform> playerRankOrder = new List<Transform>();
     private Transform _cam;
@@ -95,5 +97,8 @@ public class WinManager : MonoBehaviour
 
         newScreen.SetActive(true);
         newScreen.GetComponent<VerticalLayoutGroup>().childAlignment = TextAnchor.UpperLeft;
+        menuScreen.SetActive(true);
+        players[0].GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(null);
+        players[0].GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(menuScreen);
     }
 }

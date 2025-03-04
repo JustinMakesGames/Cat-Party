@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.UI;
@@ -95,6 +96,33 @@ public class PlayerShopHandling : MonoBehaviour
             }
             selectedItem = selectedItem.parent.GetChild(selectedIndex - 1);
         }
+    }
+
+    public void SelectItem(InputAction.CallbackContext context)
+    {
+        if (context.performed && _isShopping)
+        {
+            BuyItem();
+        }
+    }
+
+    private void BuyItem()
+    {
+        if (GetComponent<PlayerHandler>().coinAmount < selectedItem.GetComponent<Item>().price)
+        {
+            HandleNotEnoughMoney();
+            return;
+        }
+
+        _isShopping = false;
+
+        StartCoroutine(_shopHandler.HandlePlayerBuyingItem(selectedItem.GetComponent<Item>()));
+    }
+
+    private void HandleNotEnoughMoney()
+    {
+        string poorText = "I am sorry, you do not have enough money to buy this item.";
+        StartCoroutine(TextListScript.Instance.ShowPrompt(poorText, true));
     }
 
 

@@ -41,8 +41,6 @@ public class PlayerHandler : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform;
         _eventSystem = GetComponentInChildren<MultiplayerEventSystem>();
-
-
     }
     public void ClickThroughText(InputAction.CallbackContext context)
     {
@@ -117,6 +115,7 @@ public class PlayerHandler : MonoBehaviour
 
         await Task.Delay(2000);
         currentSpace = await GetComponent<HandleWalking>().StartHandlingWalking(randomValue, currentSpace, _outcomeCanvasClone.GetComponentInChildren<TMP_Text>());
+        pathFolder = GetComponent<HandleWalking>().pathFolder;
         StartCoroutine(HandleOutCome());
 
     }

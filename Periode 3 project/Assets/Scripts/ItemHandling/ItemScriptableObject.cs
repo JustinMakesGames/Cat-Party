@@ -7,4 +7,5 @@ public class ItemScriptableObject : ScriptableObject
 {
     public string itemName;
     public int price;
+    public GameObject animationPrefab;
 }

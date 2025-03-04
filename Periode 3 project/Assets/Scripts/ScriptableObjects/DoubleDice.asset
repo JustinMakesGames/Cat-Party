@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d178bd0d9d65e34f85ac42156c22339, type: 3}
   m_Name: DoubleDice
   m_EditorClassIdentifier: 
-  itemName: 
-  price: 0
+  itemName: DoubleDice
+  price: 5
+  animationPrefab: {fileID: 7204993774880064621, guid: db11243ed5c37d649b46b6818404ba13,
+    type: 3}

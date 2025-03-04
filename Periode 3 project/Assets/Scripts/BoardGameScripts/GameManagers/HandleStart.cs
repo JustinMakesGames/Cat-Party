@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class HandleStart : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class HandleStart : MonoBehaviour
     [SerializeField] private GameObject dice;
     [SerializeField] private GameObject numberOutcome;
     [SerializeField] private Transform playerUIFolder;
+    [SerializeField] private GameObject coinPrefab;
+    [SerializeField] private GameObject coinCollectCanvas;
     private bool _hasPressedButton;
     private List<Transform> _players = new List<Transform>();
     private List<int> _allPossibleNumbers = new List<int>() 
@@ -70,12 +73,44 @@ public class HandleStart : MonoBehaviour
         Camera.main.transform.position = originalCameraPosition;
 
         yield return StartCoroutine(TextListScript.Instance.ShowPrompts(TextListScript.Instance.textStrings[1].strings));
+        yield return StartCoroutine(GivePlayersCoins());
 
         yield return StartCoroutine(YarnPlacement.Instance.StartShowingYarnPlacement());
+
         StartCoroutine(BoardGameManager.Instance.StartNewTurn());
     }
 
-    
+    private IEnumerator GivePlayersCoins()
+    {
+        string givePlayersCoins = "You will all start with 10 coins each.";
+
+        yield return StartCoroutine(TextListScript.Instance.ShowPrompt(givePlayersCoins));
+
+        foreach (Transform player in _players)
+        {
+            StartCoroutine(GiveThePlayerCoins(player));
+        }
+
+        yield return new WaitForSeconds(2);
+    }
+
+    private IEnumerator GiveThePlayerCoins(Transform player)
+    {
+        int coinAmount = 10;
+        for (int i = 0; i < 3; i++)
+        {
+            GameObject coinClone = Instantiate(coinPrefab, player.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.3f);
+            Destroy(coinClone);
+        }
+
+        player.GetComponent<PlayerHandler>().ChangeCoinValue(coinAmount);
+
+        GameObject cloneCanvas = Instantiate(coinCollectCanvas, player.GetChild(0).position, Quaternion.identity);
+        cloneCanvas.GetComponentInChildren<TMP_Text>().text = coinAmount >= 0 ? "+" + coinAmount.ToString() : coinAmount.ToString();
+        yield return new WaitForSeconds(1);
+        Destroy(cloneCanvas);
+    }
     private void HandleDiceRoll()
     {
         foreach (Transform p in _players)

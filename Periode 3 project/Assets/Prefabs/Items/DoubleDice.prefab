@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3037758953677432186}
+  - component: {fileID: 7067242556048709827}
   m_Layer: 0
   m_Name: DoubleDice
   m_TagString: Untagged
@@ -33,6 +34,24 @@ Transform:
   - {fileID: 4159311068718024876}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7067242556048709827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8224263969163161981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f7d31012cecc9b4e9c127415297eca9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemScriptableObject: {fileID: 11400000, guid: b5fe895ae27a96246ab1cef1466a1a28,
+    type: 2}
+  itemName: 
+  price: 0
+  animationPrefab: {fileID: 7204993774880064621, guid: db11243ed5c37d649b46b6818404ba13,
+    type: 3}
 --- !u!1001 &4346864436671283395
 PrefabInstance:
   m_ObjectHideFlags: 0

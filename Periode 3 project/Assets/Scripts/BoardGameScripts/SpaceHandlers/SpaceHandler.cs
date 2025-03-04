@@ -8,9 +8,9 @@ using TMPro;
 public class SpaceHandler : MonoBehaviour
 {
     public bool isYarnPlace;
-    [SerializeField] private GameObject coinPrefab;
+    [SerializeField] protected GameObject coinPrefab;
     [SerializeField] private int coinAmount;
-    [SerializeField] private GameObject coinCollectCanvas;
+    [SerializeField] protected GameObject coinCollectCanvas;
     public enum SpaceKind
     {
         Normal,

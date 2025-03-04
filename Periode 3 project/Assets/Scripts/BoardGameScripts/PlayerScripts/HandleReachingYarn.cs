@@ -25,6 +25,8 @@ public class HandleReachingYarn : MonoBehaviour
     {
         taskEnded = false;
         _spaceHandler = handler;
+        transform.GetChild(transform.childCount - 1).gameObject.SetActive(false);
+        
         if (_playerHandler.coinAmount < 0)
         {
             StartCoroutine(HandleNotEnoughCoins());
@@ -39,6 +41,8 @@ public class HandleReachingYarn : MonoBehaviour
         {
             await Task.Yield();
         }
+
+        transform.GetChild(transform.childCount - 1).gameObject.SetActive(true);
     }
 
     private void HandleBuyingYarn()

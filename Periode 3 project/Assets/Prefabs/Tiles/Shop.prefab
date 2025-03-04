@@ -191,6 +191,8 @@ MonoBehaviour:
   camSpeed: 0
   camPosition: {fileID: 0}
   itemFolder: {fileID: 0}
+  coinPrefab: {fileID: 0}
+  coinCollectCanvas: {fileID: 0}
 --- !u!1 &8683963477578613641
 GameObject:
   m_ObjectHideFlags: 0
@@ -240,13 +242,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isYarnPlace: 0
-  coinPrefab: {fileID: 0}
+  coinPrefab: {fileID: 4043509892859552629, guid: 4be99fdf3fc00514283a69cf2eaa09dd,
+    type: 3}
   coinAmount: 0
-  coinCollectCanvas: {fileID: 0}
+  coinCollectCanvas: {fileID: 4320603552333688458, guid: 2121730a24e327d4b944a4e68c99de3f,
+    type: 3}
   spaceKind: 1
   camSpeed: 20
   camPosition: {fileID: 8085292877728502631}
   itemFolder: {fileID: 4007702212598259161}
+  coinPrefab: {fileID: 4043509892859552629, guid: 4be99fdf3fc00514283a69cf2eaa09dd,
+    type: 3}
+  coinCollectCanvas: {fileID: 4320603552333688458, guid: 2121730a24e327d4b944a4e68c99de3f,
+    type: 3}
 --- !u!1001 &1356676261341917022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -304,6 +312,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067242556048709827, guid: 2640b236db0a16245bf72426a168543d,
+        type: 3}
+      propertyPath: animationPrefab
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8224263969163161981, guid: 2640b236db0a16245bf72426a168543d,
         type: 3}
