@@ -30,9 +30,6 @@ public class BoardPlacementManager : MonoBehaviour
     private List<PlayerHandler> _playerHandlers = new List<PlayerHandler>();
     private List<PlayerUIStats> _playerUIStats = new List<PlayerUIStats>();
 
-    
-    
-
     private void Awake()
     {
         if (Instance == null)

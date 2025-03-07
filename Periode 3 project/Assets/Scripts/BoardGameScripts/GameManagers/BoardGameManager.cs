@@ -116,7 +116,6 @@ public class BoardGameManager : MonoBehaviour
 
     private void Start()
     {
-        print("Played the start of the boardgamemanager");
         GetComponent<HandleStart>().HandleTheStart(); 
                  
     }

@@ -1,18 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.InputSystem.UI;
 
 public class PlayerInventory : MonoBehaviour
 {
-    private List<Item> items = new List<Item>();
+    public List<GameObject> items = new List<GameObject>();
+    [SerializeField] private Transform itemFolder;
+    private MultiplayerEventSystem _eventSystem;
 
-    public void AddItem(Item item)
+    private void Awake()
     {
-        items.Add(item);
+        _eventSystem = GetComponentInChildren<MultiplayerEventSystem>();
     }
 
-    public void UseItem()
+    public void AddItem(GameObject item)
     {
+        items.Add(item);
+        GameObject itemClone = Instantiate(item, itemFolder);
+        itemClone.GetComponent<Item>().player = transform;
 
+    }
+
+    public void OpenItemMenu()
+    {
+        _eventSystem.SetSelectedGameObject(null);
+        _eventSystem.SetSelectedGameObject(itemFolder.GetComponentInChildren<Button>().gameObject);
+    }
+
+    public void UseItemCPU()
+    {
+        itemFolder.parent.gameObject.SetActive(true);
+        items[0].GetComponent<Item>().StartUsingItem();
+    }
+
+    public void RemoveItem(GameObject item)
+    {
+        items.Remove(item);
     }
 }

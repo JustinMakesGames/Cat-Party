@@ -93,8 +93,17 @@ public class PlayerHandler : MonoBehaviour
     }
     private void CPUTurn()
     {
-        _diceClone = Instantiate(dice, transform.GetChild(0).position, Quaternion.identity, transform);
+        if (GetComponent<PlayerInventory>().items.Count > 0)
+        {
+            GetComponent<PlayerInventory>().UseItemCPU();
+        }
+
+        else
+        {
+            _diceClone = Instantiate(dice, transform.GetChild(0).position, Quaternion.identity, transform);
         StartCoroutine(HandleCPUDice());
+        }
+        
     }
 
     private IEnumerator HandleCPUDice()
@@ -104,7 +113,7 @@ public class PlayerHandler : MonoBehaviour
 
     }
 
-    private async void HitDiceBlock()
+    private void HitDiceBlock()
     {
         
         _animator.SetTrigger("Jump");
@@ -112,12 +121,15 @@ public class PlayerHandler : MonoBehaviour
         Destroy(_diceClone);
         _outcomeCanvasClone = Instantiate(outcomeCanvas, transform.GetChild(0).position, Quaternion.identity, transform);
         _outcomeCanvasClone.GetComponentInChildren<TMP_Text>().text = randomValue.ToString();
+        CalculateMovement(randomValue, _outcomeCanvasClone);
+    }
 
+    public async void CalculateMovement(int randomValue, GameObject canvasClone)
+    {
         await Task.Delay(2000);
-        currentSpace = await GetComponent<HandleWalking>().StartHandlingWalking(randomValue, currentSpace, _outcomeCanvasClone.GetComponentInChildren<TMP_Text>());
+        currentSpace = await GetComponent<HandleWalking>().StartHandlingWalking(randomValue, currentSpace, canvasClone.GetComponentInChildren<TMP_Text>());
         pathFolder = GetComponent<HandleWalking>().pathFolder;
         StartCoroutine(HandleOutCome());
-
     }
 
     private IEnumerator HandleOutCome()

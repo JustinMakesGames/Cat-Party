@@ -138,6 +138,7 @@ public class ShopHandler : SpaceHandler
 
         Destroy(clone);
         yield return StartCoroutine(ShowTextItemGot());
+        _player.GetComponent<PlayerInventory>().AddItem(_boughtItem.uiPrefab);
         ShopDone();
 
     }
