@@ -5,41 +5,8 @@ using System.Xml;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PillarPlayerMovement : MonoBehaviour
+public class PillarPlayerMovement : MinigamePlayerMovement
 {
-    public enum CPUState
-    {
-        Nothing,
-        GunSpawned,
-        HasGun,
-        RunningFromGun
-    }
-
-    public CPUState state;
-    public bool hasMinigameStart;
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private float jumpForce;
-    [SerializeField] private float rayCastLength;
-    [SerializeField] private LayerMask ground;
-
-    [SerializeField] private float normalSpeed;
-    [SerializeField] private float slowSpeed;
-
-    [SerializeField] private float pushForce;
-    [SerializeField] private float hitJumpForce;
-    [SerializeField] private int flickerAmount;
-    private bool _isPlayerPushing;
-    private bool _isHit;
-    private bool _isStunned;
-
-    [Header("Player Variables")]
-    private float xValue;
-    private float yValue;
-    private Vector3 _dir;
-    private bool _isPlayer;
-    private PlayerInput _playerInput;
-    private Rigidbody _rb;
-    private RaycastHit hit;
 
     [Header("CPU Variables")]
     public Transform rightArena;
@@ -53,15 +20,8 @@ public class PillarPlayerMovement : MonoBehaviour
     private Transform _targetPlayer;
     
     
-    
-    
-    private void Start()
-    {
-        
-        _rb = GetComponent<Rigidbody>();
-        _playerInput = GetComponent<PlayerInput>();
-    }
-    public void StartMinigame()
+
+    public override void StartMinigame()
     {
         hasMinigameStart = true;
 
@@ -79,7 +39,7 @@ public class PillarPlayerMovement : MonoBehaviour
     }
 
     
-    private void FixedUpdate()
+    protected override void FixedUpdate()
     {
         if (hasMinigameStart)
         {
@@ -105,28 +65,14 @@ public class PillarPlayerMovement : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(1f, 3f));
         }
     }
-    public void ControlPlayerMovement(InputAction.CallbackContext context)
-    {
-        xValue = context.ReadValue<Vector2>().x;
-        yValue = context.ReadValue<Vector2>().y;
-    }
 
-    public void Push(InputAction.CallbackContext context)
-    {
-        if (context.performed && !_isPlayerPushing)
-        {
-            StartCoroutine(PlayerPushes());
-            
-        }
-    }
-
-    private IEnumerator PlayerPushes()
+    protected override IEnumerator PlayerPushes()
     {
         _isPlayerPushing = true;
         yield return new WaitForSeconds(0.2f);
         _isPlayerPushing = false;
     }
-    private void GetHit(Transform player)
+    protected override void GetHit(Transform player)
     {
         if (!_isPlayer)
         {
@@ -145,7 +91,7 @@ public class PillarPlayerMovement : MonoBehaviour
         StartCoroutine(PlayerPushes());
     }
 
-    private IEnumerator HitDelay()
+    protected override IEnumerator HitDelay()
     {
         Color originalColor = GetComponentInChildren<Renderer>().material.color;
         _isHit = true;
@@ -158,7 +104,7 @@ public class PillarPlayerMovement : MonoBehaviour
         _isStunned = false;
     }
 
-    private IEnumerator Flicker()
+    protected override IEnumerator Flicker()
     {
         for (int i = 0; i < flickerAmount; i++)
         {
@@ -170,7 +116,7 @@ public class PillarPlayerMovement : MonoBehaviour
 
         print("Done");
     }
-    private void HandlePlayerMovement()
+    protected override void HandlePlayerMovement()
     {
         if (!_isHit)
         {
@@ -181,12 +127,7 @@ public class PillarPlayerMovement : MonoBehaviour
         RotationCheck();
     }
 
-    public bool StunCheck()
-    {
-        return _isStunned;
-    }
-
-    private void RotationCheck()
+    protected override void RotationCheck()
     {
         if (_rb.velocity.x != 0 || _rb.velocity.z != 0)
         {
@@ -298,7 +239,7 @@ public class PillarPlayerMovement : MonoBehaviour
     {
         StartCoroutine(ChangeSpeed());
     }
-    private IEnumerator ChangeSpeed()
+    protected override IEnumerator ChangeSpeed()
     {
         walkSpeed = slowSpeed;
         yield return new WaitForSeconds(3);
@@ -307,7 +248,7 @@ public class PillarPlayerMovement : MonoBehaviour
 
   
 
-    private void OnTriggerEnter(Collider hitInfo)
+    protected override void OnTriggerEnter(Collider hitInfo)
     {
         if (!_isPlayerPushing) return;
         if (!hitInfo.transform.CompareTag("Player")) return;

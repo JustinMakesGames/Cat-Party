@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MinigameTest.unity
     guid: 5c098af971d33b447866a54160f12a67
+  - enabled: 1
+    path: Assets/Scenes/HotPotato.unity
+    guid: f0706579b9d9b5147b820efb95d03d07
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 35ec7e96ee1e8ed4cbe08c7a9f29a2a2,
       type: 2}

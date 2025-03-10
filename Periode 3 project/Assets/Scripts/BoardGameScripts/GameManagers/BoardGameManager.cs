@@ -116,13 +116,18 @@ public class BoardGameManager : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<HandleStart>().HandleTheStart(); 
+        //GetComponent<HandleStart>().HandleTheStart(); 
                  
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.M))
+        {
+            SceneManager.LoadScene("HotPotato");
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
         {
             SceneManager.LoadScene("MinigameTest");
         }

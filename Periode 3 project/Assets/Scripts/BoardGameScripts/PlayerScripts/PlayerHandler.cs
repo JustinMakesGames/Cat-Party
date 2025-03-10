@@ -117,7 +117,8 @@ public class PlayerHandler : MonoBehaviour
     {
         
         _animator.SetTrigger("Jump");
-        int randomValue = Random.Range(1, 7);
+        //int randomValue = Random.Range(1, 7);
+        int randomValue = 100;
         Destroy(_diceClone);
         _outcomeCanvasClone = Instantiate(outcomeCanvas, transform.GetChild(0).position, Quaternion.identity, transform);
         _outcomeCanvasClone.GetComponentInChildren<TMP_Text>().text = randomValue.ToString();

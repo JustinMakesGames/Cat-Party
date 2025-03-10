@@ -51,8 +51,8 @@ public class MinigameManager : MonoBehaviour
 
     private void HandleSceneSwitch(Scene scene, LoadSceneMode mode)
     {
-        
-        if (SceneManager.GetActiveScene().name == "MinigameTest")
+
+        if (allMinigameScenes.Contains(SceneManager.GetActiveScene().name))
         {
             print($"hi noob in {transform.name}");
             minigamePlayers = GameObject.FindGameObjectWithTag("MinigamePlayerFolder").transform;
@@ -73,7 +73,7 @@ public class MinigameManager : MonoBehaviour
 
         }
 
-        if (SceneManager.GetActiveScene().name == "BoardGame" && previousScene == "MinigameTest")
+        if (SceneManager.GetActiveScene().name == "BoardGame" && allMinigameScenes.Contains(previousScene))
         {
             blackScreenAnimator.SetTrigger("FadeOut");
             BoardGameManager.Instance.HandleReturnToBoardGame(winningPlayerHandler);
@@ -135,10 +135,12 @@ public class MinigameManager : MonoBehaviour
 
     public IEnumerator StartMinigame()
     {
-        foreach (Transform player in minigamePlayers)
+        for (int i = 0; i < players.childCount; i++)
         {
-            player.GetComponent<MinigamePlayerHandler>().isStartingMinigame = false;
+            minigamePlayers.GetChild(i).GetComponent<MinigamePlayerHandler>().isStartingMinigame = false;
+            minigamePlayers.GetChild(i).GetComponent<MinigamePlayerHandler>().SetPlayerHandler(players.GetChild(i).GetComponent<PlayerHandler>());
         }
+
         whiteScreenAnimator.SetTrigger("FadeInOut");
         yield return new WaitForSeconds(0.2f);
         minigamePanel.SetActive(false);

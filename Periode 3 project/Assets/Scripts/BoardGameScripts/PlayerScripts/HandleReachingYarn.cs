@@ -132,6 +132,7 @@ public class HandleReachingYarn : MonoBehaviour
     {
         Camera.main.transform.position = transform.GetChild(1).position;
         Camera.main.transform.parent = transform;
+        Camera.main.transform.SetSiblingIndex(transform.childCount - 2);
         yield return new WaitForSeconds(1);
         taskEnded = true;
     }
