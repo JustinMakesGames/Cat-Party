@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &788660297200902492
+--- !u!1 &7181985644929705638
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2583106022984044871}
-  - component: {fileID: 8089642220051101224}
-  - component: {fileID: 7880885038409440053}
-  - component: {fileID: 3233226572113691932}
+  - component: {fileID: 7167574635434861529}
+  - component: {fileID: 8172546040677934991}
+  - component: {fileID: 5819380672173476105}
+  - component: {fileID: 3843941344186088242}
+  - component: {fileID: 7567902669932742533}
   m_Layer: 0
-  m_Name: BrancingPathTile
+  m_Name: LuckySpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2583106022984044871
+--- !u!4 &7167574635434861529
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788660297200902492}
+  m_GameObject: {fileID: 7181985644929705638}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -12.65, y: 1, z: 38.46}
   m_LocalScale: {x: 2, y: 0.01, z: 2}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6635517914200880368}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &8089642220051101224
+--- !u!33 &8172546040677934991
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788660297200902492}
+  m_GameObject: {fileID: 7181985644929705638}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &7880885038409440053
+--- !u!23 &5819380672173476105
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788660297200902492}
+  m_GameObject: {fileID: 7181985644929705638}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 22cf66c26e6a3d94ebbd78d85290d058, type: 2}
+  - {fileID: 2100000, guid: 0a25bf17f2a6633439ea0520dfaf2f03, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,54 +85,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &3233226572113691932
+--- !u!65 &3843941344186088242
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7181985644929705638}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7567902669932742533
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788660297200902492}
+  m_GameObject: {fileID: 7181985644929705638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fbba63cdad8f5d498ec22806792fe50, type: 3}
+  m_Script: {fileID: 11500000, guid: 226ff6ad55ca4ed4cbb797820a6c57dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isYarnPlace: 0
-  coinPrefab: {fileID: 0}
-  coinAmount: 0
-  coinCollectCanvas: {fileID: 0}
-  spaceKind: 1
-  arrowSpawnPlace: {fileID: 6635517914200880368}
-  arrow: {fileID: 3211167469279407257, guid: b9397f80d2f62e64bb39c5e7aca8e537, type: 3}
-  pathFolders: []
---- !u!1 &2780840768073117362
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6635517914200880368}
-  m_Layer: 0
-  m_Name: ArrowSpawnPlace
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6635517914200880368
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2780840768073117362}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 300, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2583106022984044871}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -120,7 +120,7 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
     {
         int randomPillar = Random.Range(0, platforms.Count);
         _rightPillar = platforms[randomPillar];
-        signRenderer.material.color = _rightPillar.GetComponent<PlatformColor>().platformColor;
+        signRenderer.material = _rightPillar.GetComponent<PlatformColor>().material;
     }
 
     private void TurnCPUSMovementOn()

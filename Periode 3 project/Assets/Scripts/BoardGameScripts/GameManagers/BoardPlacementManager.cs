@@ -47,6 +47,12 @@ public class BoardPlacementManager : MonoBehaviour
 
     }
 
+    public Transform GetPlayerInLast()
+    {
+        CalculateUIOrder();
+        return _playerUIStats[_playerUIStats.Count - 1].playerHandler.transform;
+    }
+
     private void MakePlayerUIStats()
     {
         for (int i = 0; i < playerFolder.childCount; i++)
@@ -113,6 +119,8 @@ public class BoardPlacementManager : MonoBehaviour
         .OrderByDescending(stats => stats.playerHandler.yarnAmount)
         .ThenByDescending(stats => stats.playerHandler.coinAmount)
         .ToList();
+
+        _playerUIStats = orderedStats;
 
         for (int i = 0; i < orderedStats.Count; i++)
         {

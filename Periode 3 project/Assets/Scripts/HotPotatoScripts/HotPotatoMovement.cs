@@ -64,7 +64,7 @@ public class HotPotatoMovement : MinigamePlayerMovement
             EscapePlayer();
         }
 
-        else if (!_isMovingFromWall)
+        else if (!_isMovingFromWall && Vector3.Distance(transform.position, playerWithBomb.position) > playerDistance + 2)
         {
             RunAround();
         }

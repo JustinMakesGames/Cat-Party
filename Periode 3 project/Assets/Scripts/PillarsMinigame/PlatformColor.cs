@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class PlatformColor : MonoBehaviour
 {
-    public Color platformColor;
+    public Material material;
 }
