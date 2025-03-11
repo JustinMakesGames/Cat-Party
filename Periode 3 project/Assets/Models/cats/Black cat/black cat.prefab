@@ -226,6 +226,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: black cat
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: d2c29705dbbafab4e948bd2fabc5b09f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 3c06f3d493d52004fa4aa4daa62daadc, type: 2}
     - target: {fileID: 7110389033206459080, guid: d2c29705dbbafab4e948bd2fabc5b09f,
         type: 3}
       propertyPath: m_LocalPosition.y
