@@ -25,6 +25,7 @@ public class PlayerInputManagement : MonoBehaviour
     [SerializeField] private List<GameObject> menuPlayers;
     [SerializeField] private Transform playerFolder;
     [SerializeField] private Transform spawnFolder;
+    [SerializeField] private List<string> playFields = new List<string>();
     private int playerAmount = 0;
     public List<InputID> inputDevices = new List<InputID>();
 
@@ -73,12 +74,12 @@ public class PlayerInputManagement : MonoBehaviour
 
     public void PlayerJoins(PlayerInput playerInput) 
     {
-        if (SceneManager.GetActiveScene().name == "Menu") 
+        if (SceneManager.GetActiveScene().name == "Menu")
         {
             MenuJoin(playerInput);
         }
 
-        else if (SceneManager.GetActiveScene().name == "BoardGame") 
+        else if (playFields.Contains(SceneManager.GetActiveScene().name)) 
         {
             BoardGameJoin(playerInput);
         } 

@@ -114,7 +114,7 @@ public class HandleBrancingPathPlayer : MonoBehaviour
     private Transform CalculateRightPath()
     {
         int path = int.MaxValue;
-        int indexArrow = 0;
+        int indexArrow = -1;
 
         for (int i = 0; i < pathFolders.Count; i++)
         {
@@ -148,11 +148,49 @@ public class HandleBrancingPathPlayer : MonoBehaviour
                         nextPath = pathFolder.GetChild(nextPath).GetComponent<OneWayPath>().GetIndex();
                         pathFolder = pathFolder.GetChild(originalPath).GetComponent<OneWayPath>().GetRightPathFolder();
                     }
+
                     if (nextPath == originalNextPath)
                     {
                         break;
                     }
                 }
+            }
+        }
+
+        float smallestDistance = Mathf.Infinity;
+        if (indexArrow == -1)
+        {
+            for (int i = 0; i < pathFolders.Count; i++)
+            {
+                int nextPath = pathFolders[i] == GetComponent<HandleWalking>().pathFolder ? _currentPlayerPlacement + 1 : 0;
+
+                Transform firstSpace = pathFolders[i].GetChild(nextPath);
+                Transform allSpaces = GameObject.FindGameObjectWithTag("PathFolder").transform;
+                Transform yarnPlace = null;
+                foreach (Transform child in allSpaces)
+                {
+                    foreach (Transform grandChild in child)
+                    {
+                        if (grandChild.GetComponent<SpaceHandler>().isYarnPlace)
+                        {
+                            yarnPlace = grandChild;
+                            break;
+                        }
+                    }
+
+                    if (yarnPlace != null) break;
+                    
+                }
+
+                print("The distance is " + Vector3.Distance(firstSpace.position, yarnPlace.position));
+                print(pathFolders[i].GetChild(nextPath));
+                if (Vector3.Distance(firstSpace.position, yarnPlace.position) < smallestDistance)
+                {
+                    indexArrow = i;
+                    smallestDistance = Vector3.Distance(firstSpace.position, yarnPlace.position);
+                }
+
+
             }
         }
 

@@ -12,11 +12,13 @@ public class HandleWalking : MonoBehaviour
     public int currentlyOnThisSpace;
     [SerializeField] private float walkSpeed;
     private bool isDoneWalking;
+    private bool _canChangeYValue;
+    private float _yValue;
 
 
     private void Awake()
     {
-        pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform;
+        pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform.GetChild(0);
     }
     public async Task<int> StartHandlingWalking(int diceRoll, int currentSpace, TMP_Text text)
     {
@@ -27,6 +29,8 @@ public class HandleWalking : MonoBehaviour
             
             int nextSpace = CalculateNextSpace(currentlyOnThisSpace);
             Vector3 nextPosition = ReturnPosition(nextSpace);
+
+            transform.LookAt(new Vector3(nextPosition.x, transform.position.y, nextPosition.z));
             await WalkTowardsTile(nextPosition);
 
             currentlyOnThisSpace = nextSpace == 0 ? 0 : currentlyOnThisSpace + 1;
@@ -52,6 +56,13 @@ public class HandleWalking : MonoBehaviour
 
         return currentlyOnThisSpace;
     }
+    
+    public void SetYValue(float yValue)
+    {
+        _yValue = yValue;
+        _canChangeYValue = true;
+
+    }
 
     private int CalculateNextSpace(int currentSpace)
     {
@@ -61,7 +72,18 @@ public class HandleWalking : MonoBehaviour
 
     private Vector3 ReturnPosition(int index)
     {
-        Vector3 position = new Vector3(pathFolder.GetChild(index).position.x, transform.position.y, pathFolder.GetChild(index).position.z);
+        Vector3 position = Vector3.zero;
+        if (!_canChangeYValue)
+        {
+            position = new Vector3(pathFolder.GetChild(index).position.x, transform.position.y, pathFolder.GetChild(index).position.z);
+        }
+
+        else
+        {
+            position = new Vector3(pathFolder.GetChild(index).position.x, _yValue, pathFolder.GetChild(index).position.z);
+            _canChangeYValue = false;
+        }
+        
 
         return position;
     }

@@ -39,7 +39,7 @@ public class PlayerHandler : MonoBehaviour
     {
         _cam = Camera.main.transform;
         _animator = GetComponentInChildren<Animator>();
-        pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform;
+        pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform.GetChild(0);
         _eventSystem = GetComponentInChildren<MultiplayerEventSystem>();
     }
     public void ClickThroughText(InputAction.CallbackContext context)
@@ -117,8 +117,8 @@ public class PlayerHandler : MonoBehaviour
     {
         
         _animator.SetTrigger("Jump");
-        //int randomValue = Random.Range(1, 7);
-        int randomValue = 1;
+        //int randomValue = Random.Range(1, 11);
+        int randomValue = 10000;
         Destroy(_diceClone);
         _outcomeCanvasClone = Instantiate(outcomeCanvas, transform.GetChild(0).position, Quaternion.identity, transform);
         _outcomeCanvasClone.GetComponentInChildren<TMP_Text>().text = randomValue.ToString();

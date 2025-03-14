@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 61377422817698411}
   - component: {fileID: 1195723301065316716}
   - component: {fileID: 98767645157874332}
-  - component: {fileID: 8492803258340899621}
+  - component: {fileID: 1126045599676201513}
   m_Layer: 0
-  m_Name: OneWayTile
+  m_Name: BridgeTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8492803258340899621
+--- !u!114 &1126045599676201513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7940289977130030589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8114f634885d583478c4630581ad4bc8, type: 3}
+  m_Script: {fileID: 11500000, guid: 8c9c4085e9485794abb7f38d5f6ee24a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isYarnPlace: 0
@@ -123,5 +123,4 @@ MonoBehaviour:
   coinAmount: 0
   coinCollectCanvas: {fileID: 0}
   spaceKind: 1
-  pathFolder: {fileID: 0}
-  rightSpace: {fileID: 0}
+  yValue: 0

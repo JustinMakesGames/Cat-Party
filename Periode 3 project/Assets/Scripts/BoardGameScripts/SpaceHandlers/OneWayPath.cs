@@ -6,7 +6,7 @@ using UnityEngine;
 public class OneWayPath : SpaceHandler
 {
     [SerializeField] private Transform pathFolder;
-    [SerializeField] private int rightIndex;
+    [SerializeField] private Transform rightSpace;
     public override async Task HandleAsyncLandedPlayer(Transform player, int currentIndex)
     {
         ChangePathFolder(player);
@@ -16,7 +16,7 @@ public class OneWayPath : SpaceHandler
     private void ChangePathFolder(Transform player)
     {
         player.GetComponent<HandleWalking>().pathFolder = pathFolder;
-        player.GetComponent<HandleWalking>().currentlyOnThisSpace = rightIndex;
+        player.GetComponent<HandleWalking>().currentlyOnThisSpace = rightSpace.GetSiblingIndex() - 1;
     }
 
     public Transform GetRightPathFolder()
@@ -26,6 +26,6 @@ public class OneWayPath : SpaceHandler
 
     public int GetIndex()
     {
-        return rightIndex;
+        return rightSpace.GetSiblingIndex() - 1;
     }
 }

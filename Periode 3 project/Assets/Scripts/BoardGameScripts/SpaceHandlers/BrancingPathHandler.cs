@@ -11,9 +11,9 @@ public class Paths
 }
 public class BrancingPathHandler : SpaceHandler
 {
+    public List<Paths> pathFolders = new List<Paths>();
     [SerializeField] private Transform arrowSpawnPlace;
     [SerializeField] private GameObject arrow;
-    [SerializeField] private List<Paths> pathFolders = new List<Paths>();
 
     private List<Transform> arrows = new List<Transform>();
     private bool _taskFinished;

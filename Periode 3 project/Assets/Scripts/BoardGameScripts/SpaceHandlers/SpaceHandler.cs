@@ -34,7 +34,16 @@ public class SpaceHandler : MonoBehaviour
 
     public virtual IEnumerator HandleLandedPlayer(Transform player)
     {
-        yield return StartCoroutine(CoinChange.Instance.WinCoins(player, 3));
+        if (coinAmount >= 0)
+        {
+            yield return StartCoroutine(CoinChange.Instance.WinCoins(player, coinAmount));
+        }
+
+        else
+        {
+            yield return StartCoroutine(CoinChange.Instance.LoseCoins(player, coinAmount));
+        }
+        
     }
 
     public virtual async Task HandleAsyncLandedPlayer(Transform player, int currentIndex)
