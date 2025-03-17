@@ -377,6 +377,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 91918bdd611869042b0256a331d8f5a1,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 8275727695018174741}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 91918bdd611869042b0256a331d8f5a1,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 5881355474496130982}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 91918bdd611869042b0256a331d8f5a1,
         type: 3}
@@ -395,6 +399,69 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7240647059987470576}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8275727695018174741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7546515591822747041}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 8581cca904feb594ab91a472a48c9d71,
+    type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b7e38831-f07d-40c4-915c-3ef42db593dc
+    m_ActionName: MinigamePlayer/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2825120604525248184}
+        m_TargetAssemblyTypeName: ReactCatMovement, Assembly-CSharp
+        m_MethodName: GetFish
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5881355474496130982}
+        m_TargetAssemblyTypeName: MinigamePlayerHandler, Assembly-CSharp
+        m_MethodName: StartMinigame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 12515720-584e-4195-ab96-c41b440f5476
+    m_ActionName: MinigamePlayer/Jump[/Keyboard/space]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: MinigamePlayer
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!114 &5881355474496130982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,7 +491,7 @@ MonoBehaviour:
   points: 0
   paw: {fileID: 9206663961928055698}
   endPosition: {fileID: 4600105741899900777}
-  speed: 1000
+  speed: 100
   canvas: {fileID: 1937399953730810585}
   plusPointText: {fileID: 6818019201135667011}
 --- !u!1001 &8668898653833911417

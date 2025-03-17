@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FishCollector.unity
     guid: 1b568e63234d3474eacc7f164294d487
+  - enabled: 1
+    path: Assets/Scenes/ReactingKittens.unity
+    guid: dbf2d4231dbf226419de12f0ad4e0ad3
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 35ec7e96ee1e8ed4cbe08c7a9f29a2a2,
       type: 2}

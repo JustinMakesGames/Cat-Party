@@ -41,7 +41,7 @@ public class ReactCatsManager : MonoBehaviour, IMinigameManager
             yield return StartCoroutine(SpawnFish());
             SetPlayersFishOn();
             yield return new WaitForSeconds(timeToReact);
-            yield return ShowPoints();
+            yield return StartCoroutine(ShowPoints());
             SetPlayersFishOff();
             yield return StartCoroutine(MoveFishAway());
 
@@ -102,7 +102,6 @@ public class ReactCatsManager : MonoBehaviour, IMinigameManager
         }
 
         yield return new WaitForSeconds(1);
-
         for (int i = 0; i < _playerPoints.Count; i++)
         {
             StartCoroutine(_playerPoints[i].MoveToOriginalPosition());

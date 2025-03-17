@@ -49,6 +49,7 @@ public class ReactCatMovement : MonoBehaviour
     private IEnumerator HandleAvailableFish()
     {
         _isMovingPaw = true;
+        ReactCatsManager.Instance.AddPlayer(this);
         yield return StartCoroutine(MoveToMiddle());
 
     }
@@ -78,6 +79,7 @@ public class ReactCatMovement : MonoBehaviour
     public void SetFishAvailableOff()
     {
         _isFishAvailable = false;
+        _isMovingPaw = false;
     }
 
     public void AddPlayerPoints(int point)
