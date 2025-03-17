@@ -22,7 +22,8 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private GameObject introScreen;
     [SerializeField] private GameObject dice;
     [SerializeField] private GameObject outcomeCanvas;
-    
+    [SerializeField] private int minRoll;
+    [SerializeField] private int maxRoll;
 
     
     private GameObject _outcomeCanvasClone;
@@ -117,8 +118,7 @@ public class PlayerHandler : MonoBehaviour
     {
         
         _animator.SetTrigger("Jump");
-        //int randomValue = Random.Range(1, 11);
-        int randomValue = 1000;
+        int randomValue = Random.Range(minRoll, maxRoll + 1);
         Destroy(_diceClone);
         _outcomeCanvasClone = Instantiate(outcomeCanvas, transform.GetChild(0).position, Quaternion.identity, transform);
         _outcomeCanvasClone.GetComponentInChildren<TMP_Text>().text = randomValue.ToString();
