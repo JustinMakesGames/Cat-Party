@@ -536,8 +536,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5965571590225433355, guid: 4829a7d1b3a6c9e4f9b81371b9cd7466,
         type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6571167652398783605, guid: e01c3a432cc70644ab06b31cd8884a1b,
+        type: 2}
+    - target: {fileID: 5965571590225433355, guid: 4829a7d1b3a6c9e4f9b81371b9cd7466,
+        type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6152693668658087488, guid: 4829a7d1b3a6c9e4f9b81371b9cd7466,
         type: 3}
@@ -562,8 +568,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6152693668658087488, guid: 4829a7d1b3a6c9e4f9b81371b9cd7466,
         type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6571167652398783605, guid: e01c3a432cc70644ab06b31cd8884a1b,
+        type: 2}
+    - target: {fileID: 6152693668658087488, guid: 4829a7d1b3a6c9e4f9b81371b9cd7466,
+        type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6878789264620683828, guid: 4829a7d1b3a6c9e4f9b81371b9cd7466,
         type: 3}
@@ -588,8 +600,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6878789264620683828, guid: 4829a7d1b3a6c9e4f9b81371b9cd7466,
         type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6571167652398783605, guid: e01c3a432cc70644ab06b31cd8884a1b,
+        type: 2}
+    - target: {fileID: 6878789264620683828, guid: 4829a7d1b3a6c9e4f9b81371b9cd7466,
+        type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7104618872335835845, guid: 4829a7d1b3a6c9e4f9b81371b9cd7466,
         type: 3}
@@ -620,7 +638,7 @@ PrefabInstance:
     - target: {fileID: 7281920304343086456, guid: 4829a7d1b3a6c9e4f9b81371b9cd7466,
         type: 3}
       propertyPath: m_Name
-      value: RedCat Variant
+      value: GreyCat
       objectReference: {fileID: 0}
     - target: {fileID: 7281920304343086456, guid: 4829a7d1b3a6c9e4f9b81371b9cd7466,
         type: 3}

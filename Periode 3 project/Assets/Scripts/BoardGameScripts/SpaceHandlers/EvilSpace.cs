@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class EvilSpace : SpaceHandler
 {
+    [SerializeField] private GameObject canvas;
+    [SerializeField] private List<GameObject> images = new List<GameObject>();
     public Transform player;
     private bool _hasTaskEnded;
     private bool _isCPU;
@@ -34,12 +36,39 @@ public class EvilSpace : SpaceHandler
         string evilText = "EvilText";
         List<string> textStrings = TextListScript.Instance.textStrings.Find(t => t.name == evilText).strings;
         yield return StartCoroutine(TextListScript.Instance.ShowPrompts(textStrings, _isCPU));
-        yield return new WaitForSeconds(1);
     }
 
     private IEnumerator ChooseEvent()
     {
+        canvas.SetActive(true);
+        foreach (GameObject img in images)
+        {
+            img.SetActive(false);
+        }
+        for (int i = 0; i < 7; i++)
+        {
+            for (int j = 0; j < images.Count; j++)
+            {
+                images[j].gameObject.SetActive(true);
+                yield return new WaitForSeconds(0.1f);
+                images[j].gameObject.SetActive(false);
+            }
+        }
+
+        foreach (GameObject img in images)
+        {
+            img.SetActive(false);
+        }
+
         int randomEvent = Random.Range(0, 2);
+        images[randomEvent].SetActive(true);
+
+        yield return new WaitForSeconds(1.5f);
+        foreach (GameObject img in images)
+        {
+            img.SetActive(true);
+        }
+        canvas.SetActive(false);
 
         switch (randomEvent)
         {
@@ -57,7 +86,7 @@ public class EvilSpace : SpaceHandler
 
     private IEnumerator StealCoins()
     {
-        int[] possibleCoinAmount = { 10, 20, 30 };
+        int[] possibleCoinAmount = { -10, -20, -30 };
 
         int coinAmount = Random.Range(0, possibleCoinAmount.Length);
         string evilText = $"Muhahahaha I am gonna steal {possibleCoinAmount[coinAmount]} coins from you and there is nothing you can do about it!";
@@ -70,7 +99,7 @@ public class EvilSpace : SpaceHandler
 
     private IEnumerator GiveCoinsToLastPlayer()
     {
-        int[] possibleCoinAmount = { 5, 10, 15 };
+        int[] possibleCoinAmount = { -5, -10, -15 };
 
         int coinAmount = Random.Range(0, possibleCoinAmount.Length);
         Transform playerInLast = BoardPlacementManager.Instance.GetPlayerInLast();

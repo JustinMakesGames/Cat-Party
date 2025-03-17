@@ -11,6 +11,7 @@ public class HandleWalking : MonoBehaviour
 
     public int currentlyOnThisSpace;
     [SerializeField] private float walkSpeed;
+    [SerializeField] private Transform playerModel;
     private bool isDoneWalking;
     private bool _canChangeYValue;
     private float _yValue;
@@ -22,6 +23,7 @@ public class HandleWalking : MonoBehaviour
     }
     public async Task<int> StartHandlingWalking(int diceRoll, int currentSpace, TMP_Text text)
     {
+        Quaternion originalRotation = playerModel.rotation;
         currentlyOnThisSpace = currentSpace;
         int originalDiceRoll = diceRoll;
         for (int i = 0; i < originalDiceRoll; i++)
@@ -30,7 +32,7 @@ public class HandleWalking : MonoBehaviour
             int nextSpace = CalculateNextSpace(currentlyOnThisSpace);
             Vector3 nextPosition = ReturnPosition(nextSpace);
 
-            transform.LookAt(new Vector3(nextPosition.x, transform.position.y, nextPosition.z));
+            playerModel.LookAt(new Vector3(nextPosition.x, playerModel.position.y, nextPosition.z));
             await WalkTowardsTile(nextPosition);
 
             currentlyOnThisSpace = nextSpace == 0 ? 0 : currentlyOnThisSpace + 1;
@@ -53,6 +55,8 @@ public class HandleWalking : MonoBehaviour
             
         }
         Destroy(text.gameObject);
+
+        playerModel.rotation = originalRotation;
 
         return currentlyOnThisSpace;
     }
@@ -90,10 +94,13 @@ public class HandleWalking : MonoBehaviour
 
     private async Task WalkTowardsTile(Vector3 endDestination)
     {
+        playerModel.GetComponent<Animator>().SetBool("IsWalking", true);
         while (Vector3.Distance(transform.position, endDestination) > 0.0001f)
         {
             transform.position = Vector3.MoveTowards(transform.position, endDestination, walkSpeed * Time.deltaTime);
             await Task.Yield();
         }
+
+        playerModel.GetComponent<Animator>().SetBool("IsWalking", false);
     }
 }

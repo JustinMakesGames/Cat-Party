@@ -25,8 +25,12 @@ public class PlayerInventory : MonoBehaviour
 
     public void OpenItemMenu()
     {
-        _eventSystem.SetSelectedGameObject(null);
-        _eventSystem.SetSelectedGameObject(itemFolder.GetComponentInChildren<Button>().gameObject);
+        if (items.Count > 0)
+        {
+            _eventSystem.SetSelectedGameObject(null);
+            _eventSystem.SetSelectedGameObject(itemFolder.GetComponentInChildren<Button>().gameObject);
+        }
+        
     }
 
     public void UseItemCPU()

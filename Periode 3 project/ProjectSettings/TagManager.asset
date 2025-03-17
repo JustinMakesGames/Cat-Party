@@ -11,6 +11,8 @@ TagManager:
   - MinigameManager
   - MinigamePlayerFolder
   - MainCameraPosition
+  - Ground
+  - Fish
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
+  - Fish
   - 
   - 
   - 

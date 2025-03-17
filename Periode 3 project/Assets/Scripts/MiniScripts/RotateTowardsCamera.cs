@@ -6,6 +6,6 @@ public class RotateTowardsCamera : MonoBehaviour
 {
     private void Update()
     {
-        transform.LookAt(Camera.main.transform.position);
+        transform.LookAt(2 * transform.position - Camera.main.transform.position);
     }
 }

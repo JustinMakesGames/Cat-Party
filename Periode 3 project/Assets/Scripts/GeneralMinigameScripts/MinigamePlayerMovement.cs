@@ -26,10 +26,13 @@ public class MinigamePlayerMovement : MonoBehaviour
     protected PlayerInput _playerInput;
     protected Rigidbody _rb;
 
+    protected Animator animator;
+
     protected virtual void Start()
     {
         _rb = GetComponent<Rigidbody>();
         _playerInput = GetComponent<PlayerInput>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public virtual void StartMinigame()
@@ -48,6 +51,11 @@ public class MinigamePlayerMovement : MonoBehaviour
         {
             HandlePlayerMovement();
         }
+    }
+
+    private void Update()
+    {
+        animator.SetFloat("IsWalking", _rb.velocity.magnitude);
     }
 
     public void ControlPlayerMovement(InputAction.CallbackContext context)
