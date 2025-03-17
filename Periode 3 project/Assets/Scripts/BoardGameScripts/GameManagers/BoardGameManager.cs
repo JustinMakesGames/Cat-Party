@@ -117,7 +117,7 @@ public class BoardGameManager : MonoBehaviour
 
     private void Start()
     {
-        //GetComponent<HandleStart>().HandleTheStart(); 
+        GetComponent<HandleStart>().HandleTheStart(); 
                  
     }
 

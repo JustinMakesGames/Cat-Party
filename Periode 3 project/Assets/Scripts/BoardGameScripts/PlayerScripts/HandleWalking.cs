@@ -94,13 +94,13 @@ public class HandleWalking : MonoBehaviour
 
     private async Task WalkTowardsTile(Vector3 endDestination)
     {
-        playerModel.GetComponent<Animator>().SetBool("IsWalking", true);
+        playerModel.GetComponent<Animator>().SetFloat("IsWalking", 1);
         while (Vector3.Distance(transform.position, endDestination) > 0.0001f)
         {
             transform.position = Vector3.MoveTowards(transform.position, endDestination, walkSpeed * Time.deltaTime);
             await Task.Yield();
         }
 
-        playerModel.GetComponent<Animator>().SetBool("IsWalking", false);
+        playerModel.GetComponent<Animator>().SetFloat("IsWalking", 0);
     }
 }

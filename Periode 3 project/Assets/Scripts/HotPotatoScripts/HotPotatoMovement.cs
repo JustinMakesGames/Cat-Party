@@ -48,8 +48,9 @@ public class HotPotatoMovement : MinigamePlayerMovement
         }
     }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (!_agent.enabled) return;
         if (hasBomb)
         {

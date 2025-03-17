@@ -53,7 +53,7 @@ public class MinigamePlayerMovement : MonoBehaviour
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         animator.SetFloat("IsWalking", _rb.velocity.magnitude);
     }
