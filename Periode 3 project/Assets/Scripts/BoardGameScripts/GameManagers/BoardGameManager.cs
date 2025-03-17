@@ -35,6 +35,7 @@ public class PlayerStats
         this.player = player;
         this.handler = handler;
     }
+    
 }
 public class BoardGameManager : MonoBehaviour
 {

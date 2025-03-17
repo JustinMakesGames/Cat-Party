@@ -39,8 +39,10 @@ public class ReactCatsManager : MonoBehaviour, IMinigameManager
         {
             yield return new WaitForSeconds(Random.Range(1f, 3f));
             yield return StartCoroutine(SpawnFish());
+            SetPlayersFishOn();
             yield return new WaitForSeconds(timeToReact);
             yield return ShowPoints();
+            SetPlayersFishOff();
             yield return StartCoroutine(MoveFishAway());
 
         }
@@ -57,6 +59,22 @@ public class ReactCatsManager : MonoBehaviour, IMinigameManager
         }
 
 
+    }
+
+    private void SetPlayersFishOn()
+    {
+        foreach (Transform p in players)
+        {
+            p.GetComponent<ReactCatMovement>().SetFishAvailableOn();
+        }
+    }
+
+    private void SetPlayersFishOff()
+    {
+        foreach (Transform p in players)
+        {
+            p.GetComponent<ReactCatMovement>().SetFishAvailableOff();
+        }
     }
 
     private IEnumerator MoveFishAway()

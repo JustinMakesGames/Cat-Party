@@ -2829,6 +2829,8 @@ MonoBehaviour:
   dice: {fileID: 2269301285119951115, guid: 7221c411c4d37584b9efad84dafa941f, type: 3}
   outcomeCanvas: {fileID: 4320603552333688458, guid: c83bc730960e9e240a98f1e4862edf45,
     type: 3}
+  minRoll: 1
+  maxRoll: 10
   canClickThroughText: 0
 --- !u!114 &2270060400328788144
 MonoBehaviour:

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,6 +10,8 @@ public class ReactCatMovement : MonoBehaviour
     [SerializeField] private Transform paw;
     [SerializeField] private Transform endPosition;
     [SerializeField] private float speed;
+    [SerializeField] private GameObject canvas;
+    [SerializeField] private TMP_Text plusPointText;
     private Vector3 _originalPosition;
     private bool _isFishAvailable;
     private bool _isMovingPaw;
@@ -80,5 +83,14 @@ public class ReactCatMovement : MonoBehaviour
     public void AddPlayerPoints(int point)
     {
         points += point;
+        StartCoroutine(ShowPoint(point));
+    }
+
+    private IEnumerator ShowPoint(int point)
+    {
+        canvas.SetActive(true);
+        plusPointText.text = point.ToString();
+        yield return new WaitForSeconds(1);
+        canvas.SetActive(false);
     }
 }
