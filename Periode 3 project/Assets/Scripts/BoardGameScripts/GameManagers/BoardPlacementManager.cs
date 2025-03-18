@@ -27,6 +27,7 @@ public class BoardPlacementManager : MonoBehaviour
     public static BoardPlacementManager Instance;
     [SerializeField] private Transform playerFolder;
     [SerializeField] private Transform playerUIFolder;
+    [SerializeField] private GameObject normalPlayerUI;
     private List<PlayerHandler> _playerHandlers = new List<PlayerHandler>();
     private List<PlayerUIStats> _playerUIStats = new List<PlayerUIStats>();
 
@@ -101,6 +102,7 @@ public class BoardPlacementManager : MonoBehaviour
 
         playerUIFolder.gameObject.SetActive(false);
 
+        normalPlayerUI.SetActive(true);
         StartCoroutine(BoardGameManager.Instance.StartNewTurn());
 
     }

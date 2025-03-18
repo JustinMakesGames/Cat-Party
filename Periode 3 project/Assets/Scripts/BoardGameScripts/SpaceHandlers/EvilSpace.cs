@@ -99,7 +99,7 @@ public class EvilSpace : SpaceHandler
 
     private IEnumerator GiveCoinsToLastPlayer()
     {
-        int[] possibleCoinAmount = { -5, -10, -15 };
+        int[] possibleCoinAmount = { 5, 10, 15 };
 
         int coinAmount = Random.Range(0, possibleCoinAmount.Length);
         Transform playerInLast = BoardPlacementManager.Instance.GetPlayerInLast();

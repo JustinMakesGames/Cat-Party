@@ -59,7 +59,7 @@ public class LuckySpace : SpaceHandler
             img.SetActive(false);
         }
 
-        int randomEvent = 1;
+        int randomEvent = Random.Range(0, 2);
         images[randomEvent].SetActive(true);
 
         yield return new WaitForSeconds(1.5f);

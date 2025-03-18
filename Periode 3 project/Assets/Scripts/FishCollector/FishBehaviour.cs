@@ -22,6 +22,7 @@ public class FishBehaviour : MonoBehaviour
     private void Start()
     {
         _rb.velocity = new Vector3(0, -yForce, 0);
+        Destroy(transform.parent.gameObject, 8f);
 
     }
 

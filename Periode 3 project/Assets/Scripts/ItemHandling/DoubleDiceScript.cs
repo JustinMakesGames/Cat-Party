@@ -59,7 +59,7 @@ public class DoubleDiceScript : Item
     public void HitDiceBlock()
     {
         _animator.SetTrigger("Jump");
-        int randomValue = Random.Range(1, 7);
+        int randomValue = Random.Range(1, 11);
         Destroy(_diceClone);
         _outcomeCanvasClone = Instantiate(outcomeCanvas, player.GetChild(0).position, Quaternion.identity, player);
         _outcomeCanvasClone.GetComponentInChildren<TMP_Text>().text = randomValue.ToString();

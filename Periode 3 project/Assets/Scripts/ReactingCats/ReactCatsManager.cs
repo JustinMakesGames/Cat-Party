@@ -56,6 +56,25 @@ public class ReactCatsManager : MonoBehaviour, IMinigameManager
             yield return StartCoroutine(MoveFishAway());
 
         }
+
+        CheckForWinner();
+    }
+
+    private void CheckForWinner()
+    {
+        int index = -1;
+        int mostPoints = 0;
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            if (players[i].GetComponent<ReactCatMovement>().points >= mostPoints)
+            {
+                mostPoints = players[i].GetComponent<ReactCatMovement>().points;
+                index = i;
+            }
+        }
+
+        MinigameManager.Instance.EndMinigame(players[index].GetComponent<MinigamePlayerHandler>().playerHandler);
     }
 
     private void AddObjectsInList()

@@ -106,6 +106,16 @@ public class PlayerShopHandling : MonoBehaviour
         }
     }
 
+    public void CancelShop(InputAction.CallbackContext context)
+    {
+        if (context.performed && _isShopping)
+        {
+            Camera.main.transform.position = transform.GetChild(1).position;
+            Camera.main.transform.rotation = transform.GetChild(1).rotation;
+            _isShopping = false;
+            _shopHandler.ShopDone();
+        }
+    }
     private void BuyItem()
     {
         if (GetComponent<PlayerHandler>().coinAmount < selectedItem.GetComponent<Item>().price)

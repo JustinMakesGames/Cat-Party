@@ -19,6 +19,7 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private Animator blackScreenAnimator;
 
     [SerializeField] private List<TMP_Text> minigameTexts = new List<TMP_Text>();
+    [SerializeField] private GameObject playerUI;
 
     private Transform minigameCanvas;
     private GameObject minigamePanel;
@@ -89,6 +90,7 @@ public class MinigameManager : MonoBehaviour
     public IEnumerator HandleMinigameTime()
     {
         minigameText.SetActive(true);
+        playerUI.SetActive(false);
         yield return new WaitForSeconds(1);
         minigameText.SetActive(false);
         minigameScreen.SetActive(true);

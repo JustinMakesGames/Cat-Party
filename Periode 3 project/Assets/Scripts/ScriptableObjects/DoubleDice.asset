@@ -16,5 +16,6 @@ MonoBehaviour:
   price: 5
   animationPrefab: {fileID: 7204993774880064621, guid: db11243ed5c37d649b46b6818404ba13,
     type: 3}
-  uiPrefab: {fileID: 666932302674708324, guid: e1c6152bef8e22c41942213e048bc35d, type: 3}
+  uiPrefab: {fileID: 4868390569272490420, guid: 3d5327259215870479f1fba40bf731e4,
+    type: 3}
   obj: {fileID: 8224263969163161981, guid: 2640b236db0a16245bf72426a168543d, type: 3}

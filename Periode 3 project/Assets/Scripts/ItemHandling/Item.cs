@@ -33,6 +33,7 @@ public class Item : MonoBehaviour
         itemClone.GetComponent<Item>().CallUseItem(player);
         transform.parent.parent.gameObject.SetActive(false);
 
+        print("removing item from inventory");
         player.GetComponent<PlayerInventory>().RemoveItem(gameObject);
         Destroy(gameObject);
     }
