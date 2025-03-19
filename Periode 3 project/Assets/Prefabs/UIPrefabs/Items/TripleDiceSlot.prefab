@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.9545369, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 5560767903034351011}
   - component: {fileID: 315784469512358291}
   m_Layer: 5
-  m_Name: Itemslot
+  m_Name: TripleDiceSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660ede9ca8db81940bac1ac519887fae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemScriptableObject: {fileID: 11400000, guid: b5fe895ae27a96246ab1cef1466a1a28,
+  itemScriptableObject: {fileID: 11400000, guid: dd89e7cc400b0f54d807c0b82475172e,
     type: 2}
   itemName: 
   price: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   uiPrefab: {fileID: 0}
   obj: {fileID: 0}
   player: {fileID: 0}
-  maxHittingDice: 2
+  maxHittingDice: 3
   dice: {fileID: 2269301285119951115, guid: 7221c411c4d37584b9efad84dafa941f, type: 3}
   outcomeCanvas: {fileID: 4320603552333688458, guid: c83bc730960e9e240a98f1e4862edf45,
     type: 3}

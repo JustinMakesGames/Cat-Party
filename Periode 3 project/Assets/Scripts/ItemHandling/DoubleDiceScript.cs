@@ -96,6 +96,9 @@ public class DoubleDiceScript : Item
             case 2:
                 CalculatePositionOfCanvas(4);
                 break;
+            case 3:
+                CalculatePositionOfCanvas(0);
+                break;
         }
     }
 

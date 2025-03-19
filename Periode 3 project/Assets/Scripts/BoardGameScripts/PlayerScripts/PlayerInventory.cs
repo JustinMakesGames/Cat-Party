@@ -45,14 +45,18 @@ public class PlayerInventory : MonoBehaviour
     {
         if (context.performed && _hasOpenedMenu)
         {
-            inventoryScreen.SetActive(false);
-            chooseScreen.SetActive(true);
-            _eventSystem.SetSelectedGameObject(null);
-            _eventSystem.SetSelectedGameObject(chooseScreen.transform.GetChild(0).GetChild(0).gameObject);
-            _hasOpenedMenu = false;
+            OpenChooseScreen();
         }
     }
 
+    public void OpenChooseScreen()
+    {
+        inventoryScreen.SetActive(false);
+        chooseScreen.SetActive(true);
+        _eventSystem.SetSelectedGameObject(null);
+        _eventSystem.SetSelectedGameObject(chooseScreen.transform.GetChild(0).GetChild(0).gameObject);
+        _hasOpenedMenu = false;
+    }
     public void UseItemCPU()
     {
         itemFolder.parent.gameObject.SetActive(true);

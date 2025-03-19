@@ -66,7 +66,6 @@ public class Item : MonoBehaviour
     }
     protected virtual IEnumerator BeginUsingItem()
     {
-        print("Wowie zowie this plays");
         yield return null;
         taskEnded = true;
     }

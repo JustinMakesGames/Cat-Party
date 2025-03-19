@@ -81,7 +81,7 @@ public class LuckySpace : SpaceHandler
 
     private IEnumerator GetFish()
     {
-        int[] possibleCoinAmount = { 10, 20, 30 };
+        int[] possibleCoinAmount = { 5, 10, 15 };
 
         int coinAmount = Random.Range(0, possibleCoinAmount.Length);
         yield return StartCoroutine(CoinChange.Instance.WinCoins(player, possibleCoinAmount[coinAmount]));
