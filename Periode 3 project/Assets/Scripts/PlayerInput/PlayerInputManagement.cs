@@ -67,11 +67,14 @@ public class PlayerInputManagement : MonoBehaviour
     {
         playerFolder = GameObject.FindGameObjectWithTag("PlayerFolder").transform;
     }
-    
-
-    
 
 
+
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= DisableConnectingPlayers;
+    }
     public void PlayerJoins(PlayerInput playerInput) 
     {
         if (SceneManager.GetActiveScene().name == "Menu")

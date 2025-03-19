@@ -1312,10 +1312,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1253037160257099273, guid: 732c889755d599f41bfbcb9a68659def,
+        type: 3}
+      propertyPath: m_text
+      value: 'Be sure to be the fastest to react when a fish cookie gets shown.
+
+        But
+        be careful, you do not want to react at a toxic fish cookie!'
+      objectReference: {fileID: 0}
     - target: {fileID: 3508530665431385953, guid: 732c889755d599f41bfbcb9a68659def,
         type: 3}
       propertyPath: m_SortingOrder
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6522777044962232748, guid: 732c889755d599f41bfbcb9a68659def,
+        type: 3}
+      propertyPath: m_text
+      value: Reacting Kittens
       objectReference: {fileID: 0}
     - target: {fileID: 8891731272582894067, guid: 732c889755d599f41bfbcb9a68659def,
         type: 3}

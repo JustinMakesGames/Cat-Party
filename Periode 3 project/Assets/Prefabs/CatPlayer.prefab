@@ -2998,6 +2998,7 @@ MonoBehaviour:
     type: 3}
   coinPrefab: {fileID: 4043509892859552629, guid: 4be99fdf3fc00514283a69cf2eaa09dd,
     type: 3}
+  yarnBallAnimationSpeed: 10
 --- !u!114 &8505769493963851797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3047,8 +3048,6 @@ MonoBehaviour:
   itemFolder: {fileID: 2804065508614919544}
   chooseScreen: {fileID: 3642103789222774330}
   inventoryScreen: {fileID: 5589566103676522930}
-  itemToAdd: {fileID: 4868390569272490420, guid: 3d5327259215870479f1fba40bf731e4,
-    type: 3}
 --- !u!114 &2378166813629587793
 MonoBehaviour:
   m_ObjectHideFlags: 0

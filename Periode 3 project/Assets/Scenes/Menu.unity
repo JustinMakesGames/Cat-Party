@@ -309,6 +309,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 188479429492312449, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 588558794850289338, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1382620517673469622, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2556945480834807868, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
         type: 3}
       propertyPath: m_Transition
@@ -403,6 +418,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3250068994777330943, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3814203424373496073, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4432605758161242787, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6283258863923336000, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
         type: 3}

@@ -249,4 +249,9 @@ public class MinigameManager : MonoBehaviour
         SceneManager.LoadScene("BoardGame");
 
     }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= HandleSceneSwitch;
+    }
 }

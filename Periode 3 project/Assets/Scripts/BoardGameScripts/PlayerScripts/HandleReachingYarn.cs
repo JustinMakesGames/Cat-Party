@@ -10,6 +10,7 @@ public class HandleReachingYarn : MonoBehaviour
     [SerializeField] private GameObject buyYarnCanvas;
     [SerializeField] private GameObject coinCanvas;
     [SerializeField] private GameObject coinPrefab;
+    [SerializeField] private float yarnBallAnimationSpeed;
 
     private SpaceHandler _spaceHandler;
     private PlayerHandler _playerHandler;
@@ -27,7 +28,7 @@ public class HandleReachingYarn : MonoBehaviour
         _spaceHandler = handler;
         transform.GetChild(transform.childCount - 1).gameObject.SetActive(false);
         
-        if (_playerHandler.coinAmount < 0)
+        if (_playerHandler.coinAmount < 20)
         {
             StartCoroutine(HandleNotEnoughCoins());
         }
@@ -112,7 +113,8 @@ public class HandleReachingYarn : MonoBehaviour
         cloneCanvas.GetComponentInChildren<TMP_Text>().text = coinAmount.ToString();
         transform.GetComponent<PlayerHandler>().ChangeCoinValue(coinAmount);
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
+        yield return StartCoroutine(PlayYarnBallAnimation());
 
         
         GameObject cloneYarnBallCanvas = Instantiate(coinCanvas, transform.GetChild(0).position, Quaternion.identity);
@@ -143,5 +145,18 @@ public class HandleReachingYarn : MonoBehaviour
         _spaceHandler.transform.GetComponent<Renderer>().enabled = true;
 
         Destroy(_spaceHandler.transform.GetChild(0).gameObject);
+    }
+
+    private IEnumerator PlayYarnBallAnimation()
+    {
+        Transform yarnBall = _spaceHandler.transform.GetChild(0).GetChild(1);
+
+        while (yarnBall.position != transform.position)
+        {
+            yarnBall.position = Vector3.MoveTowards(yarnBall.position, transform.position, yarnBallAnimationSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        Destroy(yarnBall.gameObject);
     }
 }
