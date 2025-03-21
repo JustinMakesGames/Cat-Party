@@ -43,16 +43,15 @@ public class WarpItem : Item
         _warpBoxClone = Instantiate(warpBox, player.GetChild(0).position, Quaternion.identity);
 
         yield return new WaitForSeconds(1);
-        _animator.SetTrigger("Jump");
+        _animator.SetTrigger("BigJump");
         yield return new WaitForSeconds(0.1f);
         SwitchEnabledRenderer(false);
         Camera.main.transform.parent = null;
         WarpPlayers();
         yield return new WaitForSeconds(1);
-        _animator.SetTrigger("Jump");
-        yield return new WaitForSeconds(0.1f);
+        _otherAnimator.SetTrigger("JumpOut");
         SwitchEnabledRenderer(true);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
 
     }
 
@@ -81,8 +80,18 @@ public class WarpItem : Item
 
     private void SwitchEnabledRenderer(bool enabled)
     {
-        player.GetComponentInChildren<Renderer>().enabled = enabled;
-        _playerToSwitchWith.GetComponentInChildren<Renderer>().enabled = enabled;
+        Renderer[] playerRenderers = player.GetComponentsInChildren<Renderer>();
+        Renderer[] otherPlayerRenderers = _playerToSwitchWith.GetComponentsInChildren<Renderer>();
+
+        foreach (Renderer renderer in playerRenderers)
+        {
+            renderer.enabled = enabled;
+        }
+
+        foreach (Renderer renderer in otherPlayerRenderers)
+        {
+            renderer.enabled = enabled;
+        }
     }
 
     private IEnumerator SwitchCameraAnimation()
@@ -92,7 +101,7 @@ public class WarpItem : Item
         yield return new WaitForSeconds(0.2f);
         Camera.main.transform.position = player.GetChild(1).position;
         Camera.main.transform.parent = player;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(1);
         player.GetComponent<PlayerInventory>().OpenChooseScreen();
 
     }

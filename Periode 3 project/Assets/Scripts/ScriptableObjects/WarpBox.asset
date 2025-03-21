@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: WarpBox
   price: 8
-  animationPrefab: {fileID: 8224263969163161981, guid: 0ec7f10a514006d45aacd5c99ef78a37,
+  animationPrefab: {fileID: 3522355526338318474, guid: 4b9266812db53de41bff45250963647c,
     type: 3}
-  uiPrefab: {fileID: 4868390569272490420, guid: 9ebd508f656acb74bb730d99e4d6b2fb,
+  uiPrefab: {fileID: 4868390569272490420, guid: 7a8a3b549f6f1514c8dd69068b9333d9,
     type: 3}
-  obj: {fileID: 8224263969163161981, guid: 59e3b5675d1e45f439b336db06b9df12, type: 3}
+  obj: {fileID: 3522355526338318474, guid: 0cd18d0b9ec1fef479a296e9b934a4cb, type: 3}

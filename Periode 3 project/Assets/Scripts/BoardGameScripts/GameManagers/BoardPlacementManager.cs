@@ -48,9 +48,14 @@ public class BoardPlacementManager : MonoBehaviour
 
     }
 
-    public Transform GetPlayerInLast()
+    public Transform GetPlayerInLast(Transform currentPlayer)
     {
         CalculateUIOrder();
+
+        if (_playerUIStats[_playerUIStats.Count - 1].playerHandler.transform == currentPlayer)
+        {
+            return _playerUIStats[_playerUIStats.Count - 2].playerHandler.transform;
+        }
         return _playerUIStats[_playerUIStats.Count - 1].playerHandler.transform;
     }
 

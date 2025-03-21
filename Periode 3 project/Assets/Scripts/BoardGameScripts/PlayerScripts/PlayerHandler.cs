@@ -24,6 +24,7 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private GameObject outcomeCanvas;
     [SerializeField] private int minRoll;
     [SerializeField] private int maxRoll;
+    [SerializeField] private Animator modelAnimator;
 
     
     private GameObject _outcomeCanvasClone;
@@ -61,6 +62,10 @@ public class PlayerHandler : MonoBehaviour
         SceneManager.sceneLoaded += AssignPlayerHandlerToMinigame;
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= AssignPlayerHandlerToMinigame;
+    }
     public IEnumerator StartTurn()
     {
         _cam.position = transform.GetChild(1).position;
@@ -118,6 +123,7 @@ public class PlayerHandler : MonoBehaviour
     {
         
         _animator.SetTrigger("Jump");
+        modelAnimator.SetTrigger("Jump");
         int randomValue = Random.Range(minRoll, maxRoll + 1);
         Destroy(_diceClone);
         _outcomeCanvasClone = Instantiate(outcomeCanvas, transform.GetChild(0).position, Quaternion.identity, transform);

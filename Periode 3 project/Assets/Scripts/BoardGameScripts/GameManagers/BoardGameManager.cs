@@ -117,7 +117,7 @@ public class BoardGameManager : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<HandleStart>().HandleTheStart(); 
+        //GetComponent<HandleStart>().HandleTheStart(); 
                  
     }
 
@@ -141,6 +141,11 @@ public class BoardGameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene("ReactingKittens");
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            SceneManager.LoadScene("Sweeper");
         }
     }
 
