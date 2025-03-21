@@ -16,6 +16,8 @@ TagManager:
   - BadFish
   - AreaBounds
   - BlackScreen
+  - JumpCollider
+  - Bomb
   layers:
   - Default
   - TransparentFX

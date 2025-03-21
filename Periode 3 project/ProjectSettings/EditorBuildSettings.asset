@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ReactingKittens.unity
     guid: dbf2d4231dbf226419de12f0ad4e0ad3
+  - enabled: 1
+    path: Assets/Scenes/Sweeper.unity
+    guid: c65e9260822b35347abe52a20ad31777
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 35ec7e96ee1e8ed4cbe08c7a9f29a2a2,
       type: 2}

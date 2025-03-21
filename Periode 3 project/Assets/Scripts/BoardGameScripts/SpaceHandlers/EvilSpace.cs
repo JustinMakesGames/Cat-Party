@@ -102,7 +102,7 @@ public class EvilSpace : SpaceHandler
         int[] possibleCoinAmount = { 5, 10, 15 };
 
         int coinAmount = Random.Range(0, possibleCoinAmount.Length);
-        Transform playerInLast = BoardPlacementManager.Instance.GetPlayerInLast();
+        Transform playerInLast = BoardPlacementManager.Instance.GetPlayerInLast(player);
         string evilText = $"Muhahahaha you are going to give {possibleCoinAmount[coinAmount]} to the player in last place. I am so evil!";
         yield return StartCoroutine(TextListScript.Instance.ShowPrompt(evilText, _isCPU));
 

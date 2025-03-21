@@ -126,7 +126,11 @@ public class MinigamePlayerMovement : MonoBehaviour
     {
         if (_rb.velocity.x != 0 || _rb.velocity.z != 0)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(_rb.velocity.normalized);
+            Vector3 positionToLook = _rb.velocity;
+            positionToLook.y = transform.position.y;
+            Quaternion targetRotation = Quaternion.LookRotation(positionToLook.normalized);
+            targetRotation.x = 0;
+            targetRotation.z = 0;
             transform.rotation = targetRotation;
         }
     }

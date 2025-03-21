@@ -1318,8 +1318,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1937859605697992754}
-  - component: {fileID: 580873458256859252}
-  - component: {fileID: 1533766863100278470}
   - component: {fileID: 453466072329925040}
   - component: {fileID: 8769884892011172090}
   m_Layer: 0
@@ -1345,56 +1343,6 @@ Transform:
   - {fileID: 768867825802496297}
   m_Father: {fileID: 5476614768796084050}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!33 &580873458256859252
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4053178509943526187}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1533766863100278470
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4053178509943526187}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: fb81fb8abdb063348bfe8177f5ad5763, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!136 &453466072329925040
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2924,6 +2872,7 @@ MonoBehaviour:
     type: 3}
   minRoll: 1
   maxRoll: 10
+  modelAnimator: {fileID: 2450011362684269120}
   canClickThroughText: 0
 --- !u!114 &2270060400328788144
 MonoBehaviour:
@@ -3857,6 +3806,12 @@ PrefabInstance:
 --- !u!4 &768867825802496297 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 76302996334124310, guid: 06ee940c449014b46b9f3d156fb89adb,
+    type: 3}
+  m_PrefabInstance: {fileID: 838940692765234239}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2450011362684269120 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3000721472857777791, guid: 06ee940c449014b46b9f3d156fb89adb,
     type: 3}
   m_PrefabInstance: {fileID: 838940692765234239}
   m_PrefabAsset: {fileID: 0}
