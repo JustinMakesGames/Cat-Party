@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.004
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -435,6 +435,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BlueTile (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403475451708153563, guid: cdf41fe9ff9187b469b7ae1e6deff83c,
+        type: 3}
+      propertyPath: m_Range
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403475451708153563, guid: cdf41fe9ff9187b469b7ae1e6deff83c,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403475451708153563, guid: cdf41fe9ff9187b469b7ae1e6deff83c,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 37.742275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403475451708153563, guid: cdf41fe9ff9187b469b7ae1e6deff83c,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403475451708153563, guid: cdf41fe9ff9187b469b7ae1e6deff83c,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 17.182058
       objectReference: {fileID: 0}
     - target: {fileID: 6958524604947773095, guid: cdf41fe9ff9187b469b7ae1e6deff83c,
         type: 3}
@@ -4003,16 +4028,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -37.79
       objectReference: {fileID: 0}
-    - target: {fileID: 5375708687076632485, guid: e5d3e9dcf665ce9418ad9ad035f16810,
-        type: 3}
-      propertyPath: m_Shadows.m_Strength
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5375708687076632485, guid: e5d3e9dcf665ce9418ad9ad035f16810,
-        type: 3}
-      propertyPath: m_Shadows.m_NearPlane
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 6310990242675454691, guid: e5d3e9dcf665ce9418ad9ad035f16810,
         type: 3}
       propertyPath: m_IsActive
@@ -4027,6 +4042,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8080528892912565615, guid: e5d3e9dcf665ce9418ad9ad035f16810,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.54
       objectReference: {fileID: 0}
     - target: {fileID: 8301763701123587200, guid: e5d3e9dcf665ce9418ad9ad035f16810,
         type: 3}
@@ -8260,6 +8280,36 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 811187644}
     m_Modifications:
+    - target: {fileID: 978761857386603431, guid: 97e998002a5c4e547ba1508f6b6ea308,
+        type: 3}
+      propertyPath: m_Range
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 978761857386603431, guid: 97e998002a5c4e547ba1508f6b6ea308,
+        type: 3}
+      propertyPath: m_Intensity
+      value: 23.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 978761857386603431, guid: 97e998002a5c4e547ba1508f6b6ea308,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 47.202446
+      objectReference: {fileID: 0}
+    - target: {fileID: 978761857386603431, guid: 97e998002a5c4e547ba1508f6b6ea308,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 978761857386603431, guid: 97e998002a5c4e547ba1508f6b6ea308,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 25.135994
+      objectReference: {fileID: 0}
+    - target: {fileID: 2925068718900229891, guid: 97e998002a5c4e547ba1508f6b6ea308,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3848474067194480327, guid: 97e998002a5c4e547ba1508f6b6ea308,
         type: 3}
       propertyPath: m_Name
@@ -9284,6 +9334,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225033896439730367, guid: 97e998002a5c4e547ba1508f6b6ea308,
+        type: 3}
+      propertyPath: m_SpotAngle
+      value: 33.73712
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225033896439730367, guid: 97e998002a5c4e547ba1508f6b6ea308,
+        type: 3}
+      propertyPath: m_Lightmapping
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7225033896439730367, guid: 97e998002a5c4e547ba1508f6b6ea308,
+        type: 3}
+      propertyPath: m_InnerSpotAngle
+      value: 19.031242
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
