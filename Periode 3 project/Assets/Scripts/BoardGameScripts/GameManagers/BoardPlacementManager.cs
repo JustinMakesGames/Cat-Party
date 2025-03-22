@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 [System.Serializable]
@@ -75,44 +76,82 @@ public class BoardPlacementManager : MonoBehaviour
             _playerUIStats.Add(stats);
         }
     }
-    public void ShowBoardPlacement(PlayerHandler playerHandler)
+    public void ShowBoardPlacement(Dictionary<PlayerHandler, int> playerHandler)
     {      
         
         StartCoroutine(ShowBoardPlacementAnimation(playerHandler));
     }
 
-    private IEnumerator ShowBoardPlacementAnimation(PlayerHandler playerHandler)
+    private IEnumerator ShowBoardPlacementAnimation(Dictionary<PlayerHandler, int> playerHandler)
     {
-        print($"This is the playerhandler of today: {playerHandler.name}");
         yield return new WaitForSeconds(1);
         playerUIFolder.gameObject.SetActive(true);
         CalculateUIOrder();
         yield return new WaitForSeconds(2);
-        GameObject playerUITransform = null;
-        foreach (PlayerUIStats stats in _playerUIStats)
+
+        foreach (KeyValuePair<PlayerHandler, int> kvp in playerHandler)
         {
-            print($"{stats.playerHandler.name} vs {playerHandler.name}");
-            if (stats.playerHandler == playerHandler)
+            foreach (PlayerUIStats stats in _playerUIStats)
             {
-                playerUITransform = stats.playerTransform.GetChild(0).gameObject;
-                playerUITransform.SetActive(true);
-                break;
+                if (stats.playerHandler == kvp.Key)
+                {
+                    CalculatePlacement(kvp.Key, kvp.Value);
+                }
             }
         }
+        
         yield return new WaitForSeconds(2);
-        playerUITransform.SetActive(false);
-        playerHandler.ChangeCoinValue(10);
+
+        foreach (PlayerUIStats stats in _playerUIStats)
+        {
+            stats.playerTransform.GetChild(0).gameObject.SetActive(false);
+        }
         CalculateUIOrder();
         yield return new WaitForSeconds(2);
 
         playerUIFolder.gameObject.SetActive(false);
 
         normalPlayerUI.SetActive(true);
+        playerHandler.Clear();
         StartCoroutine(BoardGameManager.Instance.StartNewTurn());
 
     }
 
-    
+    private void CalculatePlacement(PlayerHandler playerHandler, int place)
+    {
+        int coinValue = 0;
+        bool hasWonCoins = false;
+        switch (place)
+        {
+            case 1:
+                coinValue = 10;
+                playerHandler.ChangeCoinValue(coinValue);
+                hasWonCoins = true;
+                break;
+            case 2:
+                coinValue = 6;
+                playerHandler.ChangeCoinValue(coinValue);
+                hasWonCoins = true;
+                break;
+            case 3:
+                coinValue = 3;
+                playerHandler.ChangeCoinValue(coinValue);
+                hasWonCoins = true;
+                break;
+        }
+
+        if (hasWonCoins)
+        {
+            foreach (PlayerUIStats uiStats in _playerUIStats)
+            {
+                if (uiStats.playerHandler == playerHandler)
+                {
+                    uiStats.playerTransform.GetChild(0).gameObject.SetActive(true);
+                    uiStats.playerTransform.GetChild(0).GetComponent<TMP_Text>().text = "+" + coinValue.ToString();
+                }
+            }
+        }
+    }
 
     private void CalculateUIOrder()
     {

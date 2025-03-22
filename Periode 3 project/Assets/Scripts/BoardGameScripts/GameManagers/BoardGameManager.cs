@@ -218,7 +218,7 @@ public class BoardGameManager : MonoBehaviour
         roundText.rectTransform.DOAnchorPosY(roundText.rectTransform.anchoredPosition.y - 50, animationDuration);
     }
 
-    public void HandleReturnToBoardGame(PlayerHandler winnerPlayerHandler)
+    public void HandleReturnToBoardGame(Dictionary<PlayerHandler, int> winnerPlayerHandler)
     {
         BoardPlacementManager.Instance.ShowBoardPlacement(winnerPlayerHandler);
     }

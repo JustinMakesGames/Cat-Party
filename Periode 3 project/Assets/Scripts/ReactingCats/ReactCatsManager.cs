@@ -1,9 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
+[Serializable]
+public struct PlayerPoints
+{
+    public PlayerHandler playerHandler;
+    public int points;
+
+    public PlayerPoints(PlayerHandler playerHandler, int points)
+    {
+        this.playerHandler = playerHandler;
+        this.points = points;
+    }
+}
 public class ReactCatsManager : MonoBehaviour, IMinigameManager
 {
     public static ReactCatsManager Instance;
@@ -46,7 +57,7 @@ public class ReactCatsManager : MonoBehaviour, IMinigameManager
         AddObjectsInList();
         while (_roundNumber < fishOrder.Count)
         {
-            yield return new WaitForSeconds(Random.Range(0.5f, 5f));
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.5f, 5f));
             yield return StartCoroutine(SpawnFish());
             SetPlayersFishOn();
             SetCPUHandlingOn();
@@ -62,21 +73,28 @@ public class ReactCatsManager : MonoBehaviour, IMinigameManager
 
     private void CheckForWinner()
     {
-        int index = -1;
-        int mostPoints = 0;
+        
 
+        List<PlayerPoints> playerPointList = new List<PlayerPoints>();
+
+    
         for (int i = 0; i < players.Count; i++)
         {
-            if (players[i].GetComponent<ReactCatMovement>().points >= mostPoints)
-            {
-                mostPoints = players[i].GetComponent<ReactCatMovement>().points;
-                index = i;
-            }
+            PlayerPoints playerPoints = new PlayerPoints(players[i].GetComponent<MinigamePlayerHandler>().playerHandler,
+                players[i].GetComponent<ReactCatMovement>().points);
+            playerPointList.Add(playerPoints);
         }
 
-        MinigameManager.Instance.EndMinigame(players[index].GetComponent<MinigamePlayerHandler>().playerHandler);
+        playerPointList.Sort((a,b) => a.points.CompareTo(b.points));
+
+        for (int i = 0; i < 3; i++)
+        {
+            MinigameManager.Instance.ThrowPlayerInDictionary(playerPointList[i].playerHandler, i);
+        }
+        MinigameManager.Instance.EndMinigame();
     }
 
+    
     private void AddObjectsInList()
     {
         List<GameObject> tempList = new List<GameObject>();
@@ -125,7 +143,7 @@ public class ReactCatsManager : MonoBehaviour, IMinigameManager
                 possibleChoices.AddRange(objectCounts.Keys);
             }
 
-            GameObject chosen = possibleChoices[Random.Range(0, possibleChoices.Count)];
+            GameObject chosen = possibleChoices[UnityEngine.Random.Range(0, possibleChoices.Count)];
             shuffledList.Add(chosen);
             objectCounts[chosen]--;
         }

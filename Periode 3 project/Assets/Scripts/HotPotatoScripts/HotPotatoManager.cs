@@ -9,6 +9,7 @@ public class HotPotatoManager : MonoBehaviour, IMinigameManager
     [SerializeField] private GameObject bomb;
     [SerializeField] private List<Transform> players;
     private GameObject _bombClone;
+    private int _placement = 4;
 
     private void Awake()
     {
@@ -52,11 +53,15 @@ public class HotPotatoManager : MonoBehaviour, IMinigameManager
     public void KillPlayer(Transform player)
     {
         players.Remove(player);
+        MinigameManager.Instance.ThrowPlayerInDictionary(player.GetComponent<MinigamePlayerHandler>().playerHandler,_placement);
+
+        _placement--;
 
         if (players.Count == 1)
         {
+            MinigameManager.Instance.ThrowPlayerInDictionary(players[0].GetComponent<MinigamePlayerHandler>().playerHandler, _placement);
             StopAllCoroutines();
-            MinigameManager.Instance.EndMinigame(players[0].GetComponent<MinigamePlayerHandler>().playerHandler);
+            MinigameManager.Instance.EndMinigame();
         }
     }
 

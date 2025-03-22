@@ -20,6 +20,7 @@ public class MinigameManager : MonoBehaviour
 
     [SerializeField] private List<TMP_Text> minigameTexts = new List<TMP_Text>();
     [SerializeField] private GameObject playerUI;
+    [SerializeField] private Dictionary<PlayerHandler, int> placeOrder = new Dictionary<PlayerHandler, int>();
 
     private Transform minigameCanvas;
     private GameObject minigamePanel;
@@ -83,7 +84,7 @@ public class MinigameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "BoardGame" && allMinigameScenes.Contains(previousScene))
         {
             blackScreenAnimator.SetTrigger("FadeOut");
-            BoardGameManager.Instance.HandleReturnToBoardGame(winningPlayerHandler);
+            BoardGameManager.Instance.HandleReturnToBoardGame(placeOrder);
         }
         
     }
@@ -228,20 +229,32 @@ public class MinigameManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("MinigameManager").GetComponent<IMinigameManager>().BeginMinigame();
     }
 
-    public void EndMinigame(PlayerHandler playerHandler)
+    public void ThrowPlayerInDictionary(PlayerHandler handler, int placement)
     {
-        winningPlayerHandler = playerHandler;
-        StartCoroutine(ShowPlayerWonText(winningPlayerHandler));
+        placeOrder.Add(handler, placement);
     }
 
-    private IEnumerator ShowPlayerWonText(PlayerHandler playerHandler)
+    public void EndMinigame()
     {
-        
+        StartCoroutine(ShowPlayerWonText());
+    }
+
+    private IEnumerator ShowPlayerWonText()
+    {
+        PlayerHandler winningPlayer = null;
+
+        foreach (KeyValuePair<PlayerHandler, int> keyValuePair in placeOrder)
+        {
+            if (keyValuePair.Value == 1)
+            {
+                winningPlayer = keyValuePair.Key;
+            }
+        }
         winnerText.gameObject.SetActive(true);
         winnerText.text = "FINISH!";
 
         yield return new WaitForSeconds(1);
-        winnerText.text = $"{playerHandler.name} WON!";
+        winnerText.text = $"{winningPlayer.name} WON!";
         yield return new WaitForSeconds(5);
         blackScreenAnimator.SetTrigger("FadeIn");
         yield return new WaitForSeconds(2);

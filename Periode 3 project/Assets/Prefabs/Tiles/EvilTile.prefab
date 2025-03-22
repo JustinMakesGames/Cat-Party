@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7413163690017557485}
   - component: {fileID: 1085986829292031178}
   - component: {fileID: 1656334092873242437}
+  - component: {fileID: 2587613537474791989}
   m_Layer: 5
   m_Name: Image
   m_TagString: Arrow
@@ -75,6 +76,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2587613537474791989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945461868281321821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &989318716443525713
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +529,7 @@ GameObject:
   - component: {fileID: 4581659020766725178}
   - component: {fileID: 3623710144210639657}
   - component: {fileID: 6895874582331387069}
+  - component: {fileID: 6778171022704664127}
   m_Layer: 5
   m_Name: Image
   m_TagString: Arrow
@@ -577,6 +594,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6778171022704664127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3186888162519235028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &3601976830234736969
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1256,7 @@ GameObject:
   - component: {fileID: 6927893580506260033}
   - component: {fileID: 4709171127628101610}
   - component: {fileID: 9131622914249209300}
+  - component: {fileID: 668055645224569693}
   m_Layer: 5
   m_Name: Image
   m_TagString: Arrow
@@ -1288,6 +1321,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &668055645224569693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8860573865220964023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1001 &5233077448720396293
 PrefabInstance:
   m_ObjectHideFlags: 0

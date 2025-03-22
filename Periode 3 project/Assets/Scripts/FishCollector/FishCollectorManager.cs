@@ -4,6 +4,17 @@ using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
+public struct FishCollectorPlayerPoints
+{
+    public PlayerHandler playerHandler;
+    public int points;
+
+    public FishCollectorPlayerPoints(PlayerHandler playerHandler, int points)
+    {
+        this.playerHandler = playerHandler;
+        this.points = points;
+    }
+}
 public class FishCollectorManager : MonoBehaviour, IMinigameManager
 {
     [SerializeField] private TMP_Text timerText;
@@ -146,9 +157,9 @@ public class FishCollectorManager : MonoBehaviour, IMinigameManager
         EndMinigameForPlayers();
         yield return new WaitForSeconds(1);
         ShowAllPoints();
-        int winnerPlayerIndex = CalculateWinner();
+        CalculateOrder();
         yield return new WaitForSeconds(2);
-        MinigameManager.Instance.EndMinigame(players[winnerPlayerIndex].GetComponent<MinigamePlayerHandler>().playerHandler);
+        MinigameManager.Instance.EndMinigame();
 
     }
 
@@ -176,22 +187,23 @@ public class FishCollectorManager : MonoBehaviour, IMinigameManager
         }
     }
 
-    private int CalculateWinner()
+    private void CalculateOrder()
     {
-        int biggestAmountOfPoints = 0;
-        int index = -1;
+        List<FishCollectorPlayerPoints> playerPointList = new List<FishCollectorPlayerPoints>();
+
 
         for (int i = 0; i < players.Count; i++)
         {
-            int playerPoints = players[i].GetComponent<FishCollectorMovement>().points;
-
-            if (playerPoints > biggestAmountOfPoints)
-            {
-                biggestAmountOfPoints = playerPoints;
-                index = i;
-            }
+            FishCollectorPlayerPoints playerPoints = new FishCollectorPlayerPoints(players[i].GetComponent<MinigamePlayerHandler>().playerHandler,
+                players[i].GetComponent<FishCollectorMovement>().points);
+            playerPointList.Add(playerPoints);
         }
 
-        return index;
+        playerPointList.Sort((a, b) => a.points.CompareTo(b.points));
+
+        for (int i = 0; i < 3; i++)
+        {
+            MinigameManager.Instance.ThrowPlayerInDictionary(playerPointList[i].playerHandler, i);
+        }
     }
 }

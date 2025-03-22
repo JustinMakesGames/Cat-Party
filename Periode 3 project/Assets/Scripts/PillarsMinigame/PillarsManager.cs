@@ -29,6 +29,7 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
     private bool _isShaking;
 
     private bool _hasFinishedMinigame;
+    private int _placement = 4;
 
 
     private void Awake()
@@ -228,14 +229,17 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
         if (alivePlayers.Contains(player))
         {
             alivePlayers.Remove(player);
+            MinigameManager.Instance.ThrowPlayerInDictionary(player.GetComponent<MinigamePlayerHandler>().playerHandler, _placement);
+            _placement--;
         }
 
         if (alivePlayers.Count == 1)
         {
+            MinigameManager.Instance.ThrowPlayerInDictionary(alivePlayers[0].GetComponent<MinigamePlayerHandler>().playerHandler, _placement);
             _hasFinishedMinigame = true;
             alivePlayers[0].GetComponent<PillarPlayerMovement>().StopAllCoroutines();
             alivePlayers[0].GetComponent<PillarPlayerMovement>().hasMinigameStart = false;
-            MinigameManager.Instance.EndMinigame(alivePlayers[0].GetComponent<MinigamePlayerHandler>().playerHandler);
+            MinigameManager.Instance.EndMinigame();
         }
     }
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2873396662614394444}
   - component: {fileID: 7915554543802164264}
   - component: {fileID: 7679656441812396832}
+  - component: {fileID: 4927554978270748976}
   m_Layer: 5
   m_Name: Image
   m_TagString: Arrow
@@ -75,6 +76,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4927554978270748976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 671384437291863686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1498835647061846082
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +427,7 @@ GameObject:
   - component: {fileID: 4204149646634805067}
   - component: {fileID: 8390022564952015261}
   - component: {fileID: 7694337178851122889}
+  - component: {fileID: 1711482350195216853}
   m_Layer: 5
   m_Name: Image
   m_TagString: Arrow
@@ -475,6 +492,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1711482350195216853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6035725982512514596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 1, g: 1, b: 1, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6424924600217267891
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,6 +701,8 @@ MonoBehaviour:
   - {fileID: 6035725982512514596}
   randomItems:
   - {fileID: 8224263969163161981, guid: 2640b236db0a16245bf72426a168543d, type: 3}
+  - {fileID: 8224263969163161981, guid: 59e3b5675d1e45f439b336db06b9df12, type: 3}
+  - {fileID: 3522355526338318474, guid: 0cd18d0b9ec1fef479a296e9b934a4cb, type: 3}
 --- !u!1 &7512466465151482610
 GameObject:
   m_ObjectHideFlags: 0

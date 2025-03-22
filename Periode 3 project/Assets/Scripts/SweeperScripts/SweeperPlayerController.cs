@@ -22,6 +22,8 @@ public class SweeperPlayerController : MinigamePlayerMovement
     private bool _hasReachedArea;
 
 
+
+
     private void Awake()
     {
         _color = GetComponentInChildren<Renderer>().material.color;

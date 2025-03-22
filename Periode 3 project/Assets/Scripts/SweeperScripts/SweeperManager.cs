@@ -24,7 +24,7 @@ public class SweeperManager : MonoBehaviour, IMinigameManager
     [SerializeField] private float bombIntervalAcceleration;
     private Bounds _arenaBounds;
 
-
+    private int _placement = 4;
     private Transform cylinderToScale;
 
 
@@ -64,7 +64,7 @@ public class SweeperManager : MonoBehaviour, IMinigameManager
     private IEnumerator WaitForMoreCylinders()
     {
         yield return new WaitForSeconds(timeForNewCylinder);
-        yield return StartCoroutine(NewCylinderAnimation(1, true, 10));
+        yield return StartCoroutine(NewCylinderAnimation(1, true, 7));
     }
 
     private IEnumerator NewCylinderAnimation(int index, bool isOneSided, float maxScaleY)
@@ -107,11 +107,14 @@ public class SweeperManager : MonoBehaviour, IMinigameManager
     {
         players.Remove(player);
 
+        MinigameManager.Instance.ThrowPlayerInDictionary(player.GetComponent<MinigamePlayerHandler>().playerHandler, _placement);
+        _placement--;
         if (players.Count == 1)
         {
+            MinigameManager.Instance.ThrowPlayerInDictionary(players[0].GetComponent<MinigamePlayerHandler>().playerHandler, _placement);
             StopAllCoroutines();
             _hasGameStarted = false;
-            MinigameManager.Instance.EndMinigame(players[0].GetComponent<MinigamePlayerHandler>().playerHandler);
+            MinigameManager.Instance.EndMinigame();
         }
     }
 
