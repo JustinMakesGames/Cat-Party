@@ -2278,6 +2278,26 @@ PrefabInstance:
       propertyPath: m_text
       value: Hot Potato
       objectReference: {fileID: 0}
+    - target: {fileID: 8773763889115268308, guid: 732c889755d599f41bfbcb9a68659def,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8773763889115268308, guid: 732c889755d599f41bfbcb9a68659def,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8773763889115268308, guid: 732c889755d599f41bfbcb9a68659def,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8773763889115268308, guid: 732c889755d599f41bfbcb9a68659def,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8891731272582894067, guid: 732c889755d599f41bfbcb9a68659def,
         type: 3}
       propertyPath: m_Name
