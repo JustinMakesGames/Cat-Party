@@ -11,8 +11,13 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Transform itemFolder;
     [SerializeField] private GameObject chooseScreen;
     [SerializeField] private GameObject inventoryScreen;
+    [SerializeField] private Transform cancelItemScreen;
+    [SerializeField] private GameObject cancelInventoryScreen;
+    [SerializeField] private GameObject emptyUI;
     private MultiplayerEventSystem _eventSystem;
     private bool _hasOpenedMenu;
+
+    public bool hasCancelledItem;
 
 
     private void Awake()
@@ -25,6 +30,9 @@ public class PlayerInventory : MonoBehaviour
         GameObject itemClone = Instantiate(item, itemFolder);
         itemClone.GetComponent<Item>().player = transform;
         items.Add(itemClone);
+        GameObject cancelItemClone = Instantiate(emptyUI, cancelItemScreen);
+        cancelItemClone.GetComponent<ItemReference>().item = itemClone;
+        cancelItemClone.GetComponent<ItemReference>().inventory = this;
         if (items.Count > 3)
         {
             yield return StartCoroutine(HandleTooMuchItems());
@@ -75,6 +83,17 @@ public class PlayerInventory : MonoBehaviour
 
     private IEnumerator HandleTooMuchItems()
     {
+        string prompt = "You got too much items, which one would you like to get rid off";
 
+        yield return StartCoroutine(TextListScript.Instance.ShowPrompt(prompt));
+
+        cancelInventoryScreen.SetActive(true);
+
+        while (!hasCancelledItem)
+        {
+            yield return null;
+        }
+
+        hasCancelledItem = false;
     }
 }
