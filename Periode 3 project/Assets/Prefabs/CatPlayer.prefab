@@ -2519,7 +2519,7 @@ MonoBehaviour:
       - m_Target: {fileID: 9131087840390817543}
         m_TargetAssemblyTypeName: PlayerMapHandling, Assembly-CSharp
         m_MethodName: StartMapHandling
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2829,6 +2829,18 @@ MonoBehaviour:
       - m_Target: {fileID: 2104527834953450397}
         m_TargetAssemblyTypeName: PlayerInventory, Assembly-CSharp
         m_MethodName: CloseItemMenu
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8505769493963851797}
+        m_TargetAssemblyTypeName: HandleBrancingPathPlayer, Assembly-CSharp
+        m_MethodName: CheckMap
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

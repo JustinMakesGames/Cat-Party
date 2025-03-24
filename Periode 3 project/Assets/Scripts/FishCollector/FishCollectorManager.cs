@@ -201,9 +201,12 @@ public class FishCollectorManager : MonoBehaviour, IMinigameManager
 
         playerPointList.Sort((a, b) => a.points.CompareTo(b.points));
 
-        for (int i = 0; i < 3; i++)
+        int _placement = 4;
+
+        for (int i = 0; i < 4; i++)
         {
-            MinigameManager.Instance.ThrowPlayerInDictionary(playerPointList[i].playerHandler, i);
+            MinigameManager.Instance.ThrowPlayerInDictionary(playerPointList[i].playerHandler, _placement);
+            _placement--;
         }
     }
 }

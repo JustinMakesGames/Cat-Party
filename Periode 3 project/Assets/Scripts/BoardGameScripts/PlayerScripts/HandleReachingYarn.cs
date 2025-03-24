@@ -144,12 +144,12 @@ public class HandleReachingYarn : MonoBehaviour
         _spaceHandler.isYarnPlace = false;
         _spaceHandler.transform.GetComponent<Renderer>().enabled = true;
 
-        Destroy(_spaceHandler.transform.GetChild(0).gameObject);
+        Destroy(_spaceHandler.transform.GetChild(1).gameObject);
     }
 
     private IEnumerator PlayYarnBallAnimation()
     {
-        Transform yarnBall = _spaceHandler.transform.GetChild(0).GetChild(1);
+        Transform yarnBall = _spaceHandler.transform.GetChild(1).GetChild(0);
 
         while (yarnBall.position != transform.position)
         {

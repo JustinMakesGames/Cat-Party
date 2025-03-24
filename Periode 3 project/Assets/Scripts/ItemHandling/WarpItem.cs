@@ -102,7 +102,17 @@ public class WarpItem : Item
         Camera.main.transform.position = player.GetChild(1).position;
         Camera.main.transform.parent = player;
         yield return new WaitForSeconds(1);
-        player.GetComponent<PlayerInventory>().OpenChooseScreen();
+
+        if (player.GetComponent<PlayerHandler>().isPlayer)
+        {
+            player.GetComponent<PlayerInventory>().OpenChooseScreen();
+        }
+
+        else
+        {
+            player.GetComponent<PlayerHandler>().CallDiceCPU();
+        }
+        
 
     }
 }

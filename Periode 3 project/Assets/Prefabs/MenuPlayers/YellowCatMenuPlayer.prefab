@@ -133,7 +133,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &3198579512229996040
 MonoBehaviour:
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
+  _animator: {fileID: 8257345124781723231}
 --- !u!136 &6941272736645851812
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -242,6 +243,12 @@ PrefabInstance:
 --- !u!4 &2831534837080503993 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7568267677207198921, guid: a1dd315f8396ac348963b1e1180d7934,
+    type: 3}
+  m_PrefabInstance: {fileID: 5641957774122470000}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8257345124781723231 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4385302141657007151, guid: a1dd315f8396ac348963b1e1180d7934,
     type: 3}
   m_PrefabInstance: {fileID: 5641957774122470000}
   m_PrefabAsset: {fileID: 0}

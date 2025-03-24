@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class SweeperManager : MonoBehaviour, IMinigameManager
 {
@@ -47,7 +45,6 @@ public class SweeperManager : MonoBehaviour, IMinigameManager
 
 
         _hasGameStarted = true;
-        StartCoroutine(WaitForMoreCylinders());
         StartCoroutine(SpawnBombs());
     }
 
@@ -61,13 +58,9 @@ public class SweeperManager : MonoBehaviour, IMinigameManager
         }
     }
 
-    private IEnumerator WaitForMoreCylinders()
-    {
-        yield return new WaitForSeconds(timeForNewCylinder);
-        yield return StartCoroutine(NewCylinderAnimation(1, true, 7));
-    }
+   
 
-    private IEnumerator NewCylinderAnimation(int index, bool isOneSided, float maxScaleY)
+    /*private IEnumerator NewCylinderAnimation(int index, bool isOneSided, float maxScaleY)
     {
         cylinderToScale = cylinderCenter.GetChild(index);
         while (cylinderToScale.localScale.y < maxScaleY)
@@ -83,7 +76,7 @@ public class SweeperManager : MonoBehaviour, IMinigameManager
         }
 
 
-    }
+    }*/
 
     private IEnumerator SpawnBombs()
     {

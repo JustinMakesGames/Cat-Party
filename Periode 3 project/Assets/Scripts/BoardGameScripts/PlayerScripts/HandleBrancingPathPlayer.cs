@@ -17,6 +17,7 @@ public class HandleBrancingPathPlayer : MonoBehaviour
     private List<Transform> arrows = new List<Transform>();
     private Transform selectedArrow;
     private bool _isChoosingArrow;
+    private bool _canCheckMap;
 
     //CPU Handling
 
@@ -37,6 +38,7 @@ public class HandleBrancingPathPlayer : MonoBehaviour
 
         if (isPlayer)
         {
+            _canCheckMap = true;
             StartCoroutine(SelectedArrowScaling());
         }
 
@@ -51,6 +53,13 @@ public class HandleBrancingPathPlayer : MonoBehaviour
             StartCoroutine(HandleCPUChoosingArrow());
         }
         
+    }
+
+    public void HandleCancelMap()
+    {
+        _isChoosingArrow = true;
+        _canCheckMap = true;
+        StartCoroutine(SelectedArrowScaling());
     }
 
     public void SwitchArrow(InputAction.CallbackContext context)
@@ -74,8 +83,20 @@ public class HandleBrancingPathPlayer : MonoBehaviour
     {
         if (_isChoosingArrow && context.performed)
         {
+
             brancingPathHandler.PlayerSelectsArrow(selectedArrow);
+            _canCheckMap = false;
             _isChoosingArrow = false;
+        }
+    }
+
+    public void CheckMap(InputAction.CallbackContext context)
+    {
+        if (context.performed && _canCheckMap)
+        {
+            _isChoosingArrow = false;
+            _canCheckMap = false;
+            GetComponent<PlayerMapHandling>().StartMapHandling(true);
         }
     }
 
@@ -106,6 +127,7 @@ public class HandleBrancingPathPlayer : MonoBehaviour
         selectedArrow = CalculateRightPath();
         yield return new WaitForSeconds(1);
         brancingPathHandler.PlayerSelectsArrow(selectedArrow);
+        _canCheckMap = false;
         _isCPUChoosingArrow = false;
 
         pathFolders.Clear();

@@ -86,10 +86,10 @@ public class EvilSpace : SpaceHandler
 
     private IEnumerator StealCoins()
     {
-        int[] possibleCoinAmount = { -10, -20, -30 };
+        int[] possibleCoinAmount = { -5, -10, -15 };
 
         int coinAmount = Random.Range(0, possibleCoinAmount.Length);
-        string evilText = $"Muhahahaha I am gonna steal {possibleCoinAmount[coinAmount]} coins from you and there is nothing you can do about it!";
+        string evilText = $"Muhahahaha I am gonna steal {Mathf.Abs(possibleCoinAmount[coinAmount])} coins from you and there is nothing you can do about it!";
         yield return StartCoroutine(TextListScript.Instance.ShowPrompt(evilText, _isCPU));
         yield return StartCoroutine(CoinChange.Instance.LoseCoins(player, possibleCoinAmount[coinAmount]));
 

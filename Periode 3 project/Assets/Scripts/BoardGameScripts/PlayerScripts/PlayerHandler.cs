@@ -106,10 +106,15 @@ public class PlayerHandler : MonoBehaviour
 
         else
         {
-            _diceClone = Instantiate(dice, transform.GetChild(0).position, Quaternion.identity, transform);
-            StartCoroutine(HandleCPUDice());
+            CallDiceCPU();
         }
         
+    }
+
+    public void CallDiceCPU()
+    {
+        _diceClone = Instantiate(dice, transform.GetChild(0).position, Quaternion.identity, transform);
+        StartCoroutine(HandleCPUDice());
     }
 
     private IEnumerator HandleCPUDice()

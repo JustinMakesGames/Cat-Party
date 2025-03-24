@@ -17,10 +17,12 @@ public class PlayerMapHandling : MonoBehaviour
     private Transform _cam;
     private bool _isLookingMap;
 
+    private bool _isAtBrancingPath;
     private Vector3 _dir;
     
-    public void StartMapHandling()
+    public void StartMapHandling(bool isAtBranchingPath)
     {
+        _isAtBrancingPath = isAtBranchingPath;
         areaToMoveAround = GameObject.FindGameObjectWithTag("AreaBounds").transform;
         chooseScreen.SetActive(false);
         _areaBounds = areaToMoveAround.GetComponent<Collider>().bounds;
@@ -86,7 +88,17 @@ public class PlayerMapHandling : MonoBehaviour
     {
         _isLookingMap = false;
         yield return StartCoroutine(MoveCameraBack());
-        chooseScreen.SetActive(true);
+
+        if (_isAtBrancingPath)
+        {
+            GetComponent<HandleBrancingPathPlayer>().HandleCancelMap();
+        }
+
+        else
+        {
+            chooseScreen.SetActive(true);
+        }
+        
 
     }
     private IEnumerator MoveCameraBack()

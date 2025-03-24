@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class MenuMovementScript : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private Animator _animator;
     private Rigidbody _rb;
     private Vector3 _dir;
 
@@ -21,11 +22,25 @@ public class MenuMovementScript : MonoBehaviour
         _dir.z = context.ReadValue<Vector2>().y;
     }
 
+    private void Update()
+    {
+        _animator.SetFloat("IsWalking", _rb.velocity.magnitude);
+        RotationCheck();
+    }
     private void FixedUpdate()
     {
         _rb.velocity = _dir * speed * Time.deltaTime;
     }
 
+    private void RotationCheck()
+    {
+        if (_dir.x != 0 || _dir.z != 0)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(_dir.normalized);
+
+            transform.rotation = targetRotation;
+        }
+    }
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= SceneSwitchHandling;
