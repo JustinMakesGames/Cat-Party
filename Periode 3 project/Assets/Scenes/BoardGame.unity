@@ -4061,12 +4061,37 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 817301712238958151, guid: e5d3e9dcf665ce9418ad9ad035f16810,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1320964993062336127, guid: e5d3e9dcf665ce9418ad9ad035f16810,
         type: 3}
       propertyPath: m_AdditionalLightsShadowResolutionTier
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1410158170834267683, guid: e5d3e9dcf665ce9418ad9ad035f16810,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1769479471604124448, guid: e5d3e9dcf665ce9418ad9ad035f16810,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2363799142672987370, guid: e5d3e9dcf665ce9418ad9ad035f16810,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2417456060063639153, guid: e5d3e9dcf665ce9418ad9ad035f16810,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2914527886097043176, guid: e5d3e9dcf665ce9418ad9ad035f16810,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -4086,6 +4111,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -37.79
       objectReference: {fileID: 0}
+    - target: {fileID: 3246381066061278980, guid: e5d3e9dcf665ce9418ad9ad035f16810,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6310990242675454691, guid: e5d3e9dcf665ce9418ad9ad035f16810,
         type: 3}
       propertyPath: m_IsActive
@@ -4100,6 +4130,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7926736959563863891, guid: e5d3e9dcf665ce9418ad9ad035f16810,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8080528892912565615, guid: e5d3e9dcf665ce9418ad9ad035f16810,
         type: 3}
@@ -4205,6 +4240,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8634143764667587139, guid: e5d3e9dcf665ce9418ad9ad035f16810,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
