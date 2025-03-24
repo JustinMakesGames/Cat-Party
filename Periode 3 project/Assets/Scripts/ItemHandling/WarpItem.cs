@@ -96,6 +96,7 @@ public class WarpItem : Item
 
     private IEnumerator SwitchCameraAnimation()
     {
+        Destroy(_warpBoxClone);
         _blackScreenAnimator = GameObject.FindGameObjectWithTag("BlackScreen").GetComponent<Animator>();
         _blackScreenAnimator.SetTrigger("FadeInOut");
         yield return new WaitForSeconds(0.2f);

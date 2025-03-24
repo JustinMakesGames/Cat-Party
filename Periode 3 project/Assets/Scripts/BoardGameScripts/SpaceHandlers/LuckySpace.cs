@@ -98,7 +98,7 @@ public class LuckySpace : SpaceHandler
 
         Destroy(clone);
         yield return StartCoroutine(ShowTextItemGot());
-        player.GetComponent<PlayerInventory>().AddItem(_spawnedItem.GetComponent<Item>().uiPrefab);
+        yield return StartCoroutine(player.GetComponent<PlayerInventory>().AddItem(_spawnedItem.GetComponent<Item>().uiPrefab));
         Destroy(_spawnedItem);
     }
 

@@ -20,11 +20,16 @@ public class PlayerInventory : MonoBehaviour
         _eventSystem = GetComponentInChildren<MultiplayerEventSystem>();
     }
 
-    public void AddItem(GameObject item)
+    public IEnumerator AddItem(GameObject item)
     {
         GameObject itemClone = Instantiate(item, itemFolder);
         itemClone.GetComponent<Item>().player = transform;
         items.Add(itemClone);
+        if (items.Count > 3)
+        {
+            yield return StartCoroutine(HandleTooMuchItems());
+        }
+        
 
     }
 
@@ -66,5 +71,10 @@ public class PlayerInventory : MonoBehaviour
     public void RemoveItem(GameObject item)
     {
         items.Remove(item);
+    }
+
+    private IEnumerator HandleTooMuchItems()
+    {
+
     }
 }

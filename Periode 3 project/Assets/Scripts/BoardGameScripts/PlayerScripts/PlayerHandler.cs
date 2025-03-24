@@ -62,6 +62,25 @@ public class PlayerHandler : MonoBehaviour
         SceneManager.sceneLoaded += AssignPlayerHandlerToMinigame;
     }
 
+    private void Update()
+    {
+        for (int i = 0; i <= 9; i++)
+        {
+            KeyCode key = (KeyCode)System.Enum.Parse(typeof(KeyCode), "Keypad" + i);
+
+            if (Input.GetKeyDown(key))
+            {
+                if (i == 0)
+                {
+                    minRoll = 1;
+                    maxRoll = 10;
+                    return;
+                }
+                minRoll = i;
+                maxRoll = i;
+            }
+        }
+    }
     private void OnDestroy()
     {
         SceneManager.sceneLoaded -= AssignPlayerHandlerToMinigame;
