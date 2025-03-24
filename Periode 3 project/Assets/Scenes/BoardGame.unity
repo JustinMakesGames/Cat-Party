@@ -10810,6 +10810,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4024679231802146310, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4024679231802146310, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.085
+      objectReference: {fileID: 0}
     - target: {fileID: 4238630119598891584, guid: a9e65608b145e9d4db46d0a857787031,
         type: 3}
       propertyPath: m_sharedMaterial
