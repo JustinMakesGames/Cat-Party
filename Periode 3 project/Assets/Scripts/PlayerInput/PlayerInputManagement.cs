@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -26,6 +27,7 @@ public class PlayerInputManagement : MonoBehaviour
     [SerializeField] private Transform playerFolder;
     [SerializeField] private Transform spawnFolder;
     [SerializeField] private List<string> playFields = new List<string>();
+    [SerializeField] private List<int> allPlayerIndexes = new List<int>();
     private int playerAmount = 0;
     public List<InputID> inputDevices = new List<InputID>();
 
@@ -92,9 +94,8 @@ public class PlayerInputManagement : MonoBehaviour
 
     private void MenuJoin(PlayerInput playerInput) 
     {
-        if (!playerInput.transform.CompareTag("Player")) 
+        if (!playerInput.transform.CompareTag("MenuPlayer")) 
         {
-            inputDevices.Add(ReturnInputDevice(playerInput.devices[0]));
             Instantiate(menuPlayers[GetRightID()], spawnFolder.GetChild(GetRightID()).position, Quaternion.identity, playerFolder);       
             Destroy(playerInput.gameObject);
         }
@@ -113,13 +114,11 @@ public class PlayerInputManagement : MonoBehaviour
         {
             print("This code was played");
             Destroy(playerInput.gameObject);
-            playerFolder.GetChild(playerAmount).GetComponent<PlayerInput>().enabled = true;         
+            playerFolder.GetChild(GetRightID()).GetComponent<PlayerInput>().enabled = true;         
         }
 
         else 
         {
-            
-            inputDevices.Add(ReturnInputDevice(playerInput.devices[0]));
             playerAmount++;
         }
     }
@@ -133,7 +132,7 @@ public class PlayerInputManagement : MonoBehaviour
     private IEnumerator DisablePlayerInput(PlayerInput playerInput) 
     {
         yield return null;
-        if (playerInput == null || !playerInput.transform.CompareTag("Player")) yield break;
+        if (playerInput == null || !playerInput.transform.CompareTag("Player") || !playerInput.user.valid) yield break;
         playerAmount--;
         print(playerInput.transform.name + " leaves the game");
 
@@ -142,6 +141,25 @@ public class PlayerInputManagement : MonoBehaviour
 
     }
 
+    public void AddPlayerToList(InputDevice device, int index)
+    {
+
+        inputDevices.Add(new InputID(device, index));
+
+        
+    }
+
+    public void RemovePlayerOfList(int index)
+    {
+        foreach (InputID id in inputDevices)
+        {
+            if (id.id == index)
+            {
+                inputDevices.Remove(id);
+                return;
+            }
+        }
+    }
     private InputID ReturnInputDevice(InputDevice inputDevice) 
     {
         int rightID = 0;
@@ -166,7 +184,16 @@ public class PlayerInputManagement : MonoBehaviour
 
     private int GetRightID() 
     {
-        return inputDevices[inputDevices.Count - 1].id;
+        int rightIndex = 0;
+        foreach (int index in allPlayerIndexes)
+        {
+            if (!inputDevices.Any(s => s.id == index))
+            {
+                return index;
+            }
+        }
+
+        return rightIndex;
     }
      
 }

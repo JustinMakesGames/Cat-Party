@@ -43,6 +43,8 @@ public class PlayerHandler : MonoBehaviour
         _animator = GetComponentInChildren<Animator>();
         pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform.GetChild(0);
         _eventSystem = GetComponentInChildren<MultiplayerEventSystem>();
+
+        StartCoroutine(CheckIfPlayerExists());
     }
     public void ClickThroughText(InputAction.CallbackContext context)
     {
@@ -53,6 +55,14 @@ public class PlayerHandler : MonoBehaviour
         }
     }
 
+    private IEnumerator CheckIfPlayerExists()
+    {
+        while (true)
+        {
+            isPlayer = GetComponent<PlayerInput>().enabled;
+            yield return new WaitForSeconds(1);
+        }
+    }
     public void CanClickThroughText()
     {
         canClickThroughText = true;
@@ -133,6 +143,7 @@ public class PlayerHandler : MonoBehaviour
     public void CallDiceCPU()
     {
         _diceClone = Instantiate(dice, transform.GetChild(0).position, Quaternion.identity, transform);
+        _canHitDice = true;
         StartCoroutine(HandleCPUDice());
     }
 

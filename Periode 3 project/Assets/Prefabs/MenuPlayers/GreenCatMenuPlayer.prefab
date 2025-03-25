@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6941272736645851812}
   m_Layer: 0
   m_Name: GreenCatMenuPlayer
-  m_TagString: Player
+  m_TagString: MenuPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f58f2c33e4e9c246a971a39ecc97fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 2
 --- !u!54 &7856413131023602385
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -171,7 +172,7 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1001 &8699847933774968609
 PrefabInstance:
   m_ObjectHideFlags: 0

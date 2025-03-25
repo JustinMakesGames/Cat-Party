@@ -18,6 +18,7 @@ TagManager:
   - BlackScreen
   - JumpCollider
   - Bomb
+  - MenuPlayer
   layers:
   - Default
   - TransparentFX

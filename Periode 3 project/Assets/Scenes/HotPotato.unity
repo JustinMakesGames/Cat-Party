@@ -2386,7 +2386,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasMinigameStarted: 0
-  bomb: {fileID: 2032951122846552949, guid: 2dffea7816e2b234f80c58b731e71cc1, type: 3}
+  bomb: {fileID: 9114691536130304123, guid: 6672b41cb7e296142b91bf68509fa2ff, type: 3}
   players:
   - {fileID: 5656794327577354334}
   - {fileID: 1517960452}
