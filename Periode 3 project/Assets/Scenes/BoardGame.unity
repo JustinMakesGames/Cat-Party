@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.004
+  m_FogDensity: 0.006
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -4237,7 +4237,12 @@ PrefabInstance:
     - target: {fileID: 5375708687076632485, guid: e5d3e9dcf665ce9418ad9ad035f16810,
         type: 3}
       propertyPath: m_Intensity
-      value: 3
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 5375708687076632485, guid: e5d3e9dcf665ce9418ad9ad035f16810,
+        type: 3}
+      propertyPath: m_Shadows.m_Strength
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 6310990242675454691, guid: e5d3e9dcf665ce9418ad9ad035f16810,
         type: 3}
