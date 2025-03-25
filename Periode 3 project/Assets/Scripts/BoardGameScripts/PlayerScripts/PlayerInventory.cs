@@ -62,6 +62,11 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    public void HasOpenedMenuTurnedFalse()
+    {
+        _hasOpenedMenu = false;
+    }
+
     public void OpenChooseScreen()
     {
         inventoryScreen.SetActive(false);

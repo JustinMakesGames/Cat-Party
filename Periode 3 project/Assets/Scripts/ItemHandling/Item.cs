@@ -28,6 +28,7 @@ public class Item : MonoBehaviour
     public void StartUsingItem()
     {
         player = transform.parent.parent.parent.parent;
+        player.GetComponent<PlayerInventory>().HasOpenedMenuTurnedFalse();
         player.GetComponentInChildren<MultiplayerEventSystem>().SetSelectedGameObject(null);
         GameObject itemClone = Instantiate(obj, null);
         itemClone.GetComponent<Item>().CallUseItem(player);
