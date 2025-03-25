@@ -99,6 +99,7 @@ public class ReactCatMovement : MonoBehaviour
         yield return StartCoroutine(MoveToMiddle());
         yield return new WaitForSeconds(0.2f);
         yield return StartCoroutine(MoveToOriginalPosition());
+        yield return new WaitForSeconds(0.2f);
         _isMovingPaw = false;
     }
 

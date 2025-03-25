@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneManaging : MonoBehaviour
 {
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            MoveToMenu();
+        }
+    }
     public void MoveToMenu()
     {
         Scene newScene = SceneManager.CreateScene("DeleteScene");

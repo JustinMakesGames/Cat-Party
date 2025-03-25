@@ -65,6 +65,7 @@ public class BoardGameManager : MonoBehaviour
 
 
     private int _turnAmount = 1;
+    private bool _isDebugging;
 
     private void Awake()
     {
@@ -113,10 +114,14 @@ public class BoardGameManager : MonoBehaviour
         }
     }
 
-    
+    public void DebuggingOn()
+    {
+        _isDebugging = true;
+    }
 
     private void Start()
     {
+        if (_isDebugging) return;
         GetComponent<HandleStart>().HandleTheStart(); 
                  
     }

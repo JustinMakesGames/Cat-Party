@@ -98,6 +98,7 @@ public class SweeperManager : MonoBehaviour, IMinigameManager
 
     public void RemovePlayerFromList(Transform player)
     {
+        if (players.Count == 1) return;
         players.Remove(player);
 
         MinigameManager.Instance.ThrowPlayerInDictionary(player.GetComponent<MinigamePlayerHandler>().playerHandler, _placement);

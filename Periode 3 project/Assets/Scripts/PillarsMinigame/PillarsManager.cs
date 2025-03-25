@@ -226,6 +226,7 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
 
     public void HandleDeadPlayer(Transform player)
     {
+        if (alivePlayers.Count == 1) return;
         if (alivePlayers.Contains(player))
         {
             alivePlayers.Remove(player);
