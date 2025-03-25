@@ -11,7 +11,9 @@ public class ItemReference : MonoBehaviour
     {
         inventory.RemoveItem(item);
         Destroy(item);
+        inventory.hasCancelledItem = true;
         transform.parent.parent.gameObject.SetActive(false);
+        
         Destroy(gameObject);
     }
 }

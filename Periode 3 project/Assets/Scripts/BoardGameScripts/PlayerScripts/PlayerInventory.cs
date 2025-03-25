@@ -33,7 +33,7 @@ public class PlayerInventory : MonoBehaviour
         GameObject cancelItemClone = Instantiate(emptyUI, cancelItemScreen);
         cancelItemClone.GetComponent<ItemReference>().item = itemClone;
         cancelItemClone.GetComponent<ItemReference>().inventory = this;
-        if (items.Count > 3)
+        if (items.Count > 1)
         {
             yield return StartCoroutine(HandleTooMuchItems());
         }
@@ -87,7 +87,21 @@ public class PlayerInventory : MonoBehaviour
 
         yield return StartCoroutine(TextListScript.Instance.ShowPrompt(prompt));
 
-        cancelInventoryScreen.SetActive(true);
+        if (GetComponent<PlayerHandler>().isPlayer)
+        {
+            cancelInventoryScreen.SetActive(true);
+
+            _eventSystem.SetSelectedGameObject(null);
+            _eventSystem.SetSelectedGameObject(cancelItemScreen.GetChild(0).gameObject);
+        }
+
+        else
+        {
+            int randomItem = Random.Range(0, cancelItemScreen.childCount);
+
+            cancelItemScreen.GetChild(randomItem).GetComponent<ItemReference>().RemovethisItem();
+        }
+        
 
         while (!hasCancelledItem)
         {

@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Marijn.unity
     guid: d236657ca2a97a74fb9601287dbffe69
   - enabled: 1
-    path: Assets/Scenes/MinigameTest.unity
+    path: Assets/Scenes/PlatformChaos.unity
     guid: 5c098af971d33b447866a54160f12a67
   - enabled: 1
     path: Assets/Scenes/HotPotato.unity
