@@ -34,7 +34,7 @@ public class PlayerInventory : MonoBehaviour
         cancelItemClone.GetComponent<ItemReference>().item = itemClone;
         cancelItemClone.GetComponent<ItemReference>().inventory = this;
 
-        cancelItemClone.GetComponent<Image>().sprite = itemClone.GetComponent<Image>().sprite;
+        cancelItemClone.transform.GetChild(0).GetComponent<Image>().sprite = itemClone.transform.GetChild(0).GetComponent<Image>().sprite;
         if (items.Count > 3)
         {
             yield return StartCoroutine(HandleTooMuchItems());

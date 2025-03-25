@@ -128,27 +128,28 @@ public class BoardGameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            SceneManager.LoadScene("PlatformChaos");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
         {
             SceneManager.LoadScene("HotPotato");
         }
 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            SceneManager.LoadScene("MinigameTest");
-        }
 
-        if (Input.GetKeyDown(KeyCode.F)) 
+        if (Input.GetKeyDown(KeyCode.Alpha3)) 
         {
             SceneManager.LoadScene("FishCollector");
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.Alpha4))
         {
             SceneManager.LoadScene("ReactingKittens");
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
+        if (Input.GetKeyDown(KeyCode.Alpha5))
         {
             SceneManager.LoadScene("Sweeper");
         }
