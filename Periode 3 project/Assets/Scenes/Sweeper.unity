@@ -471,6 +471,11 @@ PrefabInstance:
       propertyPath: arena
       value: 
       objectReference: {fileID: 356757946}
+    - target: {fileID: 8832496625282899827, guid: cb08fe49531f1d542aa7d8d8b821fce3,
+        type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 2028615168}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6207397843257133047, guid: cb08fe49531f1d542aa7d8d8b821fce3, type: 3}
@@ -3486,6 +3491,11 @@ PrefabInstance:
       propertyPath: arena
       value: 
       objectReference: {fileID: 356757946}
+    - target: {fileID: 8832496625282899827, guid: cb08fe49531f1d542aa7d8d8b821fce3,
+        type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 866628834}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6207397843257133047, guid: cb08fe49531f1d542aa7d8d8b821fce3, type: 3}
@@ -3701,6 +3711,11 @@ PrefabInstance:
       propertyPath: arena
       value: 
       objectReference: {fileID: 356757946}
+    - target: {fileID: 8832496625282899827, guid: cb08fe49531f1d542aa7d8d8b821fce3,
+        type: 3}
+      propertyPath: livesText
+      value: 
+      objectReference: {fileID: 1240809665}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5740620978919854866, guid: cb08fe49531f1d542aa7d8d8b821fce3, type: 3}

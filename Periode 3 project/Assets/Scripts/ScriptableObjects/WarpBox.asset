@@ -19,3 +19,5 @@ MonoBehaviour:
   uiPrefab: {fileID: 4868390569272490420, guid: 7a8a3b549f6f1514c8dd69068b9333d9,
     type: 3}
   obj: {fileID: 3522355526338318474, guid: 0cd18d0b9ec1fef479a296e9b934a4cb, type: 3}
+  itemDescription: You can switch board placement with a random player with this
+    item.

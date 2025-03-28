@@ -14,6 +14,7 @@ public class Item : MonoBehaviour
     public GameObject uiPrefab;
     public GameObject obj;
     public Transform player;
+    public string itemDescription;
     protected bool taskEnded;
 
     protected virtual void Awake()
@@ -23,6 +24,7 @@ public class Item : MonoBehaviour
         animationPrefab = itemScriptableObject.animationPrefab;
         uiPrefab = itemScriptableObject.uiPrefab;
         obj = itemScriptableObject.obj;
+        itemDescription = itemScriptableObject.itemDescription;
     }
 
     public void StartUsingItem()

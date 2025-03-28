@@ -19,3 +19,4 @@ MonoBehaviour:
   uiPrefab: {fileID: 4868390569272490420, guid: 3d5327259215870479f1fba40bf731e4,
     type: 3}
   obj: {fileID: 8224263969163161981, guid: 2640b236db0a16245bf72426a168543d, type: 3}
+  itemDescription: You can use 2 dice with this item.

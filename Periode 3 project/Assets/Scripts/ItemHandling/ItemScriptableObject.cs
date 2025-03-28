@@ -10,4 +10,5 @@ public class ItemScriptableObject : ScriptableObject
     public GameObject animationPrefab;
     public GameObject uiPrefab;
     public GameObject obj;
+    public string itemDescription;
 }

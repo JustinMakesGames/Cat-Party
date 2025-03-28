@@ -90,6 +90,12 @@ public class PlayerHandler : MonoBehaviour
                 maxRoll = i;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            minRoll = 10;
+            maxRoll = 10;
+        }
     }
     private void OnDestroy()
     {
