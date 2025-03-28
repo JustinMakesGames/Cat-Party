@@ -18,6 +18,7 @@ public class PlayerHandler : MonoBehaviour
     public bool isPlayer;
     public Color color;
     public TMP_Text yarnText, coinText;
+    public Vector3 plusPosition;
     [SerializeField] private GameObject chooseCanvas;
     [SerializeField] private GameObject introScreen;
     [SerializeField] private GameObject dice;
@@ -242,5 +243,15 @@ public class PlayerHandler : MonoBehaviour
             _cam = Camera.main.transform;
             pathFolder = GameObject.FindGameObjectWithTag("PathFolder").transform;
         }
+    }
+
+    public void SetPositionOn()
+    {
+        transform.position += plusPosition;
+    }
+
+    public void SetPositionOff()
+    {
+        transform.position -= plusPosition;
     }
 }

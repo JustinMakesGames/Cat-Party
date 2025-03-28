@@ -139,6 +139,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameTile
       objectReference: {fileID: 0}
+    - target: {fileID: 5894219212161274720, guid: 7d960d5105ae8064bb9eb9bd03244c45,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6523368993755466202, guid: 7d960d5105ae8064bb9eb9bd03244c45,
         type: 3}
       propertyPath: m_LocalScale.x
