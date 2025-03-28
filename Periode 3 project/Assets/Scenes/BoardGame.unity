@@ -12608,6 +12608,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3832859037050127656, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3832859037050127656, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.011
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950421709871458204, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.012
+      objectReference: {fileID: 0}
     - target: {fileID: 4024679231802146310, guid: a9e65608b145e9d4db46d0a857787031,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13793,6 +13808,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9211962366214240107, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9211962366214240107, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.011
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
