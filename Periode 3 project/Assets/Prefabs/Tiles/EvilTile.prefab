@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 1029760011848040145}
   - component: {fileID: 3275590529311194071}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: EvilText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -910,7 +910,7 @@ GameObject:
   - component: {fileID: 3981325339690981693}
   - component: {fileID: 617465560062528286}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: EvilText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1045,7 +1045,7 @@ GameObject:
   - component: {fileID: 7367925886258466977}
   - component: {fileID: 2030054722795400806}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: EvilText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

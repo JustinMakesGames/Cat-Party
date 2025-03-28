@@ -55,7 +55,7 @@ public class PlayerShopHandling : MonoBehaviour
 
     private IEnumerator HandleSelectedItem()
     {
-        GameObject.FindGameObjectWithTag("GameCanvas").transform.GetChild(0).gameObject.SetActive(true);
+        GameObject.FindGameObjectWithTag("GameCanvas").transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
         while (_isShopping)
         {
             ScaleSelectedItem();
@@ -112,7 +112,7 @@ public class PlayerShopHandling : MonoBehaviour
     {
         if (context.performed && _isShopping)
         {
-            GameObject.FindGameObjectWithTag("GameCanvas").transform.GetChild(0).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("GameCanvas").transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
             BuyItem();
         }
     }
@@ -121,7 +121,7 @@ public class PlayerShopHandling : MonoBehaviour
     {
         if (context.performed && _isShopping)
         {
-            GameObject.FindGameObjectWithTag("GameCanvas").transform.GetChild(0).gameObject.SetActive(false);
+            GameObject.FindGameObjectWithTag("GameCanvas").transform.GetChild(0).GetChild(0).gameObject.SetActive(false);
             Camera.main.transform.position = transform.GetChild(1).position;
             Camera.main.transform.rotation = transform.GetChild(1).rotation;
             _isShopping = false;
