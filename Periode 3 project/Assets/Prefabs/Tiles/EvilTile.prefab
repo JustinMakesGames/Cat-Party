@@ -450,8 +450,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Lose random amount of fish!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e01c3a432cc70644ab06b31cd8884a1b, type: 2}
-  m_sharedMaterial: {fileID: 6571167652398783605, guid: e01c3a432cc70644ab06b31cd8884a1b,
+  m_fontAsset: {fileID: 11400000, guid: fc7b4e122eef3984d9b32db01c95620f, type: 2}
+  m_sharedMaterial: {fileID: 4846787891741984925, guid: fc7b4e122eef3984d9b32db01c95620f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -476,10 +476,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 24.6
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -965,8 +965,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Death
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e01c3a432cc70644ab06b31cd8884a1b, type: 2}
-  m_sharedMaterial: {fileID: 6571167652398783605, guid: e01c3a432cc70644ab06b31cd8884a1b,
+  m_fontAsset: {fileID: 11400000, guid: fc7b4e122eef3984d9b32db01c95620f, type: 2}
+  m_sharedMaterial: {fileID: 4846787891741984925, guid: fc7b4e122eef3984d9b32db01c95620f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -991,10 +991,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 27.7
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1100,8 +1100,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Give random amount of fish to player in last place.
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: e01c3a432cc70644ab06b31cd8884a1b, type: 2}
-  m_sharedMaterial: {fileID: 6571167652398783605, guid: e01c3a432cc70644ab06b31cd8884a1b,
+  m_fontAsset: {fileID: 11400000, guid: fc7b4e122eef3984d9b32db01c95620f, type: 2}
+  m_sharedMaterial: {fileID: 4846787891741984925, guid: fc7b4e122eef3984d9b32db01c95620f,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1126,10 +1126,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
+  m_fontSize: 21.25
   m_fontSizeBase: 36
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0

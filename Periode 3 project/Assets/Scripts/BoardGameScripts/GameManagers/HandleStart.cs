@@ -159,6 +159,7 @@ public class HandleStart : MonoBehaviour
             Color color = _players[i].GetComponent<PlayerHandler>().color;
             image.color = color;
 
+            image.transform.GetChild(image.transform.childCount - 1).GetComponent<Image>().sprite = _players[i].GetComponent<PlayerHandler>().image;
             _players[i].GetComponent<PlayerHandler>().yarnText = image.transform.GetChild(0).GetComponent<TMP_Text>();
             _players[i].GetComponent<PlayerHandler>().coinText = image.transform.GetChild(1).GetComponent<TMP_Text>();
             

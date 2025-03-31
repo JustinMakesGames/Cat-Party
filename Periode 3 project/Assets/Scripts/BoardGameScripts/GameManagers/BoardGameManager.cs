@@ -177,18 +177,19 @@ public class BoardGameManager : MonoBehaviour
         state = BoardStates.TurnOfAPlayer;
         blackScreen.GetComponent<Animator>().SetTrigger("FadeInOut");
 
+        
+
+        yield return new WaitForSeconds(0.15f);
         if (_playerIndex != -1)
         {
             players[_playerIndex].handler.SetPositionOn();
-
-            if (_playerIndex != 3)
-            {
-                players[_playerIndex + 1].handler.SetPositionOff();
-            }
-            
         }
 
-        yield return new WaitForSeconds(0.3f);
+        if (_playerIndex != 3)
+        {
+            players[_playerIndex + 1].handler.SetPositionOff();
+        }
+        yield return new WaitForSeconds(0.15f);
 
         if (_playerIndex == 3)
         {

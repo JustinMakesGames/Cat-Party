@@ -8,13 +8,14 @@ using UnityEngine.SceneManagement;
 public class HandleWalking : MonoBehaviour
 {
     public Transform pathFolder;
-
     public int currentlyOnThisSpace;
     [SerializeField] private float walkSpeed;
     [SerializeField] private Transform playerModel;
     private bool isDoneWalking;
     private bool _canChangeYValue;
     private float _yValue;
+
+    private Vector3 _positionChange;
 
 
     private void Awake()
@@ -57,7 +58,6 @@ public class HandleWalking : MonoBehaviour
         Destroy(text.gameObject);
 
         playerModel.rotation = originalRotation;
-
         return currentlyOnThisSpace;
     }
     

@@ -19,6 +19,7 @@ public class PlayerHandler : MonoBehaviour
     public Color color;
     public TMP_Text yarnText, coinText;
     public Vector3 plusPosition;
+    public Sprite image;
     [SerializeField] private GameObject chooseCanvas;
     [SerializeField] private GameObject introScreen;
     [SerializeField] private GameObject dice;

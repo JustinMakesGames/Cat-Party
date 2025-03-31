@@ -19,10 +19,11 @@ public class PlayerInventory : MonoBehaviour
 
     public bool hasCancelledItem;
 
-
+    
     private void Awake()
     {
         _eventSystem = GetComponentInChildren<MultiplayerEventSystem>();
+
     }
 
     public IEnumerator AddItem(GameObject item)
