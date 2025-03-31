@@ -24,7 +24,7 @@ public class MenuMovementScript : MonoBehaviour
 
     private void Update()
     {
-        _animator.SetFloat("IsWalking", _rb.velocity.magnitude);
+        _animator.SetFloat("IsWalking", _dir.magnitude);
         RotationCheck();
     }
     private void FixedUpdate()

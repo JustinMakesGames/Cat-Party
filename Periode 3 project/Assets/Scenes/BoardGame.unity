@@ -2724,8 +2724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46cf1e55525db1747bf4408c584e5351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 15
-  cameraSpaceOffset: {x: 0, y: 10, z: -7}
+  cameraSpeed: 30
+  cameraSpaceOffset: {x: 0, y: 20, z: -20}
   yarnSpaceRenderer: {fileID: 1691793190325631367, guid: 441c24307e438e940aef631ad461a8e1,
     type: 3}
   spaceFolders:
@@ -2735,6 +2735,7 @@ MonoBehaviour:
   - {fileID: 1447475553}
   - {fileID: 811187644}
   - {fileID: 1251348420}
+  endRotation: 40
 --- !u!114 &680331260
 MonoBehaviour:
   m_ObjectHideFlags: 0

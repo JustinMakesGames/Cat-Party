@@ -20,6 +20,7 @@ public class SweeperPlayerController : MinigamePlayerMovement
     private Vector3 _destination;
     private Vector3 _cpuDirection;
     private bool _hasReachedArea;
+    private Animator _animator;
 
 
 
@@ -27,6 +28,7 @@ public class SweeperPlayerController : MinigamePlayerMovement
     private void Awake()
     {
         _color = GetComponentInChildren<Renderer>().material.color;
+        _animator = GetComponentInChildren<Animator>();
     }
 
     public override void StartMinigame()
@@ -50,6 +52,7 @@ public class SweeperPlayerController : MinigamePlayerMovement
     {
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, rayCastLength, ground))
         {
+            _animator.SetTrigger("Jump");
             _rb.velocity = new Vector3(_rb.velocity.x, jumpForce, _rb.velocity.z);
         }
         

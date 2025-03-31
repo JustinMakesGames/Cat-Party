@@ -11,9 +11,11 @@ public class YarnPlacement : MonoBehaviour
     [SerializeField] private Vector3 cameraSpaceOffset;
     [SerializeField] private GameObject yarnSpaceRenderer;
     [SerializeField] private List<Transform> spaceFolders;
+    [SerializeField] private float endRotation;
     private SpaceHandler yarnSpace;
     private List<SpaceHandler> _spaceHandlers = new List<SpaceHandler>();
     private List<SpaceHandler> _yarnSpacesToGo = new List<SpaceHandler>();
+    
 
     private void Awake()
     {
@@ -74,6 +76,17 @@ public class YarnPlacement : MonoBehaviour
     private IEnumerator MoveCameraToNewYarnPlace()
     {
         Camera.main.transform.parent = null;
+
+        Vector3 endUpPosition = Camera.main.transform.position + cameraSpaceOffset;
+        Quaternion lookRotation = Quaternion.Euler(endRotation, Camera.main.transform.rotation.y, Camera.main.transform.rotation.z);
+        while (Vector3.Distance(Camera.main.transform.position, endUpPosition) > 0.02f)
+        {
+
+            Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, endUpPosition, cameraSpeed * Time.deltaTime);
+            Camera.main.transform.rotation = Quaternion.Lerp(Camera.main.transform.rotation, lookRotation, cameraSpeed * Time.deltaTime);
+            yield return null;
+        }
+        
         Vector3 endPosition = yarnSpace.transform.position + cameraSpaceOffset;
         while (Vector3.Distance(Camera.main.transform.position, endPosition) > 0.02f)
         {
@@ -89,6 +102,8 @@ public class YarnPlacement : MonoBehaviour
         string yarnText = "FindYarnText";
         List<string> textStrings = TextListScript.Instance.textStrings.Find(t => t.name == yarnText).strings;
         yield return StartCoroutine(TextListScript.Instance.ShowPrompts(textStrings));
+
+        Camera.main.transform.rotation = Quaternion.Euler(25, 0, 0);
 
     }
 }
