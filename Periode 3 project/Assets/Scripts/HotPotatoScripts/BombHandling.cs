@@ -38,6 +38,9 @@ public class BombHandling : MonoBehaviour
 
     private void Explode()
     {
+        AudioSource audio = GetComponentInChildren<AudioSource>();
+        audio.transform.parent = null;
+        audio.Play();
         HotPotatoManager.Instance.KillPlayer(transform.parent);
         Destroy(transform.parent.gameObject);
     }

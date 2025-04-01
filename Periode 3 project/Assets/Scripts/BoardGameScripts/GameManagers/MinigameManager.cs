@@ -254,6 +254,7 @@ public class MinigameManager : MonoBehaviour
         winnerText.text = "FINISH!";
 
         yield return new WaitForSeconds(1);
+        GetComponentInChildren<AudioSource>().Play();
         winnerText.text = $"{winningPlayer.name} WON!";
         yield return new WaitForSeconds(5);
         blackScreenAnimator.SetTrigger("FadeIn");
