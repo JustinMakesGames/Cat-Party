@@ -14,6 +14,7 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private Transform cancelItemScreen;
     [SerializeField] private GameObject cancelInventoryScreen;
     [SerializeField] private GameObject emptyUI;
+    [SerializeField] private GameObject returnScreen;
     private MultiplayerEventSystem _eventSystem;
     private bool _hasOpenedMenu;
 
@@ -46,6 +47,7 @@ public class PlayerInventory : MonoBehaviour
 
     public void OpenItemMenu()
     {
+        returnScreen.SetActive(true);
         if (items.Count > 0)
         {
             _eventSystem.SetSelectedGameObject(null);
@@ -61,12 +63,14 @@ public class PlayerInventory : MonoBehaviour
     {
         if (context.performed && _hasOpenedMenu)
         {
+            returnScreen.SetActive(false);
             OpenChooseScreen();
         }
     }
 
     public void HasOpenedMenuTurnedFalse()
     {
+        returnScreen.SetActive(false);
         _hasOpenedMenu = false;
     }
 

@@ -12,6 +12,8 @@ public class HandleBrancingPathPlayer : MonoBehaviour
     public float speed;
     public bool isPlayer;
 
+    [SerializeField] private GameObject mapLookScreen;
+
     private BrancingPathHandler brancingPathHandler;
     private bool _isScalingUp;
     private List<Transform> arrows = new List<Transform>();
@@ -28,6 +30,7 @@ public class HandleBrancingPathPlayer : MonoBehaviour
     {
         if (GetComponent<PlayerHandler>().isPlayer)
         {
+            mapLookScreen.SetActive(true);
             isPlayer = true;
             _isChoosingArrow = true;
         }
@@ -57,6 +60,7 @@ public class HandleBrancingPathPlayer : MonoBehaviour
 
     public void HandleCancelMap()
     {
+        mapLookScreen.SetActive(true);
         _isChoosingArrow = true;
         _canCheckMap = true;
         StartCoroutine(SelectedArrowScaling());
@@ -83,7 +87,7 @@ public class HandleBrancingPathPlayer : MonoBehaviour
     {
         if (_isChoosingArrow && context.performed)
         {
-
+            mapLookScreen.SetActive(false);
             brancingPathHandler.PlayerSelectsArrow(selectedArrow);
             _canCheckMap = false;
             _isChoosingArrow = false;
@@ -94,6 +98,7 @@ public class HandleBrancingPathPlayer : MonoBehaviour
     {
         if (context.performed && _canCheckMap)
         {
+            mapLookScreen.SetActive(false);
             _isChoosingArrow = false;
             _canCheckMap = false;
             GetComponent<PlayerMapHandling>().StartMapHandling(true);

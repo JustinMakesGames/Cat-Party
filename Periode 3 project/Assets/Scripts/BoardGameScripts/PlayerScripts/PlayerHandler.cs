@@ -27,6 +27,7 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private int minRoll;
     [SerializeField] private int maxRoll;
     [SerializeField] private Animator modelAnimator;
+    [SerializeField] private GameObject returnScreen;
 
     
     private GameObject _outcomeCanvasClone;
@@ -131,6 +132,7 @@ public class PlayerHandler : MonoBehaviour
 
     public void SpawnDicePlayer()
     {
+        returnScreen.SetActive(true);
         _diceClone = Instantiate(dice, transform.GetChild(0).position, Quaternion.identity, transform);
         _canHitDice = true;
     }
@@ -166,6 +168,7 @@ public class PlayerHandler : MonoBehaviour
         
         _animator.SetTrigger("Jump");
         modelAnimator.SetTrigger("Jump");
+        returnScreen.SetActive(false);
         int randomValue = Random.Range(minRoll, maxRoll + 1);
         Destroy(_diceClone);
         _outcomeCanvasClone = Instantiate(outcomeCanvas, transform.GetChild(0).position, Quaternion.identity, transform);
@@ -203,6 +206,7 @@ public class PlayerHandler : MonoBehaviour
     {
         if (context.performed && _canHitDice)
         {
+            returnScreen.SetActive(false);
             Destroy(_diceClone);
             _canHitDice = false;
             CheckIfPlayerOrCPU();

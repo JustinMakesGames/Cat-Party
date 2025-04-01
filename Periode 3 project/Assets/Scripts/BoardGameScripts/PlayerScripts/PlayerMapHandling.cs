@@ -12,6 +12,7 @@ public class PlayerMapHandling : MonoBehaviour
     [SerializeField] private Transform areaToMoveAround;
     [SerializeField] private Transform originalPosition;
     [SerializeField] private GameObject chooseScreen;
+    [SerializeField] private GameObject returnScreen;
 
     private Bounds _areaBounds;
     private Transform _cam;
@@ -22,6 +23,7 @@ public class PlayerMapHandling : MonoBehaviour
     
     public void StartMapHandling(bool isAtBranchingPath)
     {
+        returnScreen.SetActive(true);
         _isAtBrancingPath = isAtBranchingPath;
         areaToMoveAround = GameObject.FindGameObjectWithTag("AreaBounds").transform;
         chooseScreen.SetActive(false);
@@ -36,7 +38,7 @@ public class PlayerMapHandling : MonoBehaviour
         {
             if (_isLookingMap)
             {
-                
+                returnScreen.SetActive(false);
                 StartCoroutine(StartCancellingMapHandling());
             }
         }
