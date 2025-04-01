@@ -53,6 +53,7 @@ MonoBehaviour:
   uiPrefab: {fileID: 0}
   obj: {fileID: 0}
   player: {fileID: 0}
+  itemDescription: 
   warpBox: {fileID: 3522355526338318474, guid: fc482427c46055641b772c2f60ad4ced, type: 3}
 --- !u!1001 &7625049212744698818
 PrefabInstance:
