@@ -68,6 +68,7 @@ public class MinigamePlayerMovement : MonoBehaviour
     {
         if (context.performed && !_isPlayerPushing)
         {
+            animator.SetTrigger("Push");
             StartCoroutine(PlayerPushes());
         }
     }

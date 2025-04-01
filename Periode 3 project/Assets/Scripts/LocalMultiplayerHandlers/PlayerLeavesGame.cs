@@ -12,7 +12,11 @@ public class PlayerLeavesGame : MonoBehaviour
     {
         if (GetComponent<PlayerInput>().enabled && !_wasEnabled)
         {
-            PlayerInputManagement.Instance.AddPlayerToList(GetComponent<PlayerInput>().devices[0], index);
+            if (!PlayerInputManagement.Instance.CheckIfPlayerInList(index))
+            {
+                PlayerInputManagement.Instance.AddPlayerToList(GetComponent<PlayerInput>().devices[0], index);
+            }
+            
             _wasEnabled = true;
         }
 

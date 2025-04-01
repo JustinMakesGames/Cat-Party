@@ -1462,7 +1462,7 @@ PrefabInstance:
     - target: {fileID: 8891731272582894067, guid: 732c889755d599f41bfbcb9a68659def,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8891731272582894067, guid: 732c889755d599f41bfbcb9a68659def,
         type: 3}
@@ -2347,7 +2347,7 @@ MonoBehaviour:
   - {fileID: 38399871}
   cylinderCenter: {fileID: 1349802284}
   currentSpeed: 40
-  accelerationSpeed: 1
+  accelerationSpeed: 4
   timeForNewCylinder: 20
   scaleSpeed: 2
   bomb: {fileID: 4179865134515071753, guid: 61a49a97c204459428e2ce01af29fc5b, type: 3}

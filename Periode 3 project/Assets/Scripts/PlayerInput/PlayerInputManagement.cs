@@ -143,10 +143,7 @@ public class PlayerInputManagement : MonoBehaviour
 
     public void AddPlayerToList(InputDevice device, int index)
     {
-
-        inputDevices.Add(new InputID(device, index));
-
-        
+        inputDevices.Add(new InputID(device, index));   
     }
 
     public void RemovePlayerOfList(int index)
@@ -194,6 +191,19 @@ public class PlayerInputManagement : MonoBehaviour
         }
 
         return rightIndex;
+    }
+
+    public bool CheckIfPlayerInList(int index)
+    {
+        foreach (InputID id in inputDevices)
+        {
+            if (id.id == index)
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
      
 }

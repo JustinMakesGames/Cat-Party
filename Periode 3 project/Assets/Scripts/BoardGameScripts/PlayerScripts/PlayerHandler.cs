@@ -151,7 +151,6 @@ public class PlayerHandler : MonoBehaviour
     public void CallDiceCPU()
     {
         _diceClone = Instantiate(dice, transform.GetChild(0).position, Quaternion.identity, transform);
-        _canHitDice = true;
         StartCoroutine(HandleCPUDice());
     }
 
