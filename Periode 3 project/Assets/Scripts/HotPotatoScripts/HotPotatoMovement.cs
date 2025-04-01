@@ -117,7 +117,7 @@ public class HotPotatoMovement : MinigamePlayerMovement
         this.bomb = bomb;
 
         walkSpeed = 600;
-        _agent.speed = 11f;
+        _agent.speed = 14f;
         foreach (Transform p in transform.parent)
         {
             if (p == transform) continue;
@@ -135,7 +135,7 @@ public class HotPotatoMovement : MinigamePlayerMovement
 
     public void HandleBombPlayerChange(Transform bombedPlayer)
     {
-        _agent.speed = 9f;
+        _agent.speed = 11f;
         walkSpeed = 500;
         if (_agent.enabled)
         {
