@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerHandleStart : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private Animator modelAnimator;
 
     private bool _canRollDice;
     private bool _isPlayer;
@@ -20,6 +21,7 @@ public class PlayerHandleStart : MonoBehaviour
         if (context.performed && _canRollDice)
         {
             animator.SetTrigger("Jump");
+            modelAnimator.SetTrigger("Jump");
             HandleStart.Instance.RollDice(transform);
             _canRollDice = false;
         }

@@ -7449,6 +7449,12 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!95 &1517060672 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2944345279279658803, guid: a9e65608b145e9d4db46d0a857787031,
+    type: 3}
+  m_PrefabInstance: {fileID: 3299137114344175569}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1539703344
 GameObject:
   m_ObjectHideFlags: 0
@@ -11873,6 +11879,31 @@ PrefabInstance:
       propertyPath: index
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3524232841430812534, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524232841430812534, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524232841430812534, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: m_Colors.m_SelectedColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3524232841430812534, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 801859672}
+    - target: {fileID: 3524232841430812534, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MoveToMenu
+      objectReference: {fileID: 0}
     - target: {fileID: 3532116926701923438, guid: a9e65608b145e9d4db46d0a857787031,
         type: 3}
       propertyPath: m_fontAsset
@@ -12448,6 +12479,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6228588611287580281, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: modelAnimator
+      value: 
+      objectReference: {fileID: 634578801}
     - target: {fileID: 6252239688901561909, guid: a9e65608b145e9d4db46d0a857787031,
         type: 3}
       propertyPath: mapLookScreen
@@ -12566,6 +12602,11 @@ PrefabInstance:
       propertyPath: mapLookScreen
       value: 
       objectReference: {fileID: 1916511143}
+    - target: {fileID: 6456489244410762685, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: modelAnimator
+      value: 
+      objectReference: {fileID: 2018358463}
     - target: {fileID: 6651528175807629637, guid: a9e65608b145e9d4db46d0a857787031,
         type: 3}
       propertyPath: animator
@@ -12830,6 +12871,11 @@ PrefabInstance:
       propertyPath: mapLookScreen
       value: 
       objectReference: {fileID: 1916511143}
+    - target: {fileID: 7906126232815513030, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: modelAnimator
+      value: 
+      objectReference: {fileID: 1504527575}
     - target: {fileID: 8093758413023211472, guid: a9e65608b145e9d4db46d0a857787031,
         type: 3}
       propertyPath: m_fontAsset
@@ -13162,6 +13208,11 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8962942770984271146, guid: a9e65608b145e9d4db46d0a857787031,
+        type: 3}
+      propertyPath: modelAnimator
+      value: 
+      objectReference: {fileID: 1517060672}
     - target: {fileID: 8993094518098225821, guid: a9e65608b145e9d4db46d0a857787031,
         type: 3}
       propertyPath: m_AnchorMax.y
