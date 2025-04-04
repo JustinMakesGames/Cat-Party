@@ -28,12 +28,15 @@ public class HandleBrancingPathPlayer : MonoBehaviour
     private bool _isCPUChoosingArrow;
     public void SetArrowsOn(List<Transform> arrows, BrancingPathHandler script, Transform pathFolder1, Transform pathFolder2, int index)
     {
+        isPlayer = false;
         if (GetComponent<PlayerHandler>().isPlayer)
         {
             mapLookScreen.SetActive(true);
             isPlayer = true;
             _isChoosingArrow = true;
         }
+
+        
         brancingPathHandler = script;
         this.arrows = arrows;
         

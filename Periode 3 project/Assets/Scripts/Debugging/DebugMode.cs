@@ -13,14 +13,6 @@ public class DebugMode : MonoBehaviour
         DontDestroyOnLoad(this);
         SceneManager.sceneLoaded += DebugProcess;
     }
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha0))
-        {
-            print("Is debugging");
-            _isDebuggingMinigames = true;
-        }
-    }
 
     private void DebugProcess(Scene scene, LoadSceneMode loadMode)
     {

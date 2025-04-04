@@ -54,7 +54,6 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
         }
 
         StartCoroutine(ChoosePillar());
-        StartCoroutine(SpawnSpeedBoosters());
     }
 
     private IEnumerator ChoosePillar()
@@ -77,22 +76,6 @@ public class PillarsManager : MonoBehaviour, IMinigameManager
         }
         
 
-    }
-
-    private IEnumerator SpawnSpeedBoosters()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(2);
-
-            if (speedBoosterClone == null) 
-            {
-                yield return new WaitForSeconds(2);
-                ChoosePlaceToSpawn();
-            }
-            yield return null;
-        }
-        
     }
 
     private void ChoosePlaceToSpawn()

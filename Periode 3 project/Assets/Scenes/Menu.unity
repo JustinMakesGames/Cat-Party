@@ -1026,6 +1026,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1568109998406709823, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
         type: 3}
+      propertyPath: m_text
+      value: "\nProgramming \n\n\n\nCharacter art\n\n\n\nEnvironmental \nUI\n\n\n\nBoardGame
+        Music \n\n\n\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568109998406709823, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
+        type: 3}
       propertyPath: m_fontSize
       value: 24
       objectReference: {fileID: 0}

@@ -126,35 +126,6 @@ public class BoardGameManager : MonoBehaviour
                  
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            SceneManager.LoadScene("PlatformChaos");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            SceneManager.LoadScene("HotPotato");
-        }
-
-
-        if (Input.GetKeyDown(KeyCode.Alpha3)) 
-        {
-            SceneManager.LoadScene("FishCollector");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            SceneManager.LoadScene("ReactingKittens");
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            SceneManager.LoadScene("Sweeper");
-        }
-    }
-
     public IEnumerator StartNewTurn()
     {
         Camera.main.transform.parent = null;

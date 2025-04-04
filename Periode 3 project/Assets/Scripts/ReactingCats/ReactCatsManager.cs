@@ -225,6 +225,7 @@ public class ReactCatsManager : MonoBehaviour, IMinigameManager
 
         if (_fishClone.transform.CompareTag("BadFish"))
         {
+            AudioHandling.Instance.PointLoseSound();
             for (int i = 0; i < _playerPoints.Count; i++)
             {
                 _playerPoints[i].AddPlayerPoints(-5);
@@ -233,6 +234,7 @@ public class ReactCatsManager : MonoBehaviour, IMinigameManager
 
         else
         {
+            AudioHandling.Instance.PointSound();
             for (int i = 0; i < _playerPoints.Count; i++)
             {
 
