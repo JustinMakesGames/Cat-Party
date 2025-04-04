@@ -28,6 +28,7 @@ public class PlayerHandler : MonoBehaviour
     [SerializeField] private int maxRoll;
     [SerializeField] private Animator modelAnimator;
     [SerializeField] private GameObject returnScreen;
+    
 
     
     private GameObject _outcomeCanvasClone;
@@ -114,6 +115,7 @@ public class PlayerHandler : MonoBehaviour
         }
 
         yield return new WaitForSeconds(1);
+        AudioHandling.Instance.YourTurnSound();
         introScreen.SetActive(true);
     }
 
@@ -169,6 +171,7 @@ public class PlayerHandler : MonoBehaviour
         _animator.SetTrigger("Jump");
         modelAnimator.SetTrigger("Jump");
         returnScreen.SetActive(false);
+        AudioHandling.Instance.DiceRoll();
         int randomValue = Random.Range(minRoll, maxRoll + 1);
         Destroy(_diceClone);
         _outcomeCanvasClone = Instantiate(outcomeCanvas, transform.GetChild(0).position, Quaternion.identity, transform);

@@ -27,6 +27,7 @@ public class CoinChange : MonoBehaviour
 
         }
 
+        AudioHandling.Instance.PointSound();
         GameObject cloneCanvas = Instantiate(coinCollectCanvas, player.GetChild(0).position, Quaternion.identity);
 
         cloneCanvas.GetComponentInChildren<TMP_Text>().text = coinAmount >= 0 ? "+" + coinAmount.ToString() : coinAmount.ToString();
@@ -45,6 +46,7 @@ public class CoinChange : MonoBehaviour
 
         }
 
+        AudioHandling.Instance.PointLoseSound();
         GameObject cloneCanvas = Instantiate(coinCollectCanvas, player.GetChild(0).position, Quaternion.identity);
 
         cloneCanvas.GetComponentInChildren<TMP_Text>().text = coinAmount >= 0 ? "+" + coinAmount.ToString() : coinAmount.ToString();

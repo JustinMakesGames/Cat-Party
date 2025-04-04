@@ -20,6 +20,7 @@ public class PlayerHandleStart : MonoBehaviour
     {
         if (context.performed && _canRollDice)
         {
+            AudioHandling.Instance.DiceRoll();
             animator.SetTrigger("Jump");
             modelAnimator.SetTrigger("Jump");
             HandleStart.Instance.RollDice(transform);
@@ -30,6 +31,7 @@ public class PlayerHandleStart : MonoBehaviour
     private IEnumerator FirstDiceRollCPU()
     {
         yield return new WaitForSeconds(Random.Range(1f, 2.5f));
+        AudioHandling.Instance.DiceRoll();
         animator.SetTrigger("Jump");
         HandleStart.Instance.RollDice(transform);
         _canRollDice = false;

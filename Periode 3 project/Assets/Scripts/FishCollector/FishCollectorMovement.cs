@@ -23,6 +23,7 @@ public class FishCollectorMovement : MinigamePlayerMovement
     {
         if (other.CompareTag("Fish") && !other.GetComponent<FishBehaviour>().isCollected)
         {
+            AudioHandling.Instance.PointSound();
             other.GetComponent<FishBehaviour>().isCollected = true;
             points += other.GetComponent<FishBehaviour>().pointAmount;
             Destroy(other.transform.parent.gameObject);

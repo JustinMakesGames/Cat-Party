@@ -87,29 +87,13 @@ public class HandleStart : MonoBehaviour
 
         foreach (Transform player in _players)
         {
-            StartCoroutine(GiveThePlayerCoins(player));
+            StartCoroutine(CoinChange.Instance.WinCoins(player, 10));
         }
 
         yield return new WaitForSeconds(2);
     }
 
-    private IEnumerator GiveThePlayerCoins(Transform player)
-    {
-        int coinAmount = 10;
-        for (int i = 0; i < 3; i++)
-        {
-            GameObject coinClone = Instantiate(coinPrefab, player.position, Quaternion.identity);
-            yield return new WaitForSeconds(0.3f);
-            Destroy(coinClone);
-        }
-
-        player.GetComponent<PlayerHandler>().ChangeCoinValue(coinAmount);
-
-        GameObject cloneCanvas = Instantiate(coinCollectCanvas, player.GetChild(0).position, Quaternion.identity);
-        cloneCanvas.GetComponentInChildren<TMP_Text>().text = coinAmount >= 0 ? "+" + coinAmount.ToString() : coinAmount.ToString();
-        yield return new WaitForSeconds(1);
-        Destroy(cloneCanvas);
-    }
+    
     private void HandleDiceRoll()
     {
         foreach (Transform p in _players)

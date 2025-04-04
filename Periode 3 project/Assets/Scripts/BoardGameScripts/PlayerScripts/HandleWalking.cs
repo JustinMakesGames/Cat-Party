@@ -101,6 +101,7 @@ public class HandleWalking : MonoBehaviour
             await Task.Yield();
         }
 
+        AudioHandling.Instance.SpaceSound();
         playerModel.GetComponent<Animator>().SetFloat("IsWalking", 0);
     }
 }

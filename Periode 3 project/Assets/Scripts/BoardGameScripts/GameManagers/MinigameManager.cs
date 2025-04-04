@@ -21,6 +21,7 @@ public class MinigameManager : MonoBehaviour
     [SerializeField] private List<TMP_Text> minigameTexts = new List<TMP_Text>();
     [SerializeField] private GameObject playerUI;
     [SerializeField] private Dictionary<PlayerHandler, int> placeOrder = new Dictionary<PlayerHandler, int>();
+    [SerializeField] private AudioSource minigameMusic;
 
     private Transform minigameCanvas;
     private GameObject minigamePanel;
@@ -226,6 +227,7 @@ public class MinigameManager : MonoBehaviour
         startText.gameObject.SetActive(true);
         yield return new WaitForSeconds(1);
         startText.gameObject.SetActive(false);
+        minigameMusic.Play();
         GameObject.FindGameObjectWithTag("MinigameManager").GetComponent<IMinigameManager>().BeginMinigame();
     }
 
@@ -236,6 +238,7 @@ public class MinigameManager : MonoBehaviour
 
     public void EndMinigame()
     {
+        minigameMusic.Stop();
         StartCoroutine(ShowPlayerWonText());
     }
 

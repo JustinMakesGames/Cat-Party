@@ -6,6 +6,7 @@ using UnityEngine;
 public class BombHandling : MonoBehaviour
 {
     public float countdownTime;
+    [SerializeField] private GameObject explosion;
     private Color _color1 = Color.red;
     private Color _color2 = Color.black;
 
@@ -38,9 +39,8 @@ public class BombHandling : MonoBehaviour
 
     private void Explode()
     {
-        AudioSource audio = GetComponentInChildren<AudioSource>();
-        audio.transform.parent = null;
-        audio.Play();
+        AudioHandling.Instance.ExplosionSound();
+        Instantiate(explosion, transform.position, Quaternion.identity);
         HotPotatoManager.Instance.KillPlayer(transform.parent);
         Destroy(transform.parent.gameObject);
     }
