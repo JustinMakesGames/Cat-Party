@@ -120,7 +120,7 @@ public class PillarPlayerMovement : MinigamePlayerMovement
     {
         if (!_isHit)
         {
-            _rb.velocity = new Vector3(xValue * walkSpeed * Time.deltaTime, _rb.velocity.y, yValue * walkSpeed * Time.deltaTime);
+            _rb.linearVelocity = new Vector3(xValue * walkSpeed * Time.deltaTime, _rb.linearVelocity.y, yValue * walkSpeed * Time.deltaTime);
         }
         
 
@@ -129,9 +129,9 @@ public class PillarPlayerMovement : MinigamePlayerMovement
 
     protected override void RotationCheck()
     {
-        if (_rb.velocity.x != 0 || _rb.velocity.z != 0)
+        if (_rb.linearVelocity.x != 0 || _rb.linearVelocity.z != 0)
         {
-            Quaternion targetRotation = Quaternion.LookRotation(_rb.velocity.normalized);
+            Quaternion targetRotation = Quaternion.LookRotation(_rb.linearVelocity.normalized);
 
             transform.rotation = targetRotation;
         }
@@ -168,7 +168,7 @@ public class PillarPlayerMovement : MinigamePlayerMovement
 
         if (!_isHit)
         {
-            _rb.velocity = new Vector3(cpuDirection.x * walkSpeed * Time.deltaTime, _rb.velocity.y, cpuDirection.z * walkSpeed * Time.deltaTime);
+            _rb.linearVelocity = new Vector3(cpuDirection.x * walkSpeed * Time.deltaTime, _rb.linearVelocity.y, cpuDirection.z * walkSpeed * Time.deltaTime);
         }
         
         RotationCheck();
@@ -191,7 +191,7 @@ public class PillarPlayerMovement : MinigamePlayerMovement
             if (Vector3.Distance(transform.position, _destination) < 0.1f)
             {
                 _isIdle = true;
-                _rb.velocity = Vector3.zero;
+                _rb.linearVelocity = Vector3.zero;
                 yield return new WaitForSeconds(1);
                 _isIdle = false;
                 hasReachedArea = true;
@@ -254,10 +254,10 @@ public class PillarPlayerMovement : MinigamePlayerMovement
         if (!hitInfo.transform.CompareTag("Player")) return;
         if (hitInfo.transform.GetComponent<PillarPlayerMovement>().StunCheck()) return;
         print("Hit the player");
-        hitInfo.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        hitInfo.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         Vector3 pushDirection = (hitInfo.transform.position - _rb.position).normalized;
         pushDirection.y = hitJumpForce;
-        hitInfo.transform.GetComponent<Rigidbody>().velocity = pushDirection * pushForce;
+        hitInfo.transform.GetComponent<Rigidbody>().linearVelocity = pushDirection * pushForce;
 
         hitInfo.transform.GetComponent<PillarPlayerMovement>().GetHit(transform);
 

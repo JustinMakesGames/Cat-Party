@@ -55,7 +55,7 @@ public class MinigamePlayerMovement : MonoBehaviour
 
     protected virtual void Update()
     {
-        animator.SetFloat("IsWalking", _rb.velocity.magnitude);
+        animator.SetFloat("IsWalking", _rb.linearVelocity.magnitude);
     }
 
     public void ControlPlayerMovement(InputAction.CallbackContext context)
@@ -113,7 +113,7 @@ public class MinigamePlayerMovement : MonoBehaviour
     {
         if (!_isHit)
         {
-            _rb.velocity = new Vector3(xValue * walkSpeed * Time.deltaTime, _rb.velocity.y, yValue * walkSpeed * Time.deltaTime);
+            _rb.linearVelocity = new Vector3(xValue * walkSpeed * Time.deltaTime, _rb.linearVelocity.y, yValue * walkSpeed * Time.deltaTime);
         }
         RotationCheck();
     }
@@ -125,9 +125,9 @@ public class MinigamePlayerMovement : MonoBehaviour
 
     protected virtual void RotationCheck()
     {
-        if (_rb.velocity.x != 0 || _rb.velocity.z != 0)
+        if (_rb.linearVelocity.x != 0 || _rb.linearVelocity.z != 0)
         {
-            Vector3 positionToLook = _rb.velocity;
+            Vector3 positionToLook = _rb.linearVelocity;
             positionToLook.y = transform.position.y;
             Quaternion targetRotation = Quaternion.LookRotation(positionToLook.normalized);
             targetRotation.x = 0;
@@ -154,10 +154,10 @@ public class MinigamePlayerMovement : MonoBehaviour
         if (!hitInfo.transform.CompareTag("Player")) return;
         if (hitInfo.transform.GetComponent<HotPotatoMovement>().StunCheck()) return;
 
-        hitInfo.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        hitInfo.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
         Vector3 pushDirection = (hitInfo.transform.position - _rb.position).normalized;
         pushDirection.y = hitJumpForce;
-        hitInfo.transform.GetComponent<Rigidbody>().velocity = pushDirection * pushForce;
+        hitInfo.transform.GetComponent<Rigidbody>().linearVelocity = pushDirection * pushForce;
         hitInfo.transform.GetComponent<MinigamePlayerMovement>().GetHit(transform);
     }
 }

@@ -57,7 +57,6 @@ public class ReactCatMovement : MonoBehaviour
     {
         if (!_isCPU) return;
 
-        print("This is a cpu");
         if (fish.CompareTag("BadFish"))
         {
             HandleBadFish();

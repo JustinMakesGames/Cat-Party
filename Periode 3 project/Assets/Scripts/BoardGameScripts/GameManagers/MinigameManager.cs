@@ -63,13 +63,11 @@ public class MinigameManager : MonoBehaviour
 
         if (allMinigameScenes.Contains(SceneManager.GetActiveScene().name))
         {
-            print($"hi noob in {transform.name}");
             minigamePlayers = GameObject.FindGameObjectWithTag("MinigamePlayerFolder").transform;
             blackScreenAnimator.SetTrigger("FadeOut");
 
             foreach (Transform playerHandler in minigamePlayers)
             {
-                print("YEs");
                 playerHandler.GetComponent<MinigamePlayerHandler>().SetMinigamePlayerOn();
             }
 

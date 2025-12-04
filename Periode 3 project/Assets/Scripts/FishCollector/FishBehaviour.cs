@@ -20,7 +20,7 @@ public class FishBehaviour : MonoBehaviour
 
     private void Start()
     {
-        _rb.velocity = new Vector3(0, -yForce, 0);
+        _rb.linearVelocity = new Vector3(0, -yForce, 0);
         Destroy(transform.parent.gameObject, 8f);
 
     }
@@ -44,7 +44,7 @@ public class FishBehaviour : MonoBehaviour
 
     private IEnumerator StartToDisappear()
     {
-        _rb.velocity = Vector3.zero;
+        _rb.linearVelocity = Vector3.zero;
         yield return new WaitForSeconds(disappearTime);
 
         for (int i = 0; i < 10; i++)

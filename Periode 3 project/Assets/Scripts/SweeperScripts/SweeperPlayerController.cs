@@ -53,7 +53,7 @@ public class SweeperPlayerController : MinigamePlayerMovement
         if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, rayCastLength, ground))
         {
             _animator.SetTrigger("Jump");
-            _rb.velocity = new Vector3(_rb.velocity.x, jumpForce, _rb.velocity.z);
+            _rb.linearVelocity = new Vector3(_rb.linearVelocity.x, jumpForce, _rb.linearVelocity.z);
         }
         
     }
@@ -88,13 +88,13 @@ public class SweeperPlayerController : MinigamePlayerMovement
         {
             _cpuDirection = _destination - _rb.position;
             _cpuDirection.Normalize();
-            _rb.velocity = new Vector3(_cpuDirection.x * walkSpeed * Time.deltaTime, _rb.velocity.y, _cpuDirection.z * walkSpeed * Time.deltaTime);
+            _rb.linearVelocity = new Vector3(_cpuDirection.x * walkSpeed * Time.deltaTime, _rb.linearVelocity.y, _cpuDirection.z * walkSpeed * Time.deltaTime);
             RotationCheck();
         } 
 
         else
         {
-            _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
+            _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
         }
         
     }
@@ -109,7 +109,6 @@ public class SweeperPlayerController : MinigamePlayerMovement
         if (other.CompareTag("Bomb") && !_isPlayer) 
         {
             _hasReachedArea = false;
-            print("AAAAAA A BOMB! RUN PLEASE");
             _destination = CalculateOppositeBomb(other.transform);
         } 
     }

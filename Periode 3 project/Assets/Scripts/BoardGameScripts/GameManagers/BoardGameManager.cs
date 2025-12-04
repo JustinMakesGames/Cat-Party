@@ -82,6 +82,13 @@ public class BoardGameManager : MonoBehaviour
         DontDestroyOnLoad(canvasObject);
         AssignPlayers();
     }
+
+    private void Start()
+    {
+        if (_isDebugging) return;
+        GetComponent<HandleStart>().HandleTheStart(); 
+                 
+    }
     
     private void AssignPlayers()
     {
@@ -119,12 +126,6 @@ public class BoardGameManager : MonoBehaviour
         _isDebugging = true;
     }
 
-    private void Start()
-    {
-        if (_isDebugging) return;
-        GetComponent<HandleStart>().HandleTheStart(); 
-                 
-    }
 
     public IEnumerator StartNewTurn()
     {

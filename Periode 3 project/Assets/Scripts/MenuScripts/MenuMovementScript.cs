@@ -29,7 +29,7 @@ public class MenuMovementScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        _rb.velocity = _dir * speed * Time.deltaTime;
+        _rb.linearVelocity = _dir * speed * Time.deltaTime;
     }
 
     private void RotationCheck()

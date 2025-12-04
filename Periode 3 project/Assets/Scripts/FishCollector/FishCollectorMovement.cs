@@ -97,7 +97,7 @@ public class FishCollectorMovement : MinigamePlayerMovement
 
         _cpuDirection = _destination - _rb.position;
         _cpuDirection.Normalize();
-        _rb.velocity = new Vector3(_cpuDirection.x * walkSpeed * Time.deltaTime, _rb.velocity.y, _cpuDirection.z * walkSpeed * Time.deltaTime);
+        _rb.linearVelocity = new Vector3(_cpuDirection.x * walkSpeed * Time.deltaTime, _rb.linearVelocity.y, _cpuDirection.z * walkSpeed * Time.deltaTime);
         RotationCheck();
     }
 
@@ -160,7 +160,7 @@ public class FishCollectorMovement : MinigamePlayerMovement
     public void MinigameEnded()
     {
         StopAllCoroutines();
-        _rb.velocity = Vector3.zero;
+        _rb.linearVelocity = Vector3.zero;
         hasMinigameStart = false;
     }
 

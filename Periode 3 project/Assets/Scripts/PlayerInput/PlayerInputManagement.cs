@@ -112,7 +112,6 @@ public class PlayerInputManagement : MonoBehaviour
         if (!_canConnectNewPlayers) return;
         if (playerInput.transform.parent != playerFolder) 
         {
-            print("This code was played");
             Destroy(playerInput.gameObject);
             playerFolder.GetChild(GetRightID()).GetComponent<PlayerInput>().enabled = true;         
         }

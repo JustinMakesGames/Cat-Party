@@ -737,6 +737,11 @@ PrefabInstance:
       propertyPath: m_enableAutoSizing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100779290032339690, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
+        type: 3}
+      propertyPath: m_Name
+      value: FabianPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 148123911787446118, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
         type: 3}
       propertyPath: m_fontSize
@@ -909,6 +914,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1075949778581024659, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
+        type: 3}
+      propertyPath: m_text
+      value: 'Fabian
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 1075949778581024659, guid: 4c6d94fa9d6ac7541b07be3c63aaeae3,
         type: 3}

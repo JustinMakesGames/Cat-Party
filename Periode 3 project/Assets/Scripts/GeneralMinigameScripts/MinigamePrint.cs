@@ -10,7 +10,7 @@ public class MinigamePrint : MonoBehaviour
     {
         if (context.performed) 
         {
-            print("Wow this player is a high jumper");
+            print("Jumps");
         }
         
     }

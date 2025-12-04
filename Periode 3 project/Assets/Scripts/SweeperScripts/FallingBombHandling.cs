@@ -17,7 +17,7 @@ public class FallingBombHandling : MonoBehaviour
 
     private void Start()
     {
-        _rb.velocity = new Vector3(0, -yForce, 0);
+        _rb.linearVelocity = new Vector3(0, -yForce, 0);
         _originalColor = GetComponent<Renderer>().material.color;
         StartCoroutine(FlickerColor());
         StartCoroutine(StartToExplode());

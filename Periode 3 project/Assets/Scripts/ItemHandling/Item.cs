@@ -49,9 +49,7 @@ public class Item : MonoBehaviour
 
     private IEnumerator UseItem()
     {
-        print("This is so sigma i cant believe this");
         yield return StartCoroutine(ShowItemUseAnimation());
-        print("Sigma gaming XD");
         StartCoroutine(BeginUsingItem());
         while (!taskEnded)
         {
